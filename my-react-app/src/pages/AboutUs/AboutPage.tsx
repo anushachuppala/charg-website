@@ -1,7 +1,7 @@
 import HeroSection from "./HeroSection";
 import BestCharge from "./BestCharge";
+import ChargingSolutions from "./ChargingSolutions";
 // import BeyondCharge from "./BeyondCharge";
-// import ChargingSolutions from "./ChargingSolutions";
 // import OurStrength from "./OurStrength";
 // import BeyondCharge from "./BeyondCharge";
 // import PartnerCards from "./PartnerCards";
@@ -14,7 +14,8 @@ const AboutPage = () => {
   return (
     <main>
       <HeroSection />
-      {<BestCharge />}
+      <BestCharge />
+      <ChargingSolutions />
     </main>
   );
 };

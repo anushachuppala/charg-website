@@ -1,6 +1,6 @@
 .bestChargeSection {
   width: 100%;
-  padding: 0 0 60px;
+  /* padding: 0 0 60px; */
   background: #ffffff;
 }
 
@@ -373,20 +373,18 @@
     display: none;
   }
 } */
-
 /*  1025px */
 
 @media (min-width: 1025px) {
   .bestChargeSection {
-    padding-top: 90px;
+    /* padding-top: 90px; */
   }
 
   .bestChargeContainer {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1 0px;
+    gap: 1px;
     align-items: center;
     justify-content: center;
-    /* border: 2px dotted black; */
   }
 
   .featureItem {
