@@ -1,0 +1,381 @@
+.PartnerHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: nowrap;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #163b7c;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: 500;
+  color: #6c6c6c;
+  margin-left: -2px;
+}
+
+.ImageContainer {
+  width: 100%;
+  height: 200px;
+  padding: 30px 35px;
+}
+
+.ImageWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px #9c9c9c40;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  width: 200px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.arrow {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nextSlideIcon {
+  align-items: center;
+}
+
+.previousSlideIcon {
+  align-items: center;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.dots button.activeDot {
+  background-color: black !important;
+}
+
+/* Responsiveness */
+
+@media (max-width: 1200px) {
+  .PartnerHeader {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .heading {
+    font-size: 17px;
+  }
+
+  .ImageContainer {
+    height: auto;
+    padding: 25px 25px;
+  }
+
+  .ImageWrapper {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .card img {
+    width: 170px;
+    height: 90px;
+  }
+
+  .carousel {
+    gap: 15px;
+  }
+
+  .arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .PartnerHeader {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .heading {
+    font-size: 17px;
+  }
+
+  .ImageContainer {
+    height: auto;
+    padding: 25px 25px;
+  }
+
+  .ImageWrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .card img {
+    width: 160px;
+    height: 80px;
+  }
+
+  .carousel {
+    gap: 15px;
+  }
+
+  .arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .dots {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .PartnerHeader {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .heading {
+    font-size: 16px;
+  }
+
+  .ImageContainer {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .ImageWrapper {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .carousel {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .card {
+    width: 260px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+  .card img {
+    width: 180px;
+    height: 90px;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .PartnerHeader {
+    padding: 0 15px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .heading {
+    font-size: 15px;
+  }
+
+  .ImageContainer {
+    height: auto;
+    padding: 20px 15px;
+  }
+
+  .ImageWrapper {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .card img {
+    width: 150px;
+    height: 80px;
+  }
+
+  .carousel {
+    gap: 10px;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .dots {
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  .dots button {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .PartnerHeader {
+    padding: 0 15px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .heading {
+    font-size: 14px;
+    margin-left: 0;
+  }
+
+  .ImageContainer {
+    width: 100%;
+    height: auto;
+    padding: 20px 15px;
+  }
+
+  .ImageWrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .card img {
+    width: 160px;
+    height: 80px;
+  }
+
+  .carousel {
+    gap: 10px;
+    width: 100%;
+  }
+
+  .arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .dots {
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  .dots button {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .heading {
+    font-size: 14px;
+  }
+
+  .carousel {
+    gap: 5px;
+  }
+
+  .card {
+    width: 220px;
+  }
+
+  .card img {
+    width: 150px;
+    height: 80px;
+  }
+
+  .arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .dots {
+    margin-top: 15px;
+  }
+}

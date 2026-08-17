@@ -1,0 +1,18 @@
+.panel {
+  padding-left: clamp(var(--space-6), 10vw, var(--space-28));
+  padding-right: clamp(var(--space-6), 10vw, var(--space-28));
+}
+
+@media (max-width: 1500px) {
+  .panel {
+    padding-left: var(--space-10);
+    padding-right: var(--space-10);
+  }
+}
+
+@media (max-width: 1200px) {
+  .panel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

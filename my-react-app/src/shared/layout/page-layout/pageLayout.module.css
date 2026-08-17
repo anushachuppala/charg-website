@@ -1,0 +1,33 @@
+.page {
+  padding-block: var(--space-6);
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols-default, 12), minmax(0, 1fr));
+  column-gap: var(--grid-gap, var(--space-6));
+}
+
+.header {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--text-xl);
+  color: var(--color-text-primary);
+}
+
+.subTitle {
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.content {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}

@@ -1,0 +1,22 @@
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0 clamp(var(--space-6), 10vw, var(--space-28));
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols-default, 12), minmax(0, 1fr));
+  column-gap: var(--grid-gap, var(--space-6));
+}
+
+/* Single block per container spans the full track by default */
+.container > * {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+@media (max-width: 550px) {
+  .container {
+    padding: 0 var(--space-6);
+  }
+}
