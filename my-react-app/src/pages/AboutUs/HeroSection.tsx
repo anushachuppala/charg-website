@@ -7,11 +7,13 @@ import Button from "../../shared/ui/Button";
 function HeroSection() {
   return (
     <Section className={styles.heroSection}>
-      <img
-        src={heroImage}
-        alt="Best Charg EV charging infrastructure"
-        className={styles.heroImage}
-      />
+      <div className="hero-background">
+        <img
+          src={heroImage}
+          alt="Best Charg EV charging infrastructure"
+          className={styles.heroImage}
+        />
+      </div>
 
       <div className={styles.heroOverlay}></div>
 
