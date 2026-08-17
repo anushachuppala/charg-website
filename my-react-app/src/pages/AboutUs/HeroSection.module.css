@@ -1,12 +1,23 @@
-/* .heroSection {
+.heroSection {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-} */
+  padding: 40px 0;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 /* background image */
 .heroImage {
@@ -15,6 +26,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -40,27 +52,28 @@
   z-index: 1;
   width: 100%;
   max-width: 100%;
-  padding: 0px;
+  padding: 0 16px;
   box-sizing: border-box;
-  margin-top: 30px;
+  margin: 0 auto;
 }
 
 /* content */
 .heroContent {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 16px;
   width: 100%;
+  max-width: 100%;
   text-align: left;
-  padding: 50px 0 50px;
-  transform: translateX(-250px);
+  padding: 24px 0;
+  box-sizing: border-box;
 }
 
 /* small heading */
 .smallHeading {
   margin: 0;
   color: #55b56c;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
   line-height: 100%;
   letter-spacing: 0.3px;
@@ -70,9 +83,9 @@
 .heroTitle {
   margin: 0;
   color: #ffffff;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   word-wrap: break-word;
   overflow-wrap: break-word;
   max-width: 100%;
@@ -82,9 +95,14 @@
   color: #55b56c;
 }
 
+.desktopBreak {
+  display: none;
+}
+
 /* description */
 .heroDescription {
   width: 100%;
+  max-width: 100%;
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
@@ -93,31 +111,66 @@
 /* buttons */
 .heroButtons {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 24px;
-  width: fit-content;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
 }
 
 .heroButtons button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  min-width: 200px;
-  height: 52px;
-  padding: 10px 22px;
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 10px 16px;
   margin: 0;
   box-sizing: border-box;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   font-family: "Manrope", sans-serif;
 }
 
-/* 481px – 768px  */
-@media (min-width: 481px) {
+/* 320px – 480px   */
+@media (min-width: 320px) and (max-width: 480px) {
   .heroSection {
-    padding: 80px 0;
+    padding: 32px 0;
+    min-height: auto;
+  }
+
+  .heroContainer {
+    padding: 0 16px;
+  }
+
+  .heroContent {
+    padding: 20px 0;
+    gap: 14px;
+  }
+
+  .heroTitle {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .heroButtons button {
+    width: 100%;
+    height: 46px;
+    font-size: 14px;
+  }
+}
+
+/* 481px – 768px   */
+@media (min-width: 481px) and (max-width: 768px) {
+  .heroSection {
+    padding: 56px 0;
+    min-height: auto;
   }
 
   .heroContainer {
@@ -125,8 +178,9 @@
   }
 
   .heroContent {
-    gap: 24px;
-    margin-top: 60px;
+    gap: 20px;
+    padding: 32px 0;
+    max-width: 600px;
   }
 
   .smallHeading {
@@ -134,62 +188,37 @@
   }
 
   .heroTitle {
-    font-size: 38px;
-    line-height: 1.25;
+    font-size: 34px;
+    line-height: 1.28;
   }
 
   .heroDescription {
     font-size: 15px;
-  }
-}
-/* 320px to 399px */
-@media (min-width: 320px) and (max-width: 399px) {
-  .heroContent {
-    margin-top: 20px;
-  }
-  .heroButtons {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    gap: 12px;
+    max-width: 90%;
   }
 
-  .heroButtons button {
-    width: 200px;
-    min-width: 200px;
-    height: 48px;
-    box-sizing: border-box;
-    padding: 10px 16px;
-    font-size: 16px;
-  }
-}
-
-/* 400px – 480px */
-@media (min-width: 400px) and (max-width: 480px) {
-  .heroContent {
-    margin-top: 20px;
-  }
   .heroButtons {
     flex-direction: row;
-    align-items: center;
-    width: 100%;
-    gap: 12px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    gap: 16px;
   }
 
   .heroButtons button {
-    width: 180px;
+    width: auto;
     min-width: 180px;
-    height: 48px;
-    box-sizing: border-box;
-    padding: 10px 12px;
+    flex: 1 1 180px;
+    height: 50px;
     font-size: 16px;
   }
 }
-/* 769px – 1024px  */
 
-@media (min-width: 769px) {
+/* 769px – 1024px   */
+@media (min-width: 769px) and (max-width: 1024px) {
   .heroSection {
     padding: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .heroContainer {
@@ -206,11 +235,16 @@
   }
 
   .heroTitle {
-    font-size: 44px;
-    line-height: 1.2;
+    font-size: 40px;
+    line-height: 1.22;
+  }
+
+  .desktopBreak {
+    display: inline;
   }
 
   .heroDescription {
+    font-size: 16px;
     max-width: 600px;
   }
 
@@ -218,14 +252,66 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    width: auto;
+    max-width: 100%;
     gap: 24px;
   }
 
   .heroButtons button {
     width: auto;
-    min-width: 180px;
+    min-width: 200px;
+    height: 52px;
+    font-size: 17px;
   }
 }
 
 /* 1025px */
+@media (min-width: 1025px) {
+  .heroSection {
+    padding: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .heroContainer {
+    padding: 0 50px;
+    max-width: 1440px;
+  }
+
+  .heroContent {
+    max-width: 650px;
+    gap: 24px;
+  }
+
+  .smallHeading {
+    font-size: 14px;
+  }
+
+  .heroTitle {
+    font-size: 48px;
+    line-height: 1.2;
+  }
+
+  .desktopBreak {
+    display: inline;
+  }
+
+  .heroDescription {
+    font-size: 18px;
+    max-width: 600px;
+  }
+
+  .heroButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 100%;
+    gap: 24px;
+  }
+
+  .heroButtons button {
+    width: 200px;
+    min-width: 200px;
+    height: 52px;
+    font-size: 18px;
+  }
+}

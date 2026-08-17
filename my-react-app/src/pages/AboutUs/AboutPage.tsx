@@ -1,5 +1,6 @@
 import HeroSection from "./HeroSection";
-// import BestCharge from "./BestCharge";
+import BestCharge from "./BestCharge";
+// import BeyondCharge from "./BeyondCharge";
 // import ChargingSolutions from "./ChargingSolutions";
 // import OurStrength from "./OurStrength";
 // import BeyondCharge from "./BeyondCharge";
@@ -13,13 +14,7 @@ const AboutPage = () => {
   return (
     <main>
       <HeroSection />
-      {/* <BestCharge />
-      <ChargingSolutions />
-      <OurStrength />
-      <BeyondCharge />
-      <PartnerCards />
-      <FounderMsg />
-      <Infrastructure /> */}
+      {<BestCharge />}
     </main>
   );
 };
