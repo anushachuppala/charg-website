@@ -1,0 +1,498 @@
+.footerContainer,
+.footerContainer * {
+  box-sizing: border-box;
+}
+
+.footerContainer {
+  width: 100%;
+  background: #163b7c;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 16px 0;
+  overflow-x: clip;
+}
+
+.footerContainer > div,
+.footerContainer footer {
+  width: 100%;
+}
+
+.footerMain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.contentCard {
+  position: relative;
+  width: 100%;
+  max-width: 416px;
+  min-height: 250px;
+  margin: 0 auto;
+  padding: 22px 130px 22px 22px;
+  border-radius: 8px;
+  background: #eef7ef;
+}
+
+.rectangleImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 16px;
+  color: #163b7c;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contentItem {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  column-gap: 10px;
+  align-items: start;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  margin-top: 3px;
+}
+
+.contentInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.contentInfo span {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.contentInfo p {
+  margin: 0;
+  color: #555;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.charger {
+  position: absolute;
+  right: 2px;
+  bottom: 0;
+  width: 122px;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.footerRight {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+}
+
+.logosInfo {
+  width: 100%;
+  min-width: 0;
+}
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.bestChargLogo {
+  width: 170px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.handshakeLogo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.truePowerLogo {
+  width: 140px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.mainColumn {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 16px;
+  text-align: left;
+}
+
+.footerColumn,
+.footerColumnTwo,
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.newsletter {
+  grid-column: 1 / -1;
+}
+
+.footerColumn h4,
+.footerColumnTwo h4,
+.newsletter h4 {
+  margin: 0 0 12px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.footerColumn a,
+.footerColumnTwo a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.footerColumn a:hover,
+.footerColumnTwo a:hover {
+  opacity: 0.75;
+}
+
+.newsletter p {
+  width: 100%;
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.subscribeBox {
+  width: 100%;
+  max-width: 460px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.subscribeBox input,
+.subscribeBox button {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.subscribeBox input {
+  padding: 0 14px;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.subscribeBox input::placeholder {
+  color: #777;
+  opacity: 1;
+}
+
+.subscribeBox button {
+  padding: 0 22px;
+  background-color: #55b56c;
+  color: #ffffff;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.subscribeBox button:hover {
+  opacity: 0.9;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin-top: 28px;
+}
+
+.footerBottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px 0;
+  text-align: center;
+}
+
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 18px;
+}
+
+.legalLinks a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.legalLinks a:hover {
+  opacity: 0.7;
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.LinkedIn,
+.Facebook,
+.Instagram,
+.Youtube {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* 300px - 430px */
+
+@media (max-width: 430px) {
+  .footerContainer {
+    padding: 24px 12px 0;
+  }
+
+  .contentCard {
+    min-height: 230px;
+    padding: 20px 96px 20px 20px;
+  }
+
+  .charger {
+    width: 88px;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .contentWrapper {
+    gap: 10px;
+  }
+
+  .contentInfo span {
+    font-size: 13px;
+  }
+
+  .contentInfo p {
+    font-size: 10px;
+  }
+
+  .mainColumn {
+    gap: 22px 12px;
+  }
+
+  .footerColumn h4,
+  .footerColumnTwo h4,
+  .newsletter h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .footerColumn a,
+  .footerColumnTwo a {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+}
+
+@media (min-width: 481px) {
+  .footerContainer {
+    padding: 36px 24px 0;
+  }
+
+  .footerBottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .legalLinks {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 560px) {
+  .mainColumn {
+    gap: 28px 32px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footerContainer {
+    padding: 40px 28px 0;
+  }
+
+  .footerMain {
+    row-gap: 36px;
+  }
+
+  .footerRight {
+    gap: 28px;
+  }
+
+  .mainColumn {
+    grid-template-columns: max-content max-content;
+    gap: 32px 56px;
+  }
+
+  .newsletter p {
+    max-width: 560px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .footerContainer {
+    padding: 48px 0 0;
+  }
+
+  .footerMain {
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 56px;
+    row-gap: 0;
+  }
+
+  .contentCard {
+    flex: 0 0 416px;
+    width: 416px;
+    max-width: 416px;
+    margin: 0;
+  }
+
+  .footerRight {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 32px;
+  }
+
+  .logos {
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .bestChargLogo {
+    width: 190px;
+  }
+
+  .handshakeLogo {
+    width: 26px;
+    height: 26px;
+  }
+
+  .truePowerLogo {
+    width: 150px;
+  }
+
+  .mainColumn {
+    grid-template-columns: max-content max-content minmax(0, 1fr);
+    column-gap: 56px;
+    row-gap: 0;
+  }
+
+  .newsletter {
+    grid-column: auto;
+  }
+
+  .newsletter p {
+    max-width: 340px;
+  }
+
+  /* side by side only here */
+  .subscribeBox {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .subscribeBox input {
+    flex: 1 1 200px;
+    width: auto;
+    height: 42px;
+  }
+
+  .subscribeBox button {
+    flex: 0 0 140px;
+    width: 140px;
+    height: 42px;
+  }
+
+  .footerBottom {
+    padding: 22px 0;
+  }
+
+  .legalLinks {
+    gap: 24px;
+  }
+
+  .LinkedIn,
+  .Facebook,
+  .Instagram,
+  .Youtube {
+    width: 32px;
+    height: 32px;
+  }
+}

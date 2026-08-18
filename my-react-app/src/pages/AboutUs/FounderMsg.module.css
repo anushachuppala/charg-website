@@ -1,0 +1,155 @@
+.FounderSection {
+  width: 100%;
+  height: 100%;
+  background: rgba(22, 59, 124, 0.05);
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  justify-self: center;
+  gap: 40px;
+}
+
+.imageWrapper {
+  width: 303px;
+  height: 303px;
+}
+
+/* Image */
+
+.founderImage {
+  width: 263px;
+  height: 310px;
+  display: block;
+  object-fit: cover;
+  gap: 24px;
+}
+
+/*  Content  */
+
+.messageContent {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Founder Message */
+
+.smallHeading {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Manrope", sans-serif;
+  margin: 20px 0 0;
+}
+
+/* Description */
+
+.description {
+  color: #666666;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: "Manrope", sans-serif;
+}
+
+.icon {
+  font-size: 58px;
+  font-weight: 700;
+  height: 35px;
+}
+
+img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.founderInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.founderName {
+  margin: 0;
+  color: #163b7c;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "Manrope", sans-serif;
+}
+
+/* Designation */
+
+.designation {
+  font-weight: 800;
+  font-family: "Manrope", sans-serif;
+}
+
+/* responsiveness */
+@media (max-width: 768px) {
+  .FounderSection {
+    width: 100%;
+    height: auto;
+  }
+
+  .mainContainer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .founderImage {
+    width: 220px;
+    height: 260px;
+  }
+
+  .messageContent {
+    max-width: 100%;
+    align-items: center;
+    /* gap: var(--space-4); */
+  }
+
+  .smallHeading {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .icon {
+    font-size: 45px;
+    height: auto;
+    /* line-height: 40px; */
+  }
+
+  .founderName {
+    font-size: 20px;
+  }
+
+  .designation {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContainer {
+    gap: 20px;
+  }
+
+  .messageContent {
+    width: 100%;
+  }
+}

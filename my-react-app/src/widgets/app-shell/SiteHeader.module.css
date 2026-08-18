@@ -1,17 +1,24 @@
+:root {
+  --navbar-height: 64px;
+}
+
+/* ---------- Bar ---------- */
 .navbar {
   box-sizing: border-box;
   width: 100%;
-  height: 10%;
+  height: var(--navbar-height, 64px);
   padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   background-color: #ffffff;
-  border-radius: 4px;
   position: fixed;
   top: 0;
   left: 0;
+  right: 0; /* pin to both edges instead of relying on width:100% */
   z-index: 1000;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
 }
 
 .logocontainer {
@@ -20,68 +27,110 @@
 }
 
 .logoimage {
-  width: 120px;
+  width: 200px;
   height: auto;
   display: block;
 }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 998;
+.logoAccent {
+  color: #55b56c;
 }
 
+/* ---------- Menu toggle (mobile only) ---------- */
 .menuButton {
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border: none;
-  font-size: 28px;
+  font-size: 26px;
+  line-height: 1;
   color: #555555;
   cursor: pointer;
   z-index: 1002;
+  padding: 4px;
+  flex-shrink: 0;
 }
 
+.menuButton:focus-visible,
+.navlinks a:focus-visible,
+.ctaButton:focus-visible {
+  outline: 2px solid #55b56c;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Backdrop ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 998;
+  cursor: pointer;
+}
+
+/* ---------- Off-canvas drawer (mobile) ---------- */
 .navlinks {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0; /* stay anchored to the edge... */
   width: 82%;
   max-width: 320px;
   height: 100vh;
+  height: 100dvh; /* avoids mobile URL-bar cutoff */
   background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 20px;
-  padding: calc(var(--navbar-height) + 24px) 24px 24px;
+  padding: calc(var(--navbar-height, 64px) + 24px) 24px 24px;
   box-sizing: border-box;
   overflow-y: auto;
-  transition: right 0.3s ease;
-  z-index: 999;
   list-style: none;
   margin: 0;
-}
-.navlinks a {
-  color: inherit;
-  text-decoration: none;
+  z-index: 999;
+
+  /* ...and slide with transform so the closed panel adds NO horizontal scroll */
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform 0.3s ease,
+    visibility 0s linear 0.3s;
 }
 
 .navlinksOpen {
-  right: 0;
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    transform 0.3s ease,
+    visibility 0s;
 }
 
-.navbar li {
+.navlinks li {
   position: relative;
   font-size: 17px;
   font-weight: 400;
   color: #555555;
-
   cursor: pointer;
+  white-space: nowrap;
 }
 
+.navlinks a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.navlinks a:hover {
+  color: #55b56c;
+}
+
+.active > a,
 .active {
   color: #55b56c;
   font-weight: 600;
@@ -89,19 +138,36 @@
 
 .productsMenu {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 6px;
   width: 100%;
   cursor: pointer;
 }
 
 .icon {
-  font-size: 18px;
+  font-size: 14px;
   flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
-.desktopButton {
-  display: none;
+/* ---------- CTA button ---------- */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #55b56c;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.ctaButton:hover {
+  background: #479a5b;
 }
 
 .mobileButton {
@@ -110,7 +176,15 @@
   margin-top: auto;
 }
 
-/* /* 481px – 768px  */
+.mobileButton .ctaButton {
+  width: 100%;
+}
+
+.desktopButton {
+  display: none;
+}
+
+/* ---------- 481px – 768px ---------- */
 @media (min-width: 481px) {
   :root {
     --navbar-height: 72px;
@@ -120,8 +194,8 @@
     padding: 0 24px;
   }
 
-  .logoimage {
-    width: 150px;
+  .logo {
+    font-size: 22px;
   }
 
   .navlinks {
@@ -130,16 +204,16 @@
     gap: 24px;
   }
 
-  .navbar li {
+  .navlinks li {
     font-size: 18px;
   }
 
   .menuButton {
-    font-size: 30px;
+    font-size: 28px;
   }
 }
 
-/* /* 769px – 1024px  */
+/* ---------- 769px – 1024px ---------- */
 @media (min-width: 769px) {
   :root {
     --navbar-height: 80px;
@@ -149,23 +223,12 @@
     padding: 0 32px;
   }
 
-  .logoimage {
-    width: 160px;
-  }
-
-  .navlinks {
-    width: 40%;
-    max-width: 380px;
-    gap: 28px;
-    padding-top: calc(var(--navbar-height) + 32px);
-  }
-
-  .navbar li {
-    font-size: 18px;
+  .logo {
+    font-size: 24px;
   }
 }
 
-/* 1025px */
+/* ---------- 1025px+ (desktop) ---------- */
 @media (min-width: 1025px) {
   :root {
     --navbar-height: 90px;
@@ -175,18 +238,16 @@
     padding: 0 40px;
   }
 
-  .logoimage {
-    width: 200px;
+  .logo {
+    font-size: 26px;
   }
 
-  .menuButton {
-    display: none;
-  }
-
+  .menuButton,
   .overlay {
     display: none;
   }
 
+  /* Reset the drawer back into an inline horizontal menu */
   .navlinks {
     position: static;
     width: auto;
@@ -194,17 +255,31 @@
     height: auto;
     flex-direction: row;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
     padding: 0;
     background: transparent;
+    overflow: visible;
+
+    /* make sure desktop is always visible/interactive regardless of open state */
+    transform: none;
+    visibility: visible;
+    pointer-events: auto;
     transition: none;
   }
 
-  .navbar li {
-    font-size: 22px;
+  .navlinks a {
+    padding: 8px 2px;
   }
 
-  .active::before {
+  .navlinks li {
+    font-size: 18px;
+  }
+
+  .navlinks li:hover {
+    color: #55b56c;
+  }
+
+  .active::after {
     content: "";
     position: absolute;
     left: 0;
@@ -212,247 +287,25 @@
     bottom: -6px;
     height: 3px;
     background-color: #55b56c;
+    border-radius: 2px;
   }
 
   .productsMenu {
     width: auto;
   }
-  .navbar {
-    box-sizing: border-box;
-    width: 100%;
-    height: 10%;
-    padding: 0 16px;
+
+  .productsMenu:hover .icon {
+    transform: translateY(2px);
+  }
+
+  /* Hide the in-drawer CTA, show the inline one */
+  .mobileButton {
+    display: none;
+  }
+
+  .desktopButton {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    border-radius: 4px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-
-  .logocontainer {
-    display: flex;
-    align-items: center;
-  }
-
-  .logoimage {
-    width: 120px;
-    height: auto;
-    display: block;
-  }
-
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 998;
-  }
-
-  .menuButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    font-size: 28px;
-    color: #555555;
-    cursor: pointer;
-    z-index: 1002;
-  }
-
-  .navlinks {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 82%;
-    max-width: 320px;
-    height: 100vh;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-    padding: calc(var(--navbar-height) + 24px) 24px 24px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    transition: right 0.3s ease;
-    z-index: 999;
-    list-style: none;
-    margin: 0;
-  }
-  .navlinks a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .navlinksOpen {
-    right: 0;
-  }
-
-  .navbar li {
-    position: relative;
-    font-size: 17px;
-    font-weight: 400;
-    color: #555555;
-
-    cursor: pointer;
-  }
-
-  .active {
-    color: #55b56c;
-    font-weight: 600;
-  }
-
-  .productsMenu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .icon {
-    font-size: 18px;
     flex-shrink: 0;
-  }
-
-  .desktopButton {
-    display: none;
-  }
-
-  .mobileButton {
-    display: flex;
-    width: 100%;
-    margin-top: auto;
-  }
-
-  /* /* 481px – 768px  */
-  @media (min-width: 481px) {
-    :root {
-      --navbar-height: 72px;
-    }
-
-    .navbar {
-      padding: 0 24px;
-    }
-
-    .logoimage {
-      width: 150px;
-    }
-
-    .navlinks {
-      width: 60%;
-      max-width: 360px;
-      gap: 24px;
-    }
-
-    .navbar li {
-      font-size: 18px;
-    }
-
-    .menuButton {
-      font-size: 30px;
-    }
-  }
-
-  /* /* 769px – 1024px  */
-  @media (min-width: 769px) {
-    :root {
-      --navbar-height: 80px;
-    }
-
-    .navbar {
-      padding: 0 32px;
-    }
-
-    .logoimage {
-      width: 160px;
-    }
-
-    .navlinks {
-      width: 40%;
-      max-width: 380px;
-      gap: 28px;
-      padding-top: calc(var(--navbar-height) + 32px);
-    }
-
-    .navbar li {
-      font-size: 18px;
-    }
-  }
-
-  /* 1025px */
-  @media (min-width: 1025px) {
-    :root {
-      --navbar-height: 90px;
-    }
-
-    .navbar {
-      padding: 0 40px;
-    }
-
-    .logoimage {
-      width: 200px;
-    }
-
-    .menuButton {
-      display: none;
-    }
-
-    .overlay {
-      display: none;
-    }
-
-    .navlinks {
-      position: static;
-      width: auto;
-      max-width: none;
-      height: auto;
-      flex-direction: row;
-      align-items: center;
-      gap: 50px;
-      padding: 0;
-      background: transparent;
-      transition: none;
-    }
-
-    .navbar li {
-      font-size: 22px;
-    }
-
-    .active::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -6px;
-      height: 3px;
-      background-color: #55b56c;
-    }
-
-    .productsMenu {
-      width: auto;
-    }
-
-    .mobileButton {
-      display: none;
-    }
-
-    .desktopButton {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .mobileButton {
-    display: none;
-  }
-
-  .desktopButton {
-    display: flex;
-    align-items: center;
   }
 }

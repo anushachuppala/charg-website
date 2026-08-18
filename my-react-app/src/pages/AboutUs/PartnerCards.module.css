@@ -1,0 +1,149 @@
+.PartnerHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.carousel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  justify-content: center;
+  column-gap: 16px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.arrow {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.arrow:hover {
+  transform: scale(1.08);
+}
+
+.ImageContainer {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 24px 8px;
+}
+
+.ImageWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+}
+
+.card {
+  min-width: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px #9c9c9c40;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  width: 100%;
+  max-width: 200px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.dots button.activeDot {
+  background-color: black;
+}
+
+@media (max-width: 1200px) {
+  .ImageWrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .ImageContainer {
+    padding: 20px 4px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .card img {
+    height: 90px;
+  }
+
+  .arrow {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    grid-template-columns: 40px minmax(0, 260px) 40px;
+    column-gap: 12px;
+  }
+
+  .ImageContainer {
+    padding: 16px 0;
+  }
+
+  .ImageWrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel > .arrow:last-of-type {
+    transform: translateX(27px);
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    grid-template-columns: 35px minmax(0, 200px) 35px;
+    column-gap: 8px;
+  }
+
+  .arrow {
+    width: 35px;
+    height: 35px;
+  }
+}

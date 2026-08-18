@@ -21,48 +21,30 @@ const slides = [
     description:
       "From charger manufacturing and installation to software, commissioning, maintenance, and energy integration, we deliver complete EV ecosystems.",
     features: [
-      {
-        icon: iterationIcon,
-        text: "End-to-End Execution",
-        alt: "Execution",
-      },
+      { icon: iterationIcon, text: "End-to-End Execution", alt: "Execution" },
       {
         icon: technologyIcon,
         text: "Integrated Technology",
         alt: "Technology",
       },
-      {
-        icon: arrowIcon,
-        text: "Built to Scale",
-        alt: "Scale",
-      },
+      { icon: arrowIcon, text: "Built to Scale", alt: "Scale" },
     ],
   },
-
   {
     image: ReliabilityImage,
     title: "Engineered for Reliability",
     description:
       "Every charger is designed for continuous operation with industrial-grade components, advanced protection systems, and high uptime in demanding environments.",
     features: [
-      {
-        icon: iterationIcon,
-        text: "Industrial-Grade Build",
-        alt: "Build",
-      },
+      { icon: iterationIcon, text: "Industrial-Grade Build", alt: "Build" },
       {
         icon: technologyIcon,
         text: "Intelligent Protection",
         alt: "Protection",
       },
-      {
-        icon: arrowIcon,
-        text: "High Uptime",
-        alt: "Uptime",
-      },
+      { icon: arrowIcon, text: "High Uptime", alt: "Uptime" },
     ],
   },
-
   {
     image: DesignedImage,
     title: "Designed for India",
@@ -79,14 +61,9 @@ const slides = [
         text: "Climate-Ready Engineering",
         alt: "Engineering",
       },
-      {
-        icon: arrowIcon,
-        text: "Adapted for Local Needs",
-        alt: "Local Needs",
-      },
+      { icon: arrowIcon, text: "Adapted for Local Needs", alt: "Local Needs" },
     ],
   },
-
   {
     image: PartnershipImage,
     title: " Long-Term Partnership",
@@ -103,11 +80,7 @@ const slides = [
         text: "Continuous Innovation",
         alt: "Innovation",
       },
-      {
-        icon: arrowIcon,
-        text: "Lifecycle Services",
-        alt: "Services",
-      },
+      { icon: arrowIcon, text: "Lifecycle Services", alt: "Services" },
     ],
   },
 ];
@@ -118,19 +91,14 @@ const OurStrength = () => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [enableTransition, setEnableTransition] = useState(true);
 
-  console.log("active state:", activeIndex);
-
-  // Next Slide
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => prev + 1);
   }, []);
 
-  // Previous Slide
   const previousSlide = useCallback(() => {
     setActiveIndex((prev) => prev - 1);
   }, []);
 
-  // Reset cloned slides
   useEffect(() => {
     if (activeIndex === loopSlides.length - 1) {
       setTimeout(() => {
@@ -157,126 +125,108 @@ const OurStrength = () => {
     }
   }, [enableTransition]);
 
-  // Autoplay{
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     nextSlide();
-  //   }, 6000);
-
-  //   return () => clearInterval(timer);
-  // }, [nextSlide]);
-
   return (
-    <Section className={styles.strengthSection}>
-      <Container>
-        <Panel>
-          <div className={styles.strengthContainer}>
-            {/* Heading */}
+    <div className={styles.strengthSection}>
+      <Section>
+        <Container>
+          <Panel>
+            <div className={styles.strengthContainer}>
+              <SectionHeader
+                eyebrow="OUR STRENGTH"
+                title="Why Leading Organizations Choose Best Infra"
+                titleTone="white"
+                as="div"
+              />
 
-            {/* <div className={styles.headingWrapper}>
-              <p className={styles.smallHeading}>OUR STRENGTH</p>
+              {/* Slider */}
+              <div className={styles.sliderWrapper}>
+                <div
+                  className={styles.sliderTrack}
+                  style={{
+                    transform: `translateX(-${activeIndex * 100}%)`,
+                    transition: enableTransition
+                      ? "transform 0.6s ease"
+                      : "none",
+                  }}
+                >
+                  {loopSlides.map((slide, index) => (
+                    <div className={styles.strengthCard} key={index}>
+                      {/* Image */}
+                      <div className={styles.imageWrapper}>
+                        <img
+                          src={slide.image}
+                          alt={slide.title}
+                          className={styles.strengthImage}
+                        />
+                      </div>
 
-              <h2 className={styles.heading}>
-                Why Leading Organizations Choose Best Infra
-              </h2>
-            </div> */}
+                      {/* Content */}
+                      <div className={styles.contentWrapper}>
+                        <div className={styles.titleRow}>
+                          <div className={styles.iconCircle}></div>
+                          <h3 className={styles.text}>{slide.title}</h3>
+                        </div>
 
-            <SectionHeader
-              eyebrow="OUR STRENGTH"
-              title="Why Leading Organizations Choose Best Infra"
-              titleTone="white"
-              as="div"
-            />
+                        <p className={styles.description}>
+                          {slide.description}
+                        </p>
 
-            {/* Slider */}
-
-            <div className={styles.sliderWrapper}>
-              <div
-                className={styles.sliderTrack}
-                style={{
-                  transform: `translateX(-${activeIndex * 100}%)`,
-                  transition: enableTransition ? "transform 0.6s ease" : "none",
-                }}
-              >
-                {loopSlides.map((slide, index) => (
-                  <div className={styles.strengthCard} key={index}>
-                    {/* Image */}
-
-                    <div className={styles.imageWrapper}>
-                      <img
-                        src={slide.image}
-                        alt={slide.title}
-                        className={styles.strengthImage}
-                      />
-                    </div>
-
-                    {/* Content */}
-
-                    <div className={styles.contentWrapper}>
-                      <div className={styles.iconCircle}></div>
-
-                      <h3 className={styles.text}>{slide.title}</h3>
-
-                      <p className={styles.description}>{slide.description}</p>
-
-                      <div className={styles.features}>
-                        {slide.features.map((feature, featureIndex) => (
-                          <div
-                            className={styles.featureItem}
-                            key={featureIndex}
-                          >
-                            <span className={styles.featureIcon}>
-                              <img src={feature.icon} alt={feature.alt} />
-                            </span>
-
-                            <span>{feature.text}</span>
-                          </div>
-                        ))}
+                        <div className={styles.features}>
+                          {slide.features.map((feature, featureIndex) => (
+                            <div
+                              className={styles.featureItem}
+                              key={featureIndex}
+                            >
+                              <span className={styles.featureIcon}>
+                                <img src={feature.icon} alt={feature.alt} />
+                              </span>
+                              <span>{feature.text}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className={styles.controls}>
-              <button
-                className={`${styles.arrow} ${styles.leftArrow}`}
-                onClick={previousSlide}
-                aria-label="Previous slide"
-              >
-                ‹
-              </button>
+              {/* Controls */}
+              <div className={styles.controls}>
+                <button
+                  className={`${styles.arrow} ${styles.leftArrow}`}
+                  onClick={previousSlide}
+                  aria-label="Previous slide"
+                >
+                  ‹
+                </button>
 
-              {/* Right Arrow */}
+                <button
+                  className={`${styles.arrow} ${styles.rightArrow}`}
+                  onClick={nextSlide}
+                  aria-label="Next slide"
+                >
+                  ›
+                </button>
+              </div>
 
-              <button
-                className={`${styles.arrow} ${styles.rightArrow}`}
-                onClick={nextSlide}
-                aria-label="Next slide"
-              >
-                ›
-              </button>
-            </div>
-
-            {/* Dots */}
-
-            <div className={styles.dots}>
-              {slides.map((_, index) => (
-                <span
-                  key={index}
-                  onClick={() => setActiveIndex(index + 1)}
-                  className={`
+              {/* Dots */}
+              <div className={styles.dots}>
+                {slides.map((_, index) => (
+                  <span
+                    key={index}
+                    onClick={() => setActiveIndex(index + 1)}
+                    className={`
                     ${styles.dot}
                     ${activeIndex - 1 === index ? styles.activeDot : ""}
                   `}
-                />
-              ))}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        </Panel>
-      </Container>
-    </Section>
+          </Panel>
+        </Container>
+      </Section>
+    </div>
   );
 };
 

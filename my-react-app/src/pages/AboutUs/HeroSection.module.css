@@ -2,13 +2,11 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
   margin: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  padding: 40px 0;
 }
 
 .heroBackground {
@@ -19,20 +17,17 @@
   overflow: hidden;
 }
 
-/* background image */
 .heroImage {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  max-width: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
 }
 
-/* overlay */
 .heroOverlay {
   position: absolute;
   inset: 0;
@@ -46,30 +41,24 @@
   );
 }
 
-/* heroContainer */
 .heroContainer {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 100%;
-  padding: 0 16px;
   box-sizing: border-box;
   margin: 0 auto;
 }
 
-/* content */
 .heroContent {
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: 100%;
-  max-width: 100%;
   text-align: left;
-  padding: 24px 0;
+  margin-top: 50px;
   box-sizing: border-box;
 }
 
-/* small heading */
 .smallHeading {
   margin: 0;
   color: #55b56c;
@@ -79,16 +68,12 @@
   letter-spacing: 0.3px;
 }
 
-/* main heading */
 .heroTitle {
   margin: 0;
   color: #ffffff;
   font-size: 28px;
   font-weight: 700;
   line-height: 1.25;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  max-width: 100%;
 }
 
 .heroTitle span {
@@ -99,20 +84,16 @@
   display: none;
 }
 
-/* description */
 .heroDescription {
   width: 100%;
-  max-width: 100%;
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
 }
 
-/* buttons */
 .heroButtons {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   gap: 12px;
   width: 100%;
   max-width: 320px;
@@ -133,19 +114,8 @@
   font-family: "Manrope", sans-serif;
 }
 
-/* 320px – 480px   */
 @media (min-width: 320px) and (max-width: 480px) {
-  .heroSection {
-    padding: 32px 0;
-    min-height: auto;
-  }
-
-  .heroContainer {
-    padding: 0 16px;
-  }
-
   .heroContent {
-    padding: 20px 0;
     gap: 14px;
   }
 
@@ -166,7 +136,6 @@
   }
 }
 
-/* 481px – 768px   */
 @media (min-width: 481px) and (max-width: 768px) {
   .heroSection {
     padding: 56px 0;
@@ -206,27 +175,19 @@
 
   .heroButtons button {
     width: auto;
-    min-width: 180px;
+    /* min-width: 180px; */
     flex: 1 1 180px;
     height: 50px;
     font-size: 16px;
   }
 }
 
-/* 769px – 1024px   */
 @media (min-width: 769px) and (max-width: 1024px) {
   .heroSection {
     padding: 0;
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
-
-  .heroContainer {
-    padding: 0 50px;
   }
 
   .heroContent {
-    max-width: 650px;
     gap: 20px;
   }
 
@@ -268,17 +229,9 @@
 @media (min-width: 1025px) {
   .heroSection {
     padding: 0;
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
-
-  .heroContainer {
-    padding: 0 50px;
-    max-width: 1440px;
   }
 
   .heroContent {
-    max-width: 650px;
     gap: 24px;
   }
 
@@ -310,7 +263,6 @@
 
   .heroButtons button {
     width: 200px;
-    min-width: 200px;
     height: 52px;
     font-size: 18px;
   }
