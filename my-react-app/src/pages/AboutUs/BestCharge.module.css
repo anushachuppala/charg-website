@@ -1,7 +1,3 @@
-/* ============================================================
-   BestCharge — mobile-first (320px) → desktop
-   ============================================================ */
-
 .bestChargeSection {
   width: 100%;
   max-width: 100vw;
@@ -11,34 +7,32 @@
   padding: 32px 0;
 }
 
-/* Mobile: single column, one feature stacked per row */
 .bestChargeContainer {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
-/* icon LEFT, text right — image always beside the text */
 .featureItem {
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
-  max-width: 480px; /* keeps icon + text close together, centered */
-  margin: 0 auto;
-  padding: 20px 16px;
+  padding: 16px;
   box-sizing: border-box;
   text-align: left;
 }
 
 .featureIcon {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -58,24 +52,24 @@
 
 .featureContent h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.3;
 }
 
 .content {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
-  color: #163b7c;
+  color: #6c6c6c;
 }
 
-/* horizontal 1px divider between stacked rows */
 .divider {
   position: absolute;
   left: 16px;
   right: 16px;
   bottom: 0;
-  height: 1px;
+  height: 3px;
+  width: auto;
   background: #b3b3b3;
   opacity: 0.4;
 }
@@ -84,56 +78,54 @@
   display: none;
 }
 
-/* ---------- 481px+ : larger type/icons ---------- */
-@media (min-width: 481px) {
+@media (min-width: 480px) {
   .bestChargeSection {
     padding: 40px 0;
   }
+
   .featureItem {
-    padding: 24px;
-    gap: 20px;
-    max-width: 520px;
+    gap: 16px;
+    padding: 20px;
   }
+
   .featureIcon {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
   }
+
   .featureContent h3 {
-    font-size: 19px;
+    font-size: 18px;
   }
+
   .content {
-    font-size: 16px;
+    font-size: 15px;
   }
+
   .divider {
-    left: 24px;
-    right: 24px;
+    left: 20px;
+    right: 20px;
   }
 }
 
-/* ---------- 769px+ : switch to 3 columns side-by-side ---------- */
 @media (min-width: 769px) {
   .bestChargeSection {
-    padding: 56px 0;
+    padding: 48px 0;
   }
 
   .bestChargeContainer {
     grid-template-columns: repeat(3, 1fr);
-    max-width: 1200px;
-    margin: 0 auto;
     align-items: stretch;
   }
 
   .featureItem {
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
     padding: 16px 20px;
-    max-width: none; /* let the grid column control width */
-    margin: 0;
   }
 
   .featureIcon {
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
   }
 
   .featureContent h3 {
@@ -145,33 +137,25 @@
     font-weight: 500;
   }
 
-  /* vertical 1px divider on the right edge of each column */
   .divider {
-    top: 50%;
-    right: 0;
     left: auto;
+    right: 0;
     bottom: auto;
+    top: 50%;
     transform: translateY(-50%);
     width: 1px;
-    height: 80px;
-    background: #b3b3b3;
-    opacity: 0.4;
-  }
-
-  .featureItem:last-child .divider {
-    display: none;
+    height: 70px;
   }
 }
 
-/* ---------- 1025px+ : full desktop sizing ---------- */
 @media (min-width: 1025px) {
   .bestChargeSection {
     padding: 60px 0;
   }
 
   .featureItem {
-    gap: 16px;
-    padding: 0 24px;
+    gap: 20px;
+    padding: 16px 24px;
   }
 
   .featureIcon {
