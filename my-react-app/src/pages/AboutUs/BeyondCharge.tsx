@@ -13,16 +13,6 @@ const BeyondCharge = () => {
         <Panel>
           <div className="page-row align-items-center">
             <div className={`page-col-12 page-col-lg-6 ${styles.content}`}>
-              {/* <p className={`16-secondary ${styles.eyebrow}`}>
-                BEYOND CHARGING
-              </p> */}
-
-              {/* <h2 className={styles.heading}>
-                Beyond Charging
-                <br />
-                Building Destinations.
-              </h2> */}
-
               <SectionHeader
                 eyebrow="BEYOND CHARGING"
                 title={

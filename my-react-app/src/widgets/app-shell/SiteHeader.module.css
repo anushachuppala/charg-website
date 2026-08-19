@@ -2,7 +2,10 @@
   --navbar-height: 64px;
 }
 
-/* ---------- Bar ---------- */
+header {
+  height: var(--navbar-height);
+}
+
 .navbar {
   box-sizing: border-box;
   width: 100%;
@@ -16,7 +19,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0; /* pin to both edges instead of relying on width:100% */
+  right: 0;
   z-index: 1000;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
 }
@@ -36,7 +39,6 @@
   color: #55b56c;
 }
 
-/* ---------- Menu toggle (mobile only) ---------- */
 .menuButton {
   display: flex;
   align-items: center;
@@ -60,7 +62,6 @@
   border-radius: 4px;
 }
 
-/* ---------- Backdrop ---------- */
 .overlay {
   position: fixed;
   inset: 0;
@@ -70,15 +71,14 @@
   cursor: pointer;
 }
 
-/* ---------- Off-canvas drawer (mobile) ---------- */
 .navlinks {
   position: fixed;
   top: 0;
-  right: 0; /* stay anchored to the edge... */
+  right: 0;
   width: 82%;
   max-width: 320px;
   height: 100vh;
-  height: 100dvh; /* avoids mobile URL-bar cutoff */
+  height: 100dvh;
   background: #ffffff;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,6 @@
   margin: 0;
   z-index: 999;
 
-  /* ...and slide with transform so the closed panel adds NO horizontal scroll */
   transform: translateX(100%);
   visibility: hidden;
   pointer-events: none;
@@ -151,7 +150,6 @@
   transition: transform 0.2s ease;
 }
 
-/* ---------- CTA button ---------- */
 .ctaButton {
   display: inline-flex;
   align-items: center;
@@ -184,7 +182,6 @@
   display: none;
 }
 
-/* ---------- 481px – 768px ---------- */
 @media (min-width: 481px) {
   :root {
     --navbar-height: 72px;
@@ -213,7 +210,6 @@
   }
 }
 
-/* ---------- 769px – 1024px ---------- */
 @media (min-width: 769px) {
   :root {
     --navbar-height: 80px;
@@ -228,7 +224,6 @@
   }
 }
 
-/* ---------- 1025px+ (desktop) ---------- */
 @media (min-width: 1025px) {
   :root {
     --navbar-height: 90px;
@@ -247,7 +242,6 @@
     display: none;
   }
 
-  /* Reset the drawer back into an inline horizontal menu */
   .navlinks {
     position: static;
     width: auto;
@@ -260,7 +254,6 @@
     background: transparent;
     overflow: visible;
 
-    /* make sure desktop is always visible/interactive regardless of open state */
     transform: none;
     visibility: visible;
     pointer-events: auto;
@@ -298,7 +291,6 @@
     transform: translateY(2px);
   }
 
-  /* Hide the in-drawer CTA, show the inline one */
   .mobileButton {
     display: none;
   }

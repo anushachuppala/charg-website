@@ -2,7 +2,7 @@ import styles from "./Button.module.css";
 
 type ButtonProps = {
   text: string;
-  variant: "primary" | "secondary" | "Tertiary";
+  variant: "primary" | "secondary" | "Tertiary" | "outline";
   className?: string;
 };
 

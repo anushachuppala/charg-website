@@ -1,0 +1,24 @@
+.heroImage {
+  width: 90%;
+  height: 90%;
+  display: block;
+  flex-direction: row;
+  justify-self: flex-end;
+  border-radius: 12px;
+  /* border: 2px solid black; */
+}
+
+.content {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 2px solid black;
+}
+
+.Buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 70px !important;
+}
