@@ -9,15 +9,14 @@ function HeroSection() {
     <Section>
       <Container>
         <Panel>
-          <div className="page-row align-items-center ">
+          <div className="page-row align-items-stretch ">
             {/* Left content */}
-            <div className={`page-col-12 page-col-lg-5 ${styles.content}`}>
+            <div className={`page-col-12 page-col-lg-6 ${styles.content}`}>
               <SectionHeader
                 eyebrow="Charge Management Software"
                 title="Powering Intelligent EV Charging Networks"
                 subtitle="Manage, monitor, and optimize your EV charging infrastructure through a unified cloud-based platform designed for scalability, reliability, and operational efficiency."
                 align="start"
-                trailingSpacing="none"
               />
 
               <div className={styles.buttons}>
