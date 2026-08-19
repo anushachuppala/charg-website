@@ -54,13 +54,14 @@
 
 .outline {
   border: none;
+
   border-radius: 8px;
   padding: 10px 22px;
   background-color: #163b7c;
   color: white;
   font-size: 22px;
   font-weight: 500;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   margin-top: 0;
   cursor: pointer;
   font-family: "Manrope", sans-serif;

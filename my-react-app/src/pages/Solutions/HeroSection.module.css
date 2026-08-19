@@ -1,3 +1,15 @@
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .heroImage {
   width: 100%;
   height: auto;
@@ -23,8 +35,61 @@
   flex-shrink: 0;
 }
 
+/* Base (desktop/tablet default): 2-column buttons */
 .buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.buttons > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Tablet/general shrink */
+@media (max-width: 1000px) {
+  .content {
+    height: auto;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .content > *:empty {
+    display: none;
+  }
+  .imageCol {
+    margin-top: 16px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .buttons {
+    margin-top: 70px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-5, 10px);
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+  }
+  .buttons > * {
+    width: 100%;
+    white-space: normal;
+    padding: 12px 10px;
+  }
 }

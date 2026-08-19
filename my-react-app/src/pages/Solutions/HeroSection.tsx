@@ -9,7 +9,7 @@ function HeroSection() {
     <Section>
       <Container>
         <Panel>
-          <div className="page-row align-items-stretch ">
+          <div className={`page-row align-items-stretch ${styles.row}`}>
             {/* Left content */}
             <div className={`page-col-12 page-col-lg-6 ${styles.content}`}>
               <SectionHeader
@@ -21,12 +21,16 @@ function HeroSection() {
 
               <div className={styles.buttons}>
                 <Button text=" Become a Partner" variant="primary"></Button>
-                <Button text="Book a Demo" variant="outline"></Button>
+                <Button
+                  text="Book a Demo"
+                  variant="outline"
+                  className="btn-two"
+                ></Button>
               </div>
             </div>
 
             {/* Right image */}
-            <div className="page-col-12 page-col-lg-6">
+            <div className={`page-col-12 page-col-lg-6 ${styles.imageCol}`}>
               <img
                 src={HeroImage}
                 alt="hero image"
