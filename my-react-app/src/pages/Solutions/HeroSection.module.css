@@ -78,18 +78,42 @@ body {
 }
 
 @media (max-width: 600px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .content > * {
+    position: static;
+    inset: auto;
+    transform: none;
+    margin: 0;
+  }
+
   .buttons {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-5, 10px);
+    gap: 10px;
     width: 100%;
     max-width: 100%;
-    margin-top: 0;
   }
+
   .buttons > * {
     width: 100%;
     white-space: normal;
-    padding: 12px 10px;
+  }
+
+  .imageCol {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .heroImage {
+    max-width: 100%;
   }
 }
