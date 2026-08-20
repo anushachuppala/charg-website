@@ -1,0 +1,37 @@
+.WhoIsSection {
+  width: 100%;
+  height: 100%;
+  background: #f1f6ff;
+}
+
+.content {
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  /* width:; */
+  background-color: #f1f6ff;
+}
+
+.title {
+  color: #163b7c;
+  font-size: 24px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+}
+
+.card {
+  min-width: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px #9c9c9c40;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

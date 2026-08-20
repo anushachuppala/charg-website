@@ -83,12 +83,6 @@ const PartnerCards = () => {
     <Section>
       <Panel>
         <div className={styles.PartnerHeader}>
-          {/* <header>
-          <h2 className={styles.title}>Partners</h2>
-
-          <p className={styles.heading}>Productive Charger Partners</p>
-        </header> */}
-
           <SectionHeader
             title="Partners"
             subtitle="Productive Charger Partners"
