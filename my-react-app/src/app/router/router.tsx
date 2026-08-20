@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AppShell } from "../../widgets/app-shell/AppShell.tsx";
+import HomePage from "../../pages/HomePage/HomePage.tsx";
 import About from "../../pages/AboutUs/AboutPage";
 import ProductsPage from "../../pages/Products/ProductsPage.tsx";
 import SolutionsPage from "../../pages/Solutions/SolutionsPage.tsx";
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/about",
         element: <About />,
       },
       {
