@@ -1,9 +1,7 @@
 import styles from "./WhoIsThisFor.module.css";
 
-import WhoIsThisFor from "./WhoIsThisFor";
-
 type WhoIsThisForCardProps = {
-  icon?: string;
+  icon: string;
   title: string;
   description: string;
 };
@@ -14,14 +12,16 @@ export function WhoIsThisForCard({
   description,
 }: WhoIsThisForCardProps) {
   return (
-    <div className={styles.card}>
-      {icon ? <img src={icon} alt="" className={styles.icon} /> : null}
+    <article className={styles.article}>
+      <div className={styles.card}>
+        {icon ? <img src={icon} alt="" className={styles.icon} /> : null}
 
-      <div className={styles.content}>
-        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.content}>
+          <h2 className={styles.title}>{title}</h2>
 
-        <p className="18-neutral-500">{description}</p>
+          <p className="18-neutral-500">{description}</p>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
