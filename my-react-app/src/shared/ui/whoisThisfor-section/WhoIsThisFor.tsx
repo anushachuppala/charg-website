@@ -1,13 +1,12 @@
 import styles from "./WhoIsThisFor.module.css";
-import icon1 from "../../assets/Services-page/icon1.png";
-import icon2 from "../../assets/Services-page/icon2.png";
-import icon3 from "../../assets/Services-page/icon3.png";
+import icon1 from "../../../assets/Services-page/icon1.png";
+import icon2 from "../../../assets/Services-page/icon2.png";
+import icon3 from "../../../assets/Services-page/icon3.png";
 
-import { Section, Container, Panel } from "../../shared/layout";
+import { Section, Container, Panel } from "../../../shared/layout";
 
-import { SectionHeader } from "../../shared/ui/section-header";
-
-import { WhoIsThisForCard } from "../../shared/ui";
+import { SectionHeader } from "../../../shared/ui/section-header";
+import { WhoIsThisForCard } from "./WhoIsThisForCard";
 
 export type WhoIsThisForItem = {
   icon: string;

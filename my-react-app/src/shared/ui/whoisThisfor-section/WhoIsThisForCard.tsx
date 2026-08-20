@@ -1,4 +1,4 @@
-import styles from "../../../pages/Solutions/WhoIsThisFor.module.css";
+import styles from "./WhoIsThisFor.module.css";
 
 type WhoIsThisForCardProps = {
   icon: string;
