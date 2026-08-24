@@ -20,12 +20,8 @@ function HeroSection() {
               />
 
               <div className={styles.buttons}>
-                <Button text=" Become a Partner" variant="primary"></Button>
-                <Button
-                  text="Book a Demo"
-                  variant="outline"
-                  className="btn-two"
-                ></Button>
+                <Button variant="secondary">Become a partner</Button>
+                <Button variant="primary">Book a Demo</Button>
               </div>
             </div>
 

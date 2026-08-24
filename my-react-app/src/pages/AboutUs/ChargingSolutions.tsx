@@ -45,11 +45,9 @@ const ChargingSolutions = () => {
                   confidence.
                 </p>
 
-                <Button
-                  text="Explore solutions"
-                  variant="primary"
-                  className={styles.btn}
-                ></Button>
+                <Button variant="secondary" className={styles.btn}>
+                  Explore solutions
+                </Button>
               </div>
             </div>
           </div>

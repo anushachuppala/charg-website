@@ -33,7 +33,7 @@ const BeyondCharge = () => {
                 value for businesses and convenience for EV users.
               </p>
 
-              <Button text="Explore Best Hub" variant="primary" />
+              <Button variant="secondary">Explore Best Hub</Button>
             </div>
 
             <div className="page-col-12 page-col-lg-6">

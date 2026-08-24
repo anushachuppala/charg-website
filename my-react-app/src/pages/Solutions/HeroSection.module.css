@@ -35,7 +35,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Base (desktop/tablet default): 2-column buttons */
 .buttons {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -55,7 +54,6 @@ body {
   white-space: nowrap;
 }
 
-/* Tablet/general shrink */
 @media (max-width: 1000px) {
   .content {
     height: auto;

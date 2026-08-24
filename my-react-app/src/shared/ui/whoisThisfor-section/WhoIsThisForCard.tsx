@@ -14,7 +14,7 @@ export function WhoIsThisForCard({
   return (
     <article className={styles.article}>
       <div className={styles.card}>
-        {icon ? <img src={icon} alt="" className={styles.icon} /> : null}
+        {icon ? <img src={icon} className={styles.icon} /> : null}
 
         <div className={styles.content}>
           <h2 className={styles.title}>{title}</h2>

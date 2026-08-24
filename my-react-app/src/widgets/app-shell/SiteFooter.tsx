@@ -1,4 +1,5 @@
 import { Section, Container } from "../../shared/layout";
+import Button from "../../shared/ui/Button";
 
 import bestChargeLogo from "../../assets/images/About-page/bestCharge.png";
 import JioThings from "../../assets/images/About-page/JioThings.png";
@@ -149,7 +150,7 @@ export function SiteFooter() {
                       placeholder="Enter Valid Email Address"
                     />
 
-                    <button type="button">Subscribe</button>
+                    <Button variant="secondary">Subscribe</Button>
                   </div>
                 </div>
               </div>

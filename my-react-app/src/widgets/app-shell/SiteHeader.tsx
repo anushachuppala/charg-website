@@ -87,13 +87,13 @@ export function SiteHeader() {
 
             {/* Mobile Get Started Button */}
             <li className={styles.mobileButton}>
-              <Button text="Get Started" variant="primary" />
+              <Button variant="secondary">Get Started</Button>
             </li>
           </ul>
 
           {/* Desktop Get Started Button */}
           <div className={styles.desktopButton}>
-            <Button text="Get Started" variant="primary" />
+            <Button variant="secondary">Get Started</Button>
           </div>
         </nav>
       </header>

@@ -38,17 +38,13 @@ function HeroSection() {
             </p>
 
             <div className={styles.heroButtons}>
-              <Button
-                text="Explore Solutions"
-                variant="primary"
-                className="btn-one"
-              />
+              <Button variant="secondary" className="btn-one">
+                Explore Solutions
+              </Button>
 
-              <Button
-                text="Talk to Our Experts"
-                variant="secondary"
-                className="btn-two"
-              />
+              <Button variant="Tertiary" className="btn-two">
+                Talk to Our Experts
+              </Button>
             </div>
           </div>
         </Panel>

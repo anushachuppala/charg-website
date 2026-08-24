@@ -1,13 +1,16 @@
 import styles from "./Button.module.css";
+import type { ReactNode } from "react";
 
 type ButtonProps = {
-  text: string;
+  children: ReactNode;
   variant: "primary" | "secondary" | "Tertiary" | "outline";
   className?: string;
 };
 
-function Button({ text, variant, className = "" }: ButtonProps) {
-  return <button className={`${styles[variant]} ${className}`}>{text}</button>;
+function Button({ children, variant, className = "" }: ButtonProps) {
+  return (
+    <button className={`${styles[variant]} ${className}`}>{children}</button>
+  );
 }
 
 export default Button;
