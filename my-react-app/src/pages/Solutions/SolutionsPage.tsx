@@ -1,5 +1,5 @@
 import HeroSection from "./HeroSection";
-import WhoIsThisFor from "../../shared/ui/whoisThisfor-section/WhoIsThisFor";
+import WhoIsThisFor from "./WhoIsThisFor";
 import ChargeManagement from "./ChargeManagement";
 
 const SolutionsPage = () => {

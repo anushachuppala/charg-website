@@ -12,15 +12,12 @@ export function WhoIsThisForCard({
   description,
 }: WhoIsThisForCardProps) {
   return (
-    <article className={styles.article}>
-      <div className={styles.card}>
-        {icon ? <img src={icon} className={styles.icon} /> : null}
+    <article className={styles.card}>
+      <img src={icon} className={styles.icon} />
 
-        <div className={styles.content}>
-          <h2 className={styles.title}>{title}</h2>
-
-          <p className="18-neutral-500">{description}</p>
-        </div>
+      <div className={styles.content}>
+        <h2 className={styles.title}>{title}</h2>
+        <p>{description}</p>
       </div>
     </article>
   );
