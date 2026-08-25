@@ -1,7 +1,6 @@
 import styles from "./CorePlatform.module.css";
 
 import { Section, Container, Panel } from "../../../shared/layout";
-import { CorePlatformCard } from "./CorePlatformCard";
 
 export type CorePlatformItem = {
   icon: string;
@@ -36,12 +35,15 @@ export function CorePlatform({
 
           <div className={styles.iconsInfo}>
             {items.map((item) => (
-              <CorePlatformCard
-                key={item.title}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-              />
+              <article key={item.title} className={styles.card}>
+                <img src={item.icon} alt="" className={styles.icon} />
+
+                <div className={styles.cardContent}>
+                  <h2 className={styles.cardTitle}>{item.title}</h2>
+
+                  <p className={styles.cardDescription}>{item.description}</p>
+                </div>
+              </article>
             ))}
           </div>
         </Panel>
