@@ -45,6 +45,7 @@ function WhoIsThisFor() {
           <SectionHeader
             title="Who Is This For?"
             subtitle="Built for every stakeholder in the EV ecosystem"
+            align="center"
           />
 
           <div className={styles.cards}>
