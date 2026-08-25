@@ -8,6 +8,7 @@ import ImageSix from "../../assets/Services-page/img6.png";
 import HeroSection from "./HeroSection";
 import WhoIsThisFor from "./WhoIsThisFor";
 import ChargeManagement from "./ChargeManagement";
+import Benefits from "./Benefits";
 
 import { CorePlatform } from "../../shared/ui/corePlatform-section";
 
@@ -63,6 +64,8 @@ const SolutionsPage = () => {
         subtitle="Our modular CMS provides complete control over charging infrastructure, users, payments, and network performance."
         items={corePlatformItems}
       />
+
+      <Benefits />
     </main>
   );
 };
