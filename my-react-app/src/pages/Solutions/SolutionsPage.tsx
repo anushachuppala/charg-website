@@ -51,6 +51,50 @@ const corePlatformItems = [
   },
 ];
 
+const newFeaturesItems = [
+  {
+    icon: ImageOne,
+    title: "Real-time Monitoring",
+    description:
+      "Track charger status, utilization, and charging sessions across all locations in real time.",
+  },
+
+  {
+    icon: ImageTwo,
+    title: "Remote Configuration",
+    description:
+      "Update firmware, modify settings, and troubleshoot chargers remotely.",
+  },
+
+  {
+    icon: ImageThree,
+    title: "Smart Load Balancing",
+    description:
+      "Optimize power distribution across multiple chargers to prevent overload.",
+  },
+
+  {
+    icon: ImageFour,
+    title: "OCPP 1.6 & 2.0 Support",
+    description:
+      "Ensure interoperability with industry-standard EV charging protocols.",
+  },
+
+  {
+    icon: ImageFive,
+    title: "Multi-tenant Architecture",
+    description:
+      "Manage multiple operators, franchises, or networks from a single platform.",
+  },
+
+  {
+    icon: ImageSix,
+    title: "White-label Ready",
+    description:
+      "Launch the platform under your own brand with customizable interfaces.",
+  },
+];
+
 const SolutionsPage = () => {
   return (
     <main>
@@ -63,9 +107,19 @@ const SolutionsPage = () => {
         title="Comprehensive tools to manage your EV charging ecosystem"
         subtitle="Our modular CMS provides complete control over charging infrastructure, users, payments, and network performance."
         items={corePlatformItems}
+        showHeader={false}
       />
 
       <Benefits />
+
+      <CorePlatform
+        eyebrow=""
+        title="Key Features"
+        subtitle="Intelligent features built for scalable EV networks"
+        items={newFeaturesItems}
+        background="dark"
+        showHeader={true}
+      />
     </main>
   );
 };

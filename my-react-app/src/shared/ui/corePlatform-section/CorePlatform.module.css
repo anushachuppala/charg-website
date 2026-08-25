@@ -4,6 +4,10 @@
   background: #163b7c;
 }
 
+.dark {
+  background-color: #55b56c1a;
+}
+
 .content {
   align-items: center;
   text-align: center;
