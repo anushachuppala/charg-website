@@ -34,7 +34,7 @@ export function CorePlatform({
     >
       <Container>
         <Panel>
-          {showHeader && (
+          {showHeader ? (
             <SectionHeader
               eyebrow={eyebrow}
               title={title}
@@ -42,14 +42,15 @@ export function CorePlatform({
               titleTone="primary"
               align="center"
             />
+          ) : (
+            <div className={styles.content}>
+              <h4 className={styles.eyebrow}>{eyebrow}</h4>
+
+              <h2 className={styles.title}>{title}</h2>
+
+              <p className={styles.subtitle}>{subtitle}</p>
+            </div>
           )}
-          {/* <div className={styles.content}>
-            <h4 className={styles.eyebrow}>{eyebrow}</h4>
-
-            <h2 className={styles.title}>{title}</h2>
-
-            <p className={styles.subtitle}>{subtitle}</p>
-          </div> */}
 
           <div className={styles.iconsInfo}>
             {items.map((item) => (

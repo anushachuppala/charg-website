@@ -11,6 +11,7 @@ import ChargeManagement from "./ChargeManagement";
 import Benefits from "./Benefits";
 
 import { CorePlatform } from "../../shared/ui/corePlatform-section";
+import PowerCharge from "./PowerCharge";
 
 const corePlatformItems = [
   {
@@ -120,6 +121,8 @@ const SolutionsPage = () => {
         background="dark"
         showHeader={true}
       />
+
+      <PowerCharge />
     </main>
   );
 };
