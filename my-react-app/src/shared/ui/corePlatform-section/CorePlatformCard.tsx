@@ -13,7 +13,7 @@ export function CorePlatformCard({
 }: CorePlatformCardProps) {
   return (
     <article className={styles.card}>
-      <img src={icon} alt="" className={styles.icon} />
+      <img src={icon} className={styles.icon} />
 
       <div className={styles.cardContent}>
         <h2 className={styles.cardTitle}>{title}</h2>

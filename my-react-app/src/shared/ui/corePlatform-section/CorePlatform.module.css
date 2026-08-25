@@ -2,27 +2,28 @@
   width: 100%;
   height: 100%;
   background: #163b7c;
-  padding: 96px 24px;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
 }
 
 .eyebrow {
+  margin: 0;
+
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 800;
-  color: #55b56c;
+  color: var(--color-secondary);
   letter-spacing: 0.08em;
 }
 
 .title {
-  color: #ffffff;
+  margin: 0;
+  margin-top: 16px;
+  color: var(--color-white);
   font-size: 36px;
   font-weight: 700;
   line-height: 1.25;
@@ -30,10 +31,10 @@
 
 .subtitle {
   margin: 0;
-  color: #ffffff;
-  font-size: 17px;
+  margin-top: 16px;
+  color: var(--color-white);
+  font-size: 18px;
   line-height: 1.6;
-  max-width: 620px;
 }
 
 .iconsInfo {
@@ -56,7 +57,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 15px;
+  gap: 16px;
   transition:
     box-shadow 0.3s ease,
     transform 0.3s ease;
@@ -72,13 +73,12 @@
   height: 48px;
   border-radius: 12px;
   object-fit: contain;
-  margin-bottom: 20px;
 }
 
 .cardContent {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 
 .cardTitle {
