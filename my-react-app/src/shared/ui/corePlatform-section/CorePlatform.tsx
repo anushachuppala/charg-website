@@ -55,7 +55,7 @@ export function CorePlatform({
           <div className={styles.iconsInfo}>
             {items.map((item) => (
               <article key={item.title} className={styles.card}>
-                <img src={item.icon} alt="" className={styles.icon} />
+                <img src={item.icon} alt="icon" className={styles.icon} />
 
                 <div className={styles.cardContent}>
                   <h2 className={styles.cardTitle}>{item.title}</h2>

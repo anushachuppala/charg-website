@@ -76,7 +76,7 @@ function PowerCharge() {
                   <div className={styles.stepIcon}>
                     <img
                       src={item.icon}
-                      alt=""
+                      alt="step-icon"
                       className={styles.stepIconImg}
                     />
                   </div>

@@ -5,10 +5,14 @@ import ImageFour from "../../assets/Services-page/img4.png";
 import ImageFive from "../../assets/Services-page/img5.png";
 import ImageSix from "../../assets/Services-page/img6.png";
 
+import icon1 from "../../assets/Services-page/icon1.png";
+
 import HeroSection from "./HeroSection";
 import WhoIsThisFor from "./WhoIsThisFor";
 import ChargeManagement from "./ChargeManagement";
 import Benefits from "./Benefits";
+
+import { WhyBestCharge } from "../../shared/ui/whyBestCharge-section/whyBestCharge";
 
 import { CorePlatform } from "../../shared/ui/corePlatform-section";
 import PowerCharge from "./PowerCharge";
@@ -96,6 +100,29 @@ const newFeaturesItems = [
   },
 ];
 
+const whyBestChargeItems = [
+  {
+    icon: icon1,
+    title: "500+",
+    description: "Charging Networks Managed",
+  },
+  {
+    icon: icon1,
+    title: "99.9% ",
+    description: "Platform Availability",
+  },
+  {
+    icon: icon1,
+    title: "10M+",
+    description: "Charging Sessions Processed",
+  },
+  {
+    icon: icon1,
+    title: "40+",
+    description: "Cities & Deployment Locations",
+  },
+];
+
 const SolutionsPage = () => {
   return (
     <main>
@@ -123,6 +150,7 @@ const SolutionsPage = () => {
       />
 
       <PowerCharge />
+      <WhyBestCharge items={whyBestChargeItems} />
     </main>
   );
 };
