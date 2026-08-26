@@ -6,6 +6,8 @@ import ImageFive from "../../assets/Services-page/img5.png";
 import ImageSix from "../../assets/Services-page/img6.png";
 
 import icon1 from "../../assets/Services-page/icon1.png";
+import icon2 from "../../assets/Services-page/icon2.png";
+import icon3 from "../../assets/Services-page/icon3.png";
 
 import comp1 from "../../assets/Services-page/comp1.png";
 import comp2 from "../../assets/Services-page/comp2.png";
@@ -19,7 +21,31 @@ import comp9 from "../../assets/Services-page/comp9.png";
 import comp10 from "../../assets/Services-page/comp10.png";
 
 import HeroSection from "./HeroSection";
-import WhoIsThisFor from "./WhoIsThisFor";
+import { WhoIsThisFor } from "../../shared/ui/whoisThisfor-section/WhoIsThisFor";
+
+const WhoIsThisForItems = [
+  {
+    icon: icon1,
+    title: "Charge Point Operators",
+    description:
+      "Manage multiple charging stations, pricing policies, uptime, and user access from a centralized dashboard.",
+  },
+
+  {
+    icon: icon2,
+    title: "Fleet Operators",
+    description:
+      "Monitor fleet charging schedules, energy consumption, and operational efficiency across locations.",
+  },
+
+  {
+    icon: icon3,
+    title: "Municipalities & Utilities",
+    description:
+      "Deploy and manage public charging infrastructure while enabling smart energy distribution and grid integration.",
+  },
+];
+
 import ChargeManagement from "./ChargeManagement";
 import Benefits from "./Benefits";
 
@@ -152,7 +178,12 @@ const SolutionsPage = () => {
   return (
     <main>
       <HeroSection />
-      <WhoIsThisFor />
+      <WhoIsThisFor
+        title="Who Is This For?"
+        subtitle="Built for every stakeholder in the EV ecosystem"
+        align="center"
+        items={WhoIsThisForItems}
+      />
       <ChargeManagement />
 
       <CorePlatform
