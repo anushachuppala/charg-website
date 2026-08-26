@@ -7,6 +7,17 @@ import ImageSix from "../../assets/Services-page/img6.png";
 
 import icon1 from "../../assets/Services-page/icon1.png";
 
+import comp1 from "../../assets/Services-page/comp1.png";
+import comp2 from "../../assets/Services-page/comp2.png";
+import comp3 from "../../assets/Services-page/comp3.png";
+import comp4 from "../../assets/Services-page/comp4.png";
+import comp5 from "../../assets/Services-page/comp5.png";
+import comp6 from "../../assets/Services-page/comp6.png";
+import comp7 from "../../assets/Services-page/comp7.png";
+import comp8 from "../../assets/Services-page/comp8.png";
+import comp9 from "../../assets/Services-page/comp9.png";
+import comp10 from "../../assets/Services-page/comp10.png";
+
 import HeroSection from "./HeroSection";
 import WhoIsThisFor from "./WhoIsThisFor";
 import ChargeManagement from "./ChargeManagement";
@@ -16,6 +27,7 @@ import { WhyBestCharge } from "../../shared/ui/whyBestCharge-section/whyBestChar
 
 import { CorePlatform } from "../../shared/ui/corePlatform-section";
 import PowerCharge from "./PowerCharge";
+import LeadingCompanies from "../../shared/ui/leadingCompanies-section/LeadingCompanies";
 
 const corePlatformItems = [
   {
@@ -123,6 +135,19 @@ const whyBestChargeItems = [
   },
 ];
 
+const logos = [
+  comp1,
+  comp2,
+  comp3,
+  comp4,
+  comp5,
+  comp6,
+  comp7,
+  comp8,
+  comp9,
+  comp10,
+];
+
 const SolutionsPage = () => {
   return (
     <main>
@@ -151,6 +176,15 @@ const SolutionsPage = () => {
 
       <PowerCharge />
       <WhyBestCharge items={whyBestChargeItems} />
+
+      <LeadingCompanies
+        eyebrow="Trusted by leading companies nationwide"
+        title=""
+        subtitle=""
+        align="center"
+        logos={logos}
+        showHeader={true}
+      />
     </main>
   );
 };
