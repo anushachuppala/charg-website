@@ -9,18 +9,12 @@
   margin-top: 80px;
 }
 
-/* .imageCol {
-  display: flex;
-  align-items: center;
-} */
-
 .content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   height: auto;
-  /* gap: var(--space-40); */
 }
 
 .content > * {
@@ -45,7 +39,7 @@
   text-align: center;
   white-space: nowrap;
 }
-/* 
+
 @media (max-width: 1000px) {
   .content {
     height: auto;
@@ -106,4 +100,4 @@
   .heroImage {
     max-width: 100%;
   }
-} */
+}

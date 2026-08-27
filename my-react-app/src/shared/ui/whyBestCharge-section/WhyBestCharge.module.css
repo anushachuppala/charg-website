@@ -1,5 +1,5 @@
 .section {
-  background-color: #163b7c;
+  background-color: var(--color-primary);
 }
 
 .content {
@@ -7,158 +7,94 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
 }
 
 .title {
   color: var(--color-white);
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 800;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
 }
 
 .subtitle {
   color: var(--color-white);
-  font-size: 20px;
-  font-weight: 600;
+
+  font-size: 16px;
+  font-weight: 500;
   text-align: center;
+  margin: 0;
 }
 
 .whyBestChargeItems {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-top: 20px;
+  /* max-width: 1200px; */
+  margin: 0 auto;
 }
 
 .card {
-  width: 100%;
-  height: auto;
   background-color: var(--color-white);
-  box-shadow: 0px 4px 10px #0000001a;
-  border-radius: 16px;
+  border-radius: 14px;
   padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
   text-align: center;
-  gap: 16px;
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 2px 12px 0px #0000001a;
 }
 
 .icon {
   width: 48px;
   height: 48px;
+  background-color: var(--color-secondary);
   border-radius: 12px;
+  padding: 14px;
+  box-sizing: border-box;
   object-fit: contain;
+  margin-bottom: 20px;
 }
 
 .cardContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 .cardTitle {
+  color: #163b7c;
+  font-size: 32px;
+  font-weight: 800;
   margin: 0;
-  color: var(--color-primary);
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.3;
 }
 
 .cardDescription {
-  margin: 0;
   color: #606060;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6;
-  overflow: hidden;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
 }
 
-/* Small tablets / large phones */
-@media (min-width: 480px) {
+@media (max-width: 900px) {
   .whyBestChargeItems {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whyBestChargeItems {
+    grid-template-columns: 1fr;
   }
 
   .title {
     font-size: 26px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-  }
-}
-
-/* Tablets */
-@media (min-width: 768px) {
-  .title {
-    font-size: 30px;
-  }
-
-  .subtitle {
-    font-size: 18px;
-  }
-
-  .card {
-    padding: 20px;
-    gap: 14px;
-  }
-
-  .icon {
-    width: 42px;
-    height: 42px;
-  }
-
-  .cardTitle {
-    font-size: 40px;
-  }
-
-  .cardDescription {
-    font-size: 16px;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .whyBestChargeItems {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-
-  .title {
-    font-size: 36px;
-  }
-
-  .subtitle {
-    font-size: 20px;
-  }
-
-  .card {
-    padding: 24px;
-    gap: 16px;
-  }
-
-  .icon {
-    width: 48px;
-    height: 48px;
-  }
-
-  .cardTitle {
-    font-size: 48px;
-  }
-
-  .cardDescription {
-    font-size: 18px;
   }
 }

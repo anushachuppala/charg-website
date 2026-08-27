@@ -9,7 +9,7 @@
 .faqItem {
   border: 1px solid #dddddd;
   border-radius: 12px;
-  padding: 20px 24px;
+  padding: 24px 24px;
   background: #ffffff;
   transition:
     background-color 0.2s ease,
@@ -56,7 +56,7 @@
 }
 
 .faqItemOpen .icon {
-  color: #1f9254;
+  color: var(--color-secondary);
 }
 
 .answer {
@@ -64,5 +64,5 @@
   font-weight: 500;
   color: #666666;
   line-height: 1.6;
-  margin: 12px 0 0;
+  margin-top: 24px;
 }

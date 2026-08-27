@@ -231,14 +231,14 @@ const SolutionsPage = () => {
 
       <Benefits />
 
-      <CorePlatform
+      {/* <CorePlatform
         eyebrow=""
         title="Key Features"
         subtitle="Intelligent features built for scalable EV networks"
         items={newFeaturesItems}
         background="dark"
         showHeader={true}
-      />
+      /> */}
 
       <PowerCharge />
       <WhyBestCharge items={whyBestChargeItems} />
