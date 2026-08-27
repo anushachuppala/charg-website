@@ -5,3 +5,4 @@ export * from "./corePlatform-section";
 
 export * from "./whoisThisfor-section";
 export * from "./whyBestCharge-section";
+export * from "./faq-section";

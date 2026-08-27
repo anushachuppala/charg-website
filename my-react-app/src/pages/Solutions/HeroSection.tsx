@@ -6,7 +6,7 @@ import Button from "../../shared/ui/Button";
 
 function HeroSection() {
   return (
-    <Section>
+    <Section className={styles.section}>
       <Container>
         <Panel>
           <div className={`page-row align-items-stretch ${styles.row}`}>

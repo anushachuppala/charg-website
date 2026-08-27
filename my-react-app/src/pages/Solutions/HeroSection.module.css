@@ -1,34 +1,26 @@
-html,
-body {
-  overflow-x: hidden;
-  max-width: 100%;
+.section {
+  margin: 0;
 }
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .heroImage {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
+  border-radius: 14px;
+  margin-top: 80px;
 }
 
-.imageCol {
+/* .imageCol {
   display: flex;
   align-items: center;
-}
+} */
 
 .content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  height: 90%;
-  gap: var(--space-40);
+  height: auto;
+  /* gap: var(--space-40); */
 }
 
 .content > * {
@@ -53,7 +45,7 @@ body {
   text-align: center;
   white-space: nowrap;
 }
-
+/* 
 @media (max-width: 1000px) {
   .content {
     height: auto;
@@ -114,4 +106,4 @@ body {
   .heroImage {
     max-width: 100%;
   }
-}
+} */

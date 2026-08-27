@@ -1,16 +1,15 @@
 .primary {
   border: none;
-  border-radius: 8px;
-  padding: 10px 22px;
+  border-radius: 14px;
+  padding: 12px 28px;
   background-color: var(--color-primary);
   color: white;
+  font-size: 20px;
+  font-weight: 600;
   width: fit-content;
-  /* height: auto; */
-  font-size: 22px;
-  font-weight: 500;
-  /* margin-top: 20px; */
-  /* margin-left: 6px; */
-  /* margin-right: 30px; */
+  height: auto;
+  max-width: var(--space-100);
+  max-height: var(--space-46);
   cursor: pointer;
   font-family: "Manrope", sans-serif;
 }
@@ -21,15 +20,14 @@
 
 .secondary {
   border: none;
-  border-radius: 8px;
-  padding: 10px 22px;
+  border-radius: 14px;
+  padding: 12px 28px;
   background-color: var(--color-secondary);
   color: white;
-  font-size: 22px;
-  font-weight: 500;
-  width: fit-content;
-  /* height: auto; */
-  /* margin-top: 20px; */
+  font-size: 20px;
+  font-weight: 600;
+  max-width: var(--space-100);
+  max-height: var(--space-46);
   cursor: pointer;
   font-family: "Manrope", sans-serif;
 }

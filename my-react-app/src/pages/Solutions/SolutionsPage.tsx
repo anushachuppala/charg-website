@@ -5,9 +5,9 @@ import ImageFour from "../../assets/Services-page/img4.png";
 import ImageFive from "../../assets/Services-page/img5.png";
 import ImageSix from "../../assets/Services-page/img6.png";
 
-import icon1 from "../../assets/Services-page/icon1.png";
-import icon2 from "../../assets/Services-page/icon2.png";
-import icon3 from "../../assets/Services-page/icon3.png";
+import icon1 from "../../assets/Services-page/Briefcase.svg";
+import icon2 from "../../assets/Services-page/OnlineSupport.svg";
+import icon3 from "../../assets/Services-page/Partnership.svg";
 
 import comp1 from "../../assets/Services-page/comp1.png";
 import comp2 from "../../assets/Services-page/comp2.png";
@@ -42,7 +42,7 @@ const WhoIsThisForItems = [
     icon: icon3,
     title: "Municipalities & Utilities",
     description:
-      "Deploy and manage public charging infrastructure while enabling smart energy distribution and grid integration.",
+      "Deploy and manage public charging infrastructure while enabling smart energy distribution.",
   },
 ];
 
@@ -218,6 +218,7 @@ const SolutionsPage = () => {
         align="center"
         items={WhoIsThisForItems}
       />
+
       <ChargeManagement />
 
       <CorePlatform
