@@ -41,7 +41,7 @@ export function WhoIsThisFor({
           <div className={styles.cards}>
             {items.map((item) => (
               <article className={styles.card} key={item.title}>
-                <img src={item.icon} className={styles.icon} alt="" />
+                <img src={item.icon} className={styles.icon} alt="icon" />
 
                 <div className={styles.content}>
                   <h3 className={styles.cardTitle}>{item.title}</h3>

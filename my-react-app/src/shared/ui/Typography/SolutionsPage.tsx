@@ -23,12 +23,14 @@ import comp10 from "../../assets/Services-page/comp10.png";
 import HeroSection from "./HeroSection";
 import { WhoIsThisFor } from "../../shared/ui/whoisThisfor-section/WhoIsThisFor";
 
+import { FaqSection } from "../../shared/ui/faq-section"
+
 const WhoIsThisForItems = [
   {
     icon: icon1,
     title: "Charge Point Operators",
     description:
-      "Manage multiple charging stations, pricing policies, uptime, and user access from a cetralized dashboard.",
+      "Manage multiple charging stations, pricing policies, uptime, and user access from a centralized dashboard.",
   },
 
   {
@@ -174,39 +176,32 @@ const logos = [
   comp10,
 ];
 
-import { FaqSection } from "../../shared/ui/faq-section/FaqSection";
-
-const faqItems = [
+const faqItems [
   {
-    question: "Will Best Charg CMS work with any charger?",
-    answer:
-      "Yes. Best Charg CMS is designed to support compatible EV chargers and charging infrastructure, enabling centralized monitoring, management, and control across connected devices.",
-  },
+   question: "Will Best Charg CMS work with any charger?",
+   answer: "Yes. Best Charg CMS is designed to support compatible EV chargers and charging infrastructure, enabling centralized monitoring, management, and control across connected devices.",
+  }
 
   {
-    question: "How are charging tariffs configured",
-    answer:
-      "Operators can create time-based, energy-based, session-based, or dynamic pricing models according to their charging business requirements.",
-  },
+   question: "How are charging tariffs configured",
+   answer: "Operators can create time-based, energy-based, session-based, or dynamic pricing models according to their charging business requirements.",
+  }
 
   {
-    question: "Can I manage multiple charging locations",
-    answer:
-      "Yes. The platform enables operators to centrally monitor and manage multiple charging stations and locations from a unified CMS interface.",
-  },
+   question: "Can I manage multiple charging locations",
+   answer: "Yes. The platform enables operators to centrally monitor and manage multiple charging stations and locations from a unified CMS interface.",
+  }
 
   {
-    question: "Does the platform support remote diagnostics",
-    answer:
-      "Yes. Best Charg CMS supports remote monitoring and diagnostics, helping operators identify charger issues, check device status, and troubleshoot problems remotely.",
-  },
+   question: "Does the platform support remote diagnostics",
+   answer: "Yes. Best Charg CMS supports remote monitoring and diagnostics, helping operators identify charger issues, check device status, and troubleshoot problems remotely.",
+  }
 
   {
-    question: "Can the platform be white-labeled?",
-    answer:
-      "Yes. The CMS can support white-label customization, allowing businesses to present the platform with their own branding and user experience.",
-  },
-];
+   question: "Can the platform be white-labeled?",
+   answer: "Yes. The CMS can support white-label customization, allowing businesses to present the platform with their own branding and user experience.",
+  }
+]
 
 const SolutionsPage = () => {
   return (
@@ -251,13 +246,7 @@ const SolutionsPage = () => {
         showHeader={true}
       />
 
-      <FaqSection
-        eyebrow="faq's"
-        title="Know More About Our EV Charging Solutions"
-        align="center"
-        showHeader={true}
-        items={faqItems}
-      />
+      
     </main>
   );
 };
