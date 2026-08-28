@@ -55,6 +55,8 @@ import { CorePlatform } from "../../shared/ui/corePlatform-section";
 import PowerCharge from "./PowerCharge";
 import LeadingCompanies from "../../shared/ui/leadingCompanies-section/LeadingCompanies";
 
+import KeyFeatures from "../../shared/ui/keyFeatures-section/KeyFeatures";
+
 const corePlatformItems = [
   {
     icon: ImageOne,
@@ -94,7 +96,7 @@ const corePlatformItems = [
   },
 ];
 
-const newFeaturesItems = [
+const keyFeaturesItems = [
   {
     icon: ImageOne,
     title: "Real-time Monitoring",
@@ -230,14 +232,13 @@ const SolutionsPage = () => {
 
       <Benefits />
 
-      {/* <CorePlatform
-        eyebrow=""
+      <KeyFeatures
         title="Key Features"
         subtitle="Intelligent features built for scalable EV networks"
-        items={newFeaturesItems}
-        background="dark"
+        align="center"
         showHeader={true}
-      /> */}
+        items={keyFeaturesItems}
+      />
 
       <PowerCharge />
       <WhyBestCharge items={whyBestChargeItems} />
