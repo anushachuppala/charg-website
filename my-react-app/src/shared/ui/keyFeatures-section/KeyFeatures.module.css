@@ -32,6 +32,14 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
+.card:hover {
+  background-color: var(--color-primary);
+}
+.card:hover .cardTitle,
+.card:hover p {
+  color: #ffffff;
+}
+
 .iconWrapper {
   display: flex;
   align-items: center;
@@ -59,7 +67,7 @@
 .cardTitle {
   margin: 0;
   color: var(--color-primary);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1.3;
 }

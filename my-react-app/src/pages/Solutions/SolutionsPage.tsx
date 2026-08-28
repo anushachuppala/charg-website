@@ -91,8 +91,7 @@ const corePlatformItems = [
   {
     icon: ImageSix,
     title: "API & Integrations",
-    description:
-      "Integrate with ERP, CRM, mobile apps, payment gateways, and third-party systems.",
+    description: "Integrate with ERP, CRM, mobile apps, payment gateways.",
   },
 ];
 
@@ -177,6 +176,7 @@ const logos = [
 ];
 
 import { FaqSection } from "../../shared/ui/faq-section/FaqSection";
+import { GetInTouch } from "../../shared/ui/getInTouch-section/GetInTouch";
 
 const faqItems = [
   {
@@ -186,19 +186,19 @@ const faqItems = [
   },
 
   {
-    question: "How are charging tariffs configured",
+    question: "How are charging tariffs configured?",
     answer:
       "Operators can create time-based, energy-based, session-based, or dynamic pricing models according to their charging business requirements.",
   },
 
   {
-    question: "Can I manage multiple charging locations",
+    question: "Can I manage multiple charging locations?",
     answer:
       "Yes. The platform enables operators to centrally monitor and manage multiple charging stations and locations from a unified CMS interface.",
   },
 
   {
-    question: "Does the platform support remote diagnostics",
+    question: "Does the platform support remote diagnostics?",
     answer:
       "Yes. Best Charg CMS supports remote monitoring and diagnostics, helping operators identify charger issues, check device status, and troubleshoot problems remotely.",
   },
@@ -258,6 +258,13 @@ const SolutionsPage = () => {
         align="center"
         showHeader={true}
         items={faqItems}
+      />
+
+      <GetInTouch
+        title="Get in Touch"
+        subtitle="Whether you are interested in working together on a new EV charging project, have a question/comment, interested in career opportunities at ChargeZone, or just want to drop us a line, we’d love to hear from you."
+        align="start"
+        showHeader={true}
       />
     </main>
   );
