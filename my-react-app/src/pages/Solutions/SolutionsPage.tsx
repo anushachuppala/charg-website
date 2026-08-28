@@ -226,7 +226,6 @@ const SolutionsPage = () => {
         title="Comprehensive tools to manage your EV charging ecosystem"
         subtitle="Our modular CMS provides complete control over charging infrastructure, users, payments, and network performance."
         items={corePlatformItems}
-        showHeader={false}
       />
 
       <Benefits />
