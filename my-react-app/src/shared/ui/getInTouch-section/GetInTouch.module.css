@@ -5,7 +5,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-14);
+  gap: var(--space-28);
   align-items: start;
 }
 
@@ -17,6 +17,7 @@
 }
 
 .imageWrapper {
+  height: auto;
   border-radius: 14px;
   overflow: hidden;
 }
@@ -81,13 +82,13 @@
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: #9aa5b8;
+  color: #707070b2;
 }
 
 .field input:focus,
 .field textarea:focus {
-  border-color: #2f6fed;
-  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.12);
+  border-color: none;
+  /* box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.12); */
 }
 
 .field textarea {
@@ -101,7 +102,6 @@
   color: #ffffff;
   border: none;
   font-family: "Manrope", sans-serif;
-
   border-radius: 8px;
   padding: 14px 24px;
   font-size: 16px;

@@ -48,6 +48,25 @@ function LeadingCompanies({
           slidesPerView={7}
           spaceBetween={50}
           allowTouchMove={false}
+          breakpoints={{
+            0: {
+              slidesPerView: 2.5,
+              spaceBetween: 20,
+            },
+            480: {
+              slidesPerView: 3.5,
+              spaceBetween: 24,
+            },
+
+            768: {
+              slidesPerView: 5,
+              spaceBetween: 32,
+            },
+            1024: {
+              slidesPerView: 7,
+              spaceBetween: 50,
+            },
+          }}
         >
           {logos.map((logo, index) => (
             <SwiperSlide key={`${logo}-${index}`}>

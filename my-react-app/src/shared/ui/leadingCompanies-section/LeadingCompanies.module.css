@@ -1,41 +1,3 @@
-.companyImages {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-  gap: 50px;
-  flex-wrap: nowrap;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.companyImages img {
-  width: 100px;
-  height: 80px;
-  object-fit: contain;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-
-.companyImages img:hover {
-  transform: scale(1.08);
-}
-
-.swiperSlide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.swiperSlide img {
-  width: 100px;
-  height: auto;
-  object-fit: contain;
-}
-
 .section {
   overflow: hidden;
 }
@@ -43,6 +5,8 @@
 .companyImages {
   width: 100%;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
 
 .companyImages :global(.swiper) {
@@ -65,13 +29,35 @@
 .companyImages img {
   display: block;
   width: auto;
-  max-width: 100%;
   height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 100%;
   object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-.comp9,
-.comp10 {
-  width: 100%;
-  height: auto;
+.companyImages img:hover {
+  transform: scale(1.08);
+}
+
+@media (max-width: 768px) {
+  .companyImages {
+    padding: 0 12px;
+  }
+
+  .companyImages img {
+    height: 45px;
+    min-width: 45px;
+    min-height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .companyImages img {
+    height: 36px;
+    min-width: 32px;
+    min-height: 120px;
+  }
 }

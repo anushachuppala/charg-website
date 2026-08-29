@@ -43,7 +43,7 @@ function PowerCharge() {
       <Container>
         <Panel>
           <div className={styles.row}>
-            {/* left column: header + image */}
+            {/* left column: header and image */}
             <div className={styles.leftCol}>
               <SectionHeader
                 as="div"

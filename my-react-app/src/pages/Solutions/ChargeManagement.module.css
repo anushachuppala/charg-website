@@ -20,13 +20,13 @@
 }
 
 .content {
+  margin: auto;
   grid-column: span 6;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
   min-width: 0;
-  /* border: 3px solid black; */
 }
 
 .items {

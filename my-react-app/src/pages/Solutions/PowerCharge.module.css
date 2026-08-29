@@ -1,14 +1,14 @@
 .row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
-  gap: 8rem;
+  align-items: start;
+  gap: clamp(2rem, 6vw, 8rem);
 }
 
 .leftCol {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   min-width: 0;
 }
 
@@ -35,8 +35,8 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
-  padding: 1.75rem 1.75rem 1.75rem 2.5rem;
+  gap: clamp(0.75rem, 3vw, 1.25rem);
+  padding: 1.5rem clamp(1rem, 4vw, 1.75rem) 1.5rem clamp(1.75rem, 6vw, 2.5rem);
   border-bottom: 1px solid var(--color-border, #e6ebf2);
 }
 
@@ -49,12 +49,12 @@
   top: 0;
   left: 0;
   transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
+  width: clamp(24px, 6vw, 32px);
+  height: clamp(24px, 6vw, 32px);
   border-radius: 50%;
   background: var(--color-primary, #1e3a8a);
   color: #fff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -64,8 +64,8 @@
 
 .stepIcon {
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
+  width: clamp(48px, 12vw, 72px);
+  height: clamp(48px, 12vw, 72px);
   border-radius: 50%;
   background: #163b7c1a;
   display: flex;
@@ -74,8 +74,8 @@
 }
 
 .stepIconImg {
-  width: 36px;
-  height: 33px;
+  width: 50%;
+  height: 46%;
   object-fit: contain;
 }
 
@@ -85,17 +85,19 @@
 
 .stepContent h3 {
   margin: 0 0 0.35rem;
-  font-size: 26px;
+  font-size: clamp(18px, 4vw, 26px);
   font-weight: 700;
   color: var(--color-primary, #1e3a8a);
+  overflow-wrap: break-word;
 }
 
 .stepContent p {
   margin: 0;
-  font-size: 16px;
+  font-size: clamp(14px, 2.5vw, 16px);
   line-height: 1.5;
   font-weight: 500;
   color: var(--color-neutral-600, #6b7280);
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 991px) {
@@ -103,8 +105,25 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+}
+
+@media (max-width: 400px) {
+  .stepsCol {
+    margin-top: 20px;
+  }
 
   .step {
-    padding: 1.5rem 1.25rem 1.5rem 2.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    padding-left: 1.75rem;
+  }
+
+  .stepNumber {
+    left: 8px;
+  }
+
+  .stepIcon {
+    width: 40px;
+    height: 40px;
   }
 }

@@ -1,11 +1,3 @@
-:root {
-  --navbar-height: 64px;
-}
-/* 
-header {
-  height: var(--navbar-height);
-} */
-
 .navbar {
   box-sizing: border-box;
   width: 100%;
