@@ -21,6 +21,7 @@ import comp9 from "../../assets/Services-page/comp9.png";
 import comp10 from "../../assets/Services-page/comp10.png";
 
 import HeroSection from "./HeroSection";
+
 import { WhoIsThisFor } from "../../shared/ui/whoisThisfor-section/WhoIsThisFor";
 
 const WhoIsThisForItems = [
