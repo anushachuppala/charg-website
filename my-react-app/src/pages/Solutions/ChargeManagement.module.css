@@ -1,60 +1,88 @@
 .row {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  align-items: stretch;
-  gap: var(--space-12);
-}
-
-.imageCol {
-  grid-column: span 6;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 2rem;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
 }
 
-.chargeImage {
+/* Image first */
+.imageCol {
+  grid-column: 1;
+  grid-row: 1;
+
+  min-width: 0;
   width: 100%;
-  height: 100%;
-  min-height: 260px;
-  display: block;
-  object-fit: cover;
-  border-radius: 12px;
 }
 
+/* Content below image */
 .content {
-  margin: auto;
-  grid-column: span 6;
+  grid-column: 1;
+  grid-row: 2;
+
+  min-width: 0;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   gap: var(--space-4);
-  min-width: 0;
+}
+
+/* Image always responsive */
+.chargeImage {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .items {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+
   width: 100%;
+  min-width: 0;
 }
 
 .title {
   font-size: 18px;
+  max-width: 100%;
 }
 
 .item {
   display: flex;
   align-items: flex-start;
   gap: 0.9rem;
+
+  width: 100%;
+  min-width: 0;
 }
 
 .icon {
   width: 25px;
   height: 26px;
-  flex-shrink: 0;
+
+  flex: 0 0 auto;
   margin-top: 2px;
+}
+
+.item h3,
+.item p {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .item h3 {
   margin: 0 0 0.15rem;
+
   font-size: var(--text-md);
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary, #1e56a0);
@@ -62,32 +90,46 @@
 
 .item p {
   margin: 0;
+
   line-height: 1.5;
   font-size: var(--text-base);
   font-weight: var(--font-weight-regular);
   color: var(--color-neutral-600);
 }
 
-@media (max-width: 991px) {
-  .imageCol,
-  .content {
-    grid-column: span 12;
+/* ========================================
+Desktop: 1301px and above
+Image and content side by side
+======================================== */
+
+@media (min-width: 1301px) {
+  .row {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: center;
+    gap: var(--space-12);
   }
 
-  .chargeImage {
-    width: 100%;
-    height: auto;
-    min-height: 0;
+  .imageCol {
+    grid-column: span 6;
+    grid-row: auto;
+  }
+
+  .content {
+    grid-column: span 6;
+    grid-row: auto;
+
+    align-items: flex-start;
+    justify-content: center;
   }
 }
 
-@media (max-width: 479px) {
+/* ========================================
+Mobile: 600px and below
+======================================== */
+
+@media (max-width: 600px) {
   .row {
     gap: 1.25rem;
-  }
-
-  .chargeImage {
-    border-radius: 8px;
   }
 
   .content {
@@ -120,5 +162,32 @@
   .item p {
     font-size: 12.5px;
     line-height: 1.45;
+  }
+}
+
+/* ========================================
+Small Mobile: 360px and below
+======================================== */
+
+@media (max-width: 360px) {
+  .row {
+    gap: 1rem;
+  }
+
+  .item {
+    gap: 0.5rem;
+  }
+
+  .icon {
+    width: 18px;
+    height: 19px;
+  }
+
+  .item h3 {
+    font-size: 14px;
+  }
+
+  .item p {
+    font-size: 12px;
   }
 }
