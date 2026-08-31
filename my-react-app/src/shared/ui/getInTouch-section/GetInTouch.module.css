@@ -12,7 +12,6 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2-5);
   min-width: 0;
 }
 
@@ -32,10 +31,10 @@
 .form {
   background: var(--color-white);
   border-radius: 12px;
-  padding: 32px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
   min-width: 0;
 }
 
