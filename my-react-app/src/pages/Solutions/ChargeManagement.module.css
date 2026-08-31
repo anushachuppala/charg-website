@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: stretch;
-  gap: 2rem;
+  gap: var(--space-12);
 }
 
 .imageCol {
@@ -25,7 +25,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: var(--space-4);
   min-width: 0;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .title {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .item {
@@ -55,17 +55,16 @@
 
 .item h3 {
   margin: 0 0 0.15rem;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-primary, #1e56a0);
 }
 
 .item p {
   margin: 0;
-  font-size: 14px;
   line-height: 1.5;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
   color: var(--color-neutral-600);
 }
 

@@ -39,7 +39,7 @@ function LeadingCompanies({
         <Swiper
           modules={[Autoplay]}
           loop={true}
-          speed={4000}
+          speed={3000}
           autoplay={{
             delay: 0,
             disableOnInteraction: false,

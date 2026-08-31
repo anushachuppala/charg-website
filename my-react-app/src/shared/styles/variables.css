@@ -149,9 +149,8 @@
     "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue";
 
   /* Scale — fluid type using clamp() */
-  --text-xs: clamp(0.694rem, 0.66rem + 0.17vw, 0.75rem); /* 11–12px */
-  --text-sm: clamp(0.8rem, 0.77rem + 0.16vw, 0.875rem); /* 13–14px */
-  --text-base: clamp(0.9rem, 0.87rem + 0.18vw, 1rem); /* 14–16px */
+  --text-xs: clamp(0.694rem, 0.66rem6c6c6c
+  w, 1rem); /* 14–16px */
   --text-md: clamp(1rem, 0.95rem + 0.22vw, 1.125rem); /* 16–18px */
   --text-lg: clamp(1.125rem, 1.07rem + 0.28vw, 1.25rem); /* 18–20px */
   --text-xl: clamp(1.25rem, 1.17rem + 0.38vw, 1.5rem); /* 20–24px */
@@ -170,7 +169,7 @@
   --font-weight-extrabold: 800;
 
   /* Line heights */
-  --leading-tight: 1.2;
+  --leadingEFEFE-tight: 1.2;
   --leading-snug: 1.35;
   --leading-normal: 1.5;
   --leading-relaxed: 1.65;
