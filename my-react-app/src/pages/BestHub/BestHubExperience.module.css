@@ -1,0 +1,121 @@
+.Section {
+  margin: 0;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.ExperienceImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.landmark {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: var(--font-weight-extrabold);
+  white-space: nowrap;
+}
+
+.markerWrapper {
+  --marker-size: 30px;
+  --dot-blue: 30px;
+  --dot-green: 12px;
+  --pulse-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  padding: 0;
+  padding-left: calc(var(--marker-size) + var(--space-2));
+  flex-shrink: 0;
+}
+
+.marker {
+  display: none;
+}
+
+/* blue color image */
+.markerWrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(var(--marker-size) / 2);
+  transform: translate(-50%, -50%);
+  width: var(--dot-blue);
+  height: var(--dot-blue);
+  border-radius: 50%;
+  background: var(--color-primary);
+  z-index: 1;
+  pointer-events: none;
+  animation: pulse 2s ease-out infinite;
+}
+
+/* green core on top */
+.markerWrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(var(--marker-size) / 2);
+  transform: translate(-50%, -50%);
+  width: var(--dot-green);
+  height: var(--dot-green);
+  border-radius: 50%;
+  background: var(--color-secondary);
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--pulse-color);
+  }
+  70% {
+    box-shadow: 0 0 0 18px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markerWrapper::after {
+    animation: none;
+  }
+}
+
+.stay {
+  top: 48%;
+  left: 10%;
+}
+
+.play {
+  top: 19%;
+  left: 23%;
+}
+
+.coWorking {
+  top: 5%;
+  left: 44%;
+}
+
+.Shop {
+  top: 12%;
+  right: 16%;
+}
+
+.cafe {
+  top: 46%;
+  right: 8%;
+}
