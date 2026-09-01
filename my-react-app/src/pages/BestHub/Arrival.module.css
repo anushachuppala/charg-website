@@ -10,17 +10,6 @@
   gap: var(--space-5);
 }
 
-.items::before {
-  content: "";
-  position: absolute;
-  top: 60px;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: var(--color-white-blue);
-  z-index: 0;
-}
-
 .item {
   position: relative;
   z-index: 1;
@@ -104,4 +93,25 @@
 .item:hover .icon {
   transition: 0.3s ease-out;
   filter: brightness(0) invert(1);
+}
+
+.item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  right: calc(-50% - var(--space-5));
+  height: 2px;
+  z-index: 0;
+  background: var(--color-white-blue);
+  transition: background-color 0.3s ease;
+}
+
+.items:has(.item:hover) .item::before {
+  background: var(--color-secondary);
+}
+
+.items:has(.item:hover) .item:hover::before,
+.items:has(.item:hover) .item:hover ~ .item::before {
+  background: var(--color-white-blue);
 }
