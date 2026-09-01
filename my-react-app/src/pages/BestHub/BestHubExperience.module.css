@@ -119,3 +119,58 @@
   top: 46%;
   right: 8%;
 }
+
+/* ---- responsive scaling ---- */
+
+@media (max-width: 1200px) {
+  .landmark {
+    font-size: 17px;
+  }
+
+  .markerWrapper {
+    --marker-size: 32px;
+    --dot-blue: 19px;
+    --dot-green: 10px;
+    --pulse-spread: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  .landmark {
+    font-size: 14px;
+  }
+
+  .markerWrapper {
+    --marker-size: 26px;
+    --dot-blue: 15px;
+    --dot-green: 8px;
+    --pulse-spread: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .landmark {
+    font-size: 11px;
+    gap: var(--space-1);
+  }
+
+  .markerWrapper {
+    --marker-size: 20px;
+    --dot-blue: 12px;
+    --dot-green: 6px;
+    --pulse-spread: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .landmark {
+    font-size: 9px;
+  }
+
+  .markerWrapper {
+    --marker-size: 14px;
+    --dot-blue: 8px;
+    --dot-green: 4px;
+    --pulse-spread: 6px;
+  }
+}
