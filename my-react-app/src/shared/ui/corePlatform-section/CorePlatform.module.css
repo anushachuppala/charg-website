@@ -102,13 +102,11 @@
   line-height: 1.6;
 }
 
-/* Tablet */
 @media (max-width: 900px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 /* Mobile */
 @media (max-width: 560px) {
   .cards {

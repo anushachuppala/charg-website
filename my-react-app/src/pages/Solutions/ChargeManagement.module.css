@@ -8,7 +8,6 @@
   min-width: 0;
 }
 
-/* Image first */
 .imageCol {
   grid-column: 1;
   grid-row: 1;
@@ -17,7 +16,6 @@
   width: 100%;
 }
 
-/* Content below image */
 .content {
   grid-column: 1;
   grid-row: 2;
@@ -97,10 +95,6 @@
   color: var(--color-neutral-600);
 }
 
-/* ========================================
-Desktop: 1301px and above
-Image and content side by side
-======================================== */
 
 @media (min-width: 1301px) {
   .row {
@@ -123,9 +117,6 @@ Image and content side by side
   }
 }
 
-/* ========================================
-Mobile: 600px and below
-======================================== */
 
 @media (max-width: 600px) {
   .row {
@@ -165,9 +156,7 @@ Mobile: 600px and below
   }
 }
 
-/* ========================================
-Small Mobile: 360px and below
-======================================== */
+
 
 @media (max-width: 360px) {
   .row {

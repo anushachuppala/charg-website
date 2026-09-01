@@ -4,12 +4,6 @@
 .row {
   gap: clamp(20px, 4vw, 48px);
 }
-.heroImage {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 14px;
-}
 
 .content {
   display: flex;
@@ -83,6 +77,16 @@
     grid-template-columns: 1fr;
     gap: 10px;
     max-width: 100%;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 499px) {
+  .content {
+    margin-top: 40px;
+  }
+
+  .buttons {
+    margin-top: 2px;
   }
 }
 
