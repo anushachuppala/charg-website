@@ -22,14 +22,14 @@
   align-items: center;
   gap: var(--space-2);
   color: var(--color-white);
-  font-size: 20px;
+  font-size: var(--text-lg);
   font-weight: var(--font-weight-extrabold);
   white-space: nowrap;
 }
 
 .markerWrapper {
-  --marker-size: 30px;
-  --dot-blue: 30px;
+  --marker-size: var(--text-2xl);
+  --dot-blue: var(--text-3xl);
   --dot-green: 12px;
   --pulse-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
 
@@ -119,8 +119,6 @@
   top: 46%;
   right: 8%;
 }
-
-/* ---- responsive scaling ---- */
 
 @media (max-width: 1200px) {
   .landmark {
