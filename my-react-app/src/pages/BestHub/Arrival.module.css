@@ -115,3 +115,47 @@
 .items:has(.item:hover) .item:hover ~ .item::before {
   background: var(--color-white-blue);
 }
+
+/* responsiveness */
+
+@media (max-width: 1200px) {
+  .items {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(16px, 3vw, 40px);
+    row-gap: clamp(32px, 5vw, 56px);
+    padding: var(--space-5);
+  }
+
+  .items .item:not(:last-child)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(12px, 4vw, 28px);
+    row-gap: clamp(28px, 7vw, 44px);
+    padding: clamp(12px, 4vw, 24px) clamp(4px, 3vw, 20px);
+  }
+}
+
+@media (max-width: 360px) {
+  .iconBox {
+    width: 64px;
+    height: 64px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .stepNumber {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    top: -8px;
+    right: -8px;
+  }
+}

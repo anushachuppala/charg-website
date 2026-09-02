@@ -1,0 +1,39 @@
+.Section {
+  margin: 0;
+}
+
+.mainWrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  align-items: stretch;
+  gap: var(--space-8);
+}
+
+.imageWrapper {
+  min-width: 0;
+}
+
+.sustainableImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .mainWrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .sustainableImage {
+    height: auto;
+  }
+}
