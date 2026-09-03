@@ -1,0 +1,265 @@
+.section {
+  margin: 0;
+}
+
+.imageContent {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 40px 60px;
+}
+
+.mainBg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: 0.9;
+}
+
+.imageContent::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(27, 75, 159, 0.72) 0%,
+    rgba(22, 59, 124, 0.72) 100%
+  );
+
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2-5);
+}
+
+.subtitle {
+  font-size: var(--text-4xl-min);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+}
+
+.title {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.6;
+  color: var(--color-white);
+  margin: 0px 18px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  width: min(620px, 100%);
+  margin-top: clamp(14px, 2.5vw, 20px);
+}
+
+.email {
+  flex: 1;
+  min-width: 0;
+  height: 64px;
+  padding: 0 18px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 14px;
+  background: var(--color-white);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-600);
+  outline: none;
+}
+
+/* Responsiveness */
+.mainBg {
+  height: 100%;
+}
+
+.imageContent {
+  padding: clamp(28px, 5.5vw, 56px) clamp(16px, 4vw, 40px)
+    clamp(32px, 6vw, 60px);
+}
+
+.subtitle {
+  font-size: clamp(1.375rem, 1rem + 2.2vw, 2.75rem);
+  text-wrap: balance;
+}
+
+.title {
+  font-size: clamp(0.8125rem, 0.72rem + 0.45vw, 1rem);
+  margin: 0;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.content {
+  gap: clamp(10px, 2vw, var(--space-2-5));
+}
+
+.buttons {
+  width: min(620px, 100%);
+  gap: clamp(10px, 1.6vw, 18px);
+  margin-top: clamp(14px, 2.5vw, 20px);
+}
+
+.email,
+.getStarted,
+.buttons button {
+  height: clamp(48px, 4.5vw + 30px, 64px);
+}
+
+.email {
+  min-width: 0;
+  font-size: clamp(0.9375rem, 0.85rem + 0.4vw, 1.125rem);
+  border-radius: clamp(12px, 1.4vw, 18px);
+}
+
+.getStarted,
+.buttons button {
+  padding: 0 clamp(16px, 2.2vw, 30px);
+  font-size: clamp(0.9375rem, 0.85rem + 0.5vw, 1.25rem);
+  border-radius: clamp(12px, 1.2vw, 16px);
+}
+
+@media (max-width: 900px) {
+  .subtitle br,
+  .title br {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .getStarted,
+  .buttons button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .imageContent {
+    border-radius: var(--radius-lg, 12px);
+    padding: 24px 14px 28px;
+  }
+
+  .email,
+  .getStarted,
+  .buttons button {
+    height: 46px;
+  }
+}
+
+.section {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.imageContent {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.content,
+.subtitle,
+.title,
+.buttons {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+imageContent {
+  container-type: inline-size;
+}
+
+@container (max-width: 560px) {
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .buttons .email {
+    width: 100%;
+  }
+
+  .buttons button,
+  .getStarted {
+    width: 100%;
+  }
+
+  .subtitle br,
+  .title br {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .email {
+    width: 100%;
+    height: 48px;
+    flex: none;
+    padding: 0 18px;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .buttons button,
+  .getStarted {
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    padding: 0 16px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+}
+
+@container (max-width: 380px) {
+  .imageContent {
+    padding: 24px 14px 28px;
+  }
+
+  .subtitle {
+    font-size: 1.375rem;
+  }
+}

@@ -28,6 +28,8 @@
   gap: var(--space-6);
 }
 
+/* responsivenes */
+
 @media (max-width: 900px) {
   .mainWrapper {
     grid-template-columns: 1fr;
