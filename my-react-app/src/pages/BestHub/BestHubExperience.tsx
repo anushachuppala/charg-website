@@ -17,7 +17,8 @@ function BestHubExperience() {
               eyebrow="The Best HUB Experience"
               title="Everything you need, while your vehicle recharges."
               align="center"
-              trailingSpacing="none"
+              trailingSpacing="default"
+              subtitleClassName="default"
             />
           </div>
 

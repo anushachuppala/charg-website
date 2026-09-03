@@ -58,10 +58,17 @@
 }
 
 .card:hover {
+  background: var(--color-primary);
   transform: translateY(-4px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
+.card:hover .eyebrow {
+  color: var(--color-white);
+}
+.card:hover .cardDescription {
+  color: var(--color-white);
+}
 .iconWrapper {
   display: flex;
   align-items: center;

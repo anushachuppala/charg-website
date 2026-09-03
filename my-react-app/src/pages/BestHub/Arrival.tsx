@@ -65,7 +65,8 @@ function Arrival() {
               eyebrow="The Experience"
               title="From Arrival to a Delightful Experience"
               align="center"
-              trailingSpacing="none"
+              trailingSpacing="default"
+              titleClassName="default"
             />
           </div>
 
