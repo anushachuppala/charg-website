@@ -9,10 +9,6 @@
   grid-auto-rows: 1fr;
   gap: var(--space-5);
 }
-.WhoIsSection {
-  margin: 0;
-  background: var(--color-white-blue);
-}
 
 .noBackground {
   background: transparent;
