@@ -32,11 +32,11 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(
+  /* background: radial-gradient(
     50% 50% at 50% 50%,
     rgba(27, 75, 159, 0.72) 0%,
     rgba(22, 59, 124, 0.72) 100%
-  );
+  ); */
 
   pointer-events: none;
 }

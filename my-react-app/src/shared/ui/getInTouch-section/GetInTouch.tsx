@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 
 import styles from "./GetInTouch.module.css";
 import getInTouch from "../../../assets/Services-page/getInTouch.png";
@@ -6,6 +6,8 @@ import getInTouch from "../../../assets/Services-page/getInTouch.png";
 import { Section, Container, Panel } from "../../../shared/layout";
 
 import { SectionHeader } from "../section-header";
+
+import { createGetInTouch } from "../../../features/api/getInTouch.api.http";
 
 type GetInTouchProps = {
   title: string;
@@ -38,59 +40,78 @@ export function GetInTouch({
   showHeader = true,
   align = "center",
 }: GetInTouchProps) {
+  // Form data
   const [formData, setFormData] = useState<FormData>(initialFormData);
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = event.target;
+  // API states
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-    setFormData((previousData) => ({
-      ...previousData,
+  // Handle input changes
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  // Handle form submission
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Local Storage
+    // Start API loading
+    setLoading(true);
 
-    // Get previous messages from localStorage
-    const existingLocalData = localStorage.getItem("getInTouchMessages");
+    // Clear previous messages
+    setSuccessMessage("");
+    setErrorMessage("");
 
-    // Convert previous data from string to array
-    const localMessages: FormData[] = existingLocalData
-      ? JSON.parse(existingLocalData)
-      : [];
+    try {
+      // Send form data to API
+      const response = await createGetInTouch(formData);
 
-    // Add the new form data
-    localMessages.push(formData);
+      console.log("API RESPONSE:", response);
 
-    // Save it back into localStorage
-    localStorage.setItem("getInTouchMessages", JSON.stringify(localMessages));
+      const existingLocalData = localStorage.getItem("getInTouchMessages");
 
-    // Session Storage
+      const localMessages: FormData[] = existingLocalData
+        ? JSON.parse(existingLocalData)
+        : [];
 
-    // Get previous messages from sessionStorage
-    const existingSessionData = sessionStorage.getItem("getInTouchMessages");
+      localMessages.push(formData);
 
-    // Convert previous data from string to array
-    const sessionMessages: FormData[] = existingSessionData
-      ? JSON.parse(existingSessionData)
-      : [];
+      localStorage.setItem("getInTouchMessages", JSON.stringify(localMessages));
 
-    // Add the new form data
-    sessionMessages.push(formData);
+      const existingSessionData = sessionStorage.getItem("getInTouchMessages");
 
-    // Save it back into sessionStorage
-    sessionStorage.setItem(
-      "getInTouchMessages",
-      JSON.stringify(sessionMessages),
-    );
+      const sessionMessages: FormData[] = existingSessionData
+        ? JSON.parse(existingSessionData)
+        : [];
 
-    // Reset the form
-    setFormData(initialFormData);
+      sessionMessages.push(formData);
+
+      sessionStorage.setItem(
+        "getInTouchMessages",
+        JSON.stringify(sessionMessages),
+      );
+
+      setSuccessMessage("Your message has been submitted successfully.");
+
+      // Reset form
+      setFormData(initialFormData);
+    } catch (error) {
+      console.error("API ERROR:", error);
+
+      setErrorMessage("Something went wrong. Please try again.");
+    } finally {
+      // Stop loading
+      setLoading(false);
+    }
   };
 
   return (
@@ -98,6 +119,7 @@ export function GetInTouch({
       <Container>
         <Panel>
           <div className={styles.grid}>
+            {/* Left Content */}
             <div className={styles.content}>
               {showHeader && (
                 <SectionHeader
@@ -111,7 +133,10 @@ export function GetInTouch({
                 <img src={getInTouch} alt="EV charging station" />
               </div>
             </div>
+
+            {/* Right Form */}
             <form className={styles.form} onSubmit={handleSubmit}>
+              {/* First Name & Last Name */}
               <div className={styles.formRow}>
                 <div className={styles.field}>
                   <label htmlFor="firstName">
@@ -146,6 +171,7 @@ export function GetInTouch({
                 </div>
               </div>
 
+              {/* Email & Phone */}
               <div className={styles.formRow}>
                 <div className={styles.field}>
                   <label htmlFor="email">
@@ -177,6 +203,7 @@ export function GetInTouch({
                 </div>
               </div>
 
+              {/* Address */}
               <div className={styles.field}>
                 <label htmlFor="address">Address</label>
 
@@ -190,6 +217,7 @@ export function GetInTouch({
                 />
               </div>
 
+              {/* Message */}
               <div className={styles.field}>
                 <label htmlFor="message">Message</label>
 
@@ -203,9 +231,20 @@ export function GetInTouch({
                 />
               </div>
 
-              <button type="submit" className={styles.submitButton}>
-                Send Message
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={loading}
+              >
+                {loading ? "Submitting..." : "Send Message"}
               </button>
+
+              {/* Success Message */}
+              {successMessage && <p>{successMessage}</p>}
+
+              {/* Error Message */}
+              {errorMessage && <p>{errorMessage}</p>}
             </form>
           </div>
         </Panel>
@@ -213,5 +252,3 @@ export function GetInTouch({
     </Section>
   );
 }
-
-export default GetInTouch;

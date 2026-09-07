@@ -7,13 +7,15 @@
 }
 
 .faqItem {
-  border: 1px solid var(--color-white);
+  border: 1px solid var(--color-neural-600);
   border-radius: var(--radius-lg);
   padding: var(--space-6) var(--space-6);
   background: var(--color-white);
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease;
+    box-shadow: 0px 2px 2px 0px #08172E33;
+
 }
 
 .faqItemOpen {

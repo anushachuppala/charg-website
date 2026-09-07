@@ -57,7 +57,7 @@ function SustainableGrowth() {
                 title="Infrastructure that pays back to people and the planet."
                 subtitle="Every Best HUB is engineered to run cleaner, smarter, and longer—so partners see returns that compound with time."
                 align="start"
-                trailingSpacing="none"
+                trailingSpacing="default"
                 subtitleClassName="none"
               />
 
