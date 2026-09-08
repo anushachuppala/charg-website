@@ -177,7 +177,7 @@ const logos = [
 ];
 
 import { FaqSection } from "../../shared/ui/faq-section/FaqSection";
-import { GetInTouch } from "../../shared/ui/getInTouch-section/GetInTouch";
+import GetInTouch from "../../shared/ui/getInTouch-section/GetInTouch";
 
 const faqItems = [
   {

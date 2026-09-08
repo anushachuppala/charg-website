@@ -4,16 +4,13 @@ import styles from "./GetInTouch.module.css";
 import getInTouch from "../../../assets/Services-page/getInTouch.png";
 
 import { Section, Container, Panel } from "../../../shared/layout";
-
 import { SectionHeader } from "../section-header";
-
-import { createGetInTouch } from "../../../features/api/getInTouch.api.http";
 
 type GetInTouchProps = {
   title: string;
   subtitle: string;
+  align?: "center" | "start";
   showHeader?: boolean;
-  align?: "start" | "center";
 };
 
 type FormData = {
@@ -34,84 +31,41 @@ const initialFormData: FormData = {
   message: "",
 };
 
-export function GetInTouch({
+function GetInTouch({
   title,
   subtitle,
+  align = "start",
   showHeader = true,
-  align = "center",
 }: GetInTouchProps) {
-  // Form data
   const [formData, setFormData] = useState<FormData>(initialFormData);
-
-  // API states
-  const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   // Handle input changes
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target;
+    const { name, value } = event.target;
 
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((previousData) => ({
+      ...previousData,
       [name]: value,
     }));
   };
 
   // Handle form submission
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Start API loading
-    setLoading(true);
+    console.log("FORM SUBMITTED");
+    console.log("FORM DATA:", formData);
 
-    // Clear previous messages
-    setSuccessMessage("");
-    setErrorMessage("");
+    // Store form data in localStorage
+    localStorage.setItem("getInTouchData", JSON.stringify(formData));
 
-    try {
-      // Send form data to API
-      const response = await createGetInTouch(formData);
+    setSuccessMessage("Thank you! Your message has been submitted.");
 
-      console.log("API RESPONSE:", response);
-
-      const existingLocalData = localStorage.getItem("getInTouchMessages");
-
-      const localMessages: FormData[] = existingLocalData
-        ? JSON.parse(existingLocalData)
-        : [];
-
-      localMessages.push(formData);
-
-      localStorage.setItem("getInTouchMessages", JSON.stringify(localMessages));
-
-      const existingSessionData = sessionStorage.getItem("getInTouchMessages");
-
-      const sessionMessages: FormData[] = existingSessionData
-        ? JSON.parse(existingSessionData)
-        : [];
-
-      sessionMessages.push(formData);
-
-      sessionStorage.setItem(
-        "getInTouchMessages",
-        JSON.stringify(sessionMessages),
-      );
-
-      setSuccessMessage("Your message has been submitted successfully.");
-
-      // Reset form
-      setFormData(initialFormData);
-    } catch (error) {
-      console.error("API ERROR:", error);
-
-      setErrorMessage("Something went wrong. Please try again.");
-    } finally {
-      // Stop loading
-      setLoading(false);
-    }
+    // Clear the form
+    setFormData(initialFormData);
   };
 
   return (
@@ -119,10 +73,11 @@ export function GetInTouch({
       <Container>
         <Panel>
           <div className={styles.grid}>
-            {/* Left Content */}
+            {/* Left side */}
             <div className={styles.content}>
               {showHeader && (
                 <SectionHeader
+                  eyebrow="GET IN TOUCH"
                   title={title}
                   subtitle={subtitle}
                   align={align}
@@ -130,13 +85,13 @@ export function GetInTouch({
               )}
 
               <div className={styles.imageWrapper}>
-                <img src={getInTouch} alt="EV charging station" />
+                <img src={getInTouch} alt="Get in touch" />
               </div>
             </div>
 
-            {/* Right Form */}
-            <form className={styles.form} onSubmit={handleSubmit}>
-              {/* First Name & Last Name */}
+            {/* Right side */}
+            <form onSubmit={handleSubmit} className={styles.form}>
+              {/* First Name + Last Name */}
               <div className={styles.formRow}>
                 <div className={styles.field}>
                   <label htmlFor="firstName">
@@ -144,12 +99,12 @@ export function GetInTouch({
                   </label>
 
                   <input
+                    type="text"
                     id="firstName"
                     name="firstName"
-                    type="text"
-                    placeholder="First Name"
                     value={formData.firstName}
                     onChange={handleChange}
+                    placeholder="First Name"
                     required
                   />
                 </div>
@@ -160,18 +115,18 @@ export function GetInTouch({
                   </label>
 
                   <input
+                    type="text"
                     id="lastName"
                     name="lastName"
-                    type="text"
-                    placeholder="Last Name"
                     value={formData.lastName}
                     onChange={handleChange}
+                    placeholder="Last Name"
                     required
                   />
                 </div>
               </div>
 
-              {/* Email & Phone */}
+              {/* Email + Phone */}
               <div className={styles.formRow}>
                 <div className={styles.field}>
                   <label htmlFor="email">
@@ -179,12 +134,12 @@ export function GetInTouch({
                   </label>
 
                   <input
+                    type="email"
                     id="email"
                     name="email"
-                    type="email"
-                    placeholder="Enter Email Address"
                     value={formData.email}
                     onChange={handleChange}
+                    placeholder="Email Address"
                     required
                   />
                 </div>
@@ -193,12 +148,12 @@ export function GetInTouch({
                   <label htmlFor="phone">Phone number</label>
 
                   <input
+                    type="tel"
                     id="phone"
                     name="phone"
-                    type="tel"
-                    placeholder="Enter Your Number"
                     value={formData.phone}
                     onChange={handleChange}
+                    placeholder="Enter Your Number"
                   />
                 </div>
               </div>
@@ -208,12 +163,12 @@ export function GetInTouch({
                 <label htmlFor="address">Address</label>
 
                 <input
+                  type="text"
                   id="address"
                   name="address"
-                  type="text"
-                  placeholder="Enter City"
                   value={formData.address}
                   onChange={handleChange}
+                  placeholder="Enter City"
                 />
               </div>
 
@@ -224,27 +179,22 @@ export function GetInTouch({
                 <textarea
                   id="message"
                   name="message"
-                  placeholder="Enter Your Message"
-                  rows={5}
                   value={formData.message}
                   onChange={handleChange}
+                  placeholder="Enter Your Message"
+                  rows={5}
                 />
               </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className={styles.submitButton}
-                disabled={loading}
-              >
-                {loading ? "Submitting..." : "Send Message"}
+              {/* Submit button */}
+              <button type="submit" className={styles.submitButton}>
+                Send Message
               </button>
 
-              {/* Success Message */}
-              {successMessage && <p>{successMessage}</p>}
-
-              {/* Error Message */}
-              {errorMessage && <p>{errorMessage}</p>}
+              {/* Success message */}
+              {successMessage && (
+                <p className={styles.successMessage}>{successMessage}</p>
+              )}
             </form>
           </div>
         </Panel>
@@ -252,3 +202,5 @@ export function GetInTouch({
     </Section>
   );
 }
+
+export default GetInTouch;
