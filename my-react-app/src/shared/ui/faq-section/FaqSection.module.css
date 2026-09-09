@@ -14,8 +14,7 @@
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease;
-    box-shadow: 0px 2px 2px 0px #08172E33;
-
+  box-shadow: 0px 2px 2px 0px #08172e33;
 }
 
 .faqItemOpen {
@@ -41,6 +40,9 @@
   font-family: "Manrope", sans-serif;
 }
 
+.question:hover {
+  background-color: #eef7ee;
+}
 .faqItemOpen .question {
   color: #1f9254;
 }
