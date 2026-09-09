@@ -1,95 +1,41 @@
 import { useState, useEffect, useCallback } from "react";
 
 import styles from "./OurStrength.module.css";
-import leftArrow from "../../assets/images/About-page/PreviousSlide.png";
-import rightArrow from "../../assets/images/About-page/nextSlide.png";
-import strengthImage from "../../assets/images/About-page/OurStrength.png";
-import ReliabilityImage from "../../assets/images/About-page/Reliability.jpg";
-import DesignedImage from "../../assets/images/About-page/Designed.png";
-import PartnershipImage from "../../assets/images/About-page/Partnership.jpg";
+
 import { Section, Container, Panel } from "../../shared/layout";
-import iterationIcon from "../../assets/images/About-page/Iteration.png";
-import technologyIcon from "../../assets/images/About-page/nanotechnology.png";
-import arrowIcon from "../../assets/images/About-page/arrow.png";
 
 import { SectionHeader } from "../../shared/ui/section-header/SectionHeader";
 
-const slides = [
-  {
-    image: strengthImage,
-    title: "End-to-End EV Infrastructure",
-    description:
-      "From charger manufacturing and installation to software, commissioning, maintenance, and energy integration, we deliver complete EV ecosystems.",
-    features: [
-      { icon: iterationIcon, text: "End-to-End Execution", alt: "Execution" },
-      {
-        icon: technologyIcon,
-        text: "Integrated Technology",
-        alt: "Technology",
-      },
-      { icon: arrowIcon, text: "Built to Scale", alt: "Scale" },
-    ],
-  },
-  {
-    image: ReliabilityImage,
-    title: "Engineered for Reliability",
-    description:
-      "Every charger is designed for continuous operation with industrial-grade components, advanced protection systems, and high uptime in demanding environments.",
-    features: [
-      { icon: iterationIcon, text: "Industrial-Grade Build", alt: "Build" },
-      {
-        icon: technologyIcon,
-        text: "Intelligent Protection",
-        alt: "Protection",
-      },
-      { icon: arrowIcon, text: "High Uptime", alt: "Uptime" },
-    ],
-  },
-  {
-    image: DesignedImage,
-    title: "Designed for India",
-    description:
-      "Optimized for India's power infrastructure, climate, voltage fluctuations, and operational challenges to ensure dependable performance.",
-    features: [
-      {
-        icon: iterationIcon,
-        text: "Grid-Optimized Performance",
-        alt: "Performance",
-      },
-      {
-        icon: technologyIcon,
-        text: "Climate-Ready Engineering",
-        alt: "Engineering",
-      },
-      { icon: arrowIcon, text: "Adapted for Local Needs", alt: "Local Needs" },
-    ],
-  },
-  {
-    image: PartnershipImage,
-    title: " Long-Term Partnership",
-    description:
-      "We don't simply deliver chargers—we become your long-term technology partner with dedicated support, upgrades, and future-ready innovations.",
-    features: [
-      {
-        icon: iterationIcon,
-        text: "Dedicated Customer Support",
-        alt: "Customer Support",
-      },
-      {
-        icon: technologyIcon,
-        text: "Continuous Innovation",
-        alt: "Innovation",
-      },
-      { icon: arrowIcon, text: "Lifecycle Services", alt: "Services" },
-    ],
-  },
-];
-
-const loopSlides = [slides[slides.length - 1], ...slides, slides[0]];
+import { getAboutUs } from "../../features/AboutUsPage/api/aboutUs.http";
+import type { AboutUsWire } from "../../features/AboutUsPage/api/aboutUs.api.types";
 
 const OurStrength = () => {
+  const [aboutUs, setAboutUs] = useState<AboutUsWire | null>(null);
+
   const [activeIndex, setActiveIndex] = useState(1);
   const [enableTransition, setEnableTransition] = useState(true);
+
+  // Get slides from API
+  const slides = aboutUs?.strengthCards ?? [];
+
+  // Create cloned slides for infinite looping
+  const loopSlides =
+    slides.length > 0 ? [slides[slides.length - 1], ...slides, slides[0]] : [];
+
+  // Fetch About Us data
+  useEffect(() => {
+    async function fetchAboutUs() {
+      try {
+        const data = await getAboutUs();
+
+        setAboutUs(data[0]);
+      } catch (error) {
+        console.error("Failed to fetch About Us data:", error);
+      }
+    }
+
+    fetchAboutUs();
+  }, []);
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => prev + 1);
@@ -100,6 +46,8 @@ const OurStrength = () => {
   }, []);
 
   useEffect(() => {
+    if (slides.length === 0) return;
+
     if (activeIndex === loopSlides.length - 1) {
       setTimeout(() => {
         setEnableTransition(false);
@@ -113,7 +61,7 @@ const OurStrength = () => {
         setActiveIndex(slides.length);
       }, 600);
     }
-  }, [activeIndex]);
+  }, [activeIndex, slides.length, loopSlides.length]);
 
   useEffect(() => {
     if (!enableTransition) {
@@ -132,8 +80,11 @@ const OurStrength = () => {
           <Panel>
             <div className={styles.strengthContainer}>
               <SectionHeader
-                eyebrow="OUR STRENGTH"
-                title="Why Leading Organizations Choose Best Infra"
+                eyebrow={aboutUs?.strengthSectionTitle || "OUR STRENGTH"}
+                title={
+                  aboutUs?.strengthSectionSubtitle ||
+                  "Why Leading Organizations Choose Best Infra"
+                }
                 titleTone="white"
                 as="div"
               />
@@ -164,23 +115,20 @@ const OurStrength = () => {
                       <div className={styles.contentWrapper}>
                         <div className={styles.titleRow}>
                           <div className={styles.iconCircle}></div>
+
                           <h3 className={styles.text}>{slide.title}</h3>
                         </div>
 
-                        <p className={styles.description}>
-                          {slide.description}
-                        </p>
+                        <p className={styles.description}>{slide.subtitle}</p>
 
                         <div className={styles.features}>
-                          {slide.features.map((feature, featureIndex) => (
-                            <div
-                              className={styles.featureItem}
-                              key={featureIndex}
-                            >
+                          {slide.items.map((item, itemIndex) => (
+                            <div className={styles.featureItem} key={itemIndex}>
                               <span className={styles.featureIcon}>
-                                <img src={feature.icon} alt={feature.alt} />
+                                <img src={item.icon} alt={item.description} />
                               </span>
-                              <span>{feature.text}</span>
+
+                              <span>{item.description}</span>
                             </div>
                           ))}
                         </div>
@@ -216,9 +164,9 @@ const OurStrength = () => {
                     key={index}
                     onClick={() => setActiveIndex(index + 1)}
                     className={`
-                    ${styles.dot}
-                    ${activeIndex - 1 === index ? styles.activeDot : ""}
-                  `}
+                      ${styles.dot}
+                      ${activeIndex - 1 === index ? styles.activeDot : ""}
+                    `}
                   />
                 ))}
               </div>

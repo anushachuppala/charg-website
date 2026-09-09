@@ -7,8 +7,6 @@ import PartnerCards from "./PartnerCards";
 import FounderMsg from "./FounderMsg";
 import Infrastructure from "./Infrastructure";
 
-// import NavBar from "../../widgets/NavBar";
-
 const AboutPage = () => {
   return (
     <main>

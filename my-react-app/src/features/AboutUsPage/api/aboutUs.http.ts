@@ -1,12 +1,9 @@
-// GET /api/aboutUs //
-// import { publicContentStatus } from "@/shared/config/contentStatus.config";
-// import { apiClient } from "@/shared/services/apiClient";
+import { apiClient } from "../../../shared/services/apiClient";
 
-// export async function getAboutUs():
-// Promise<AboutUs[]>{
-//     const { data } = awit apiClient.get<AboutUs[]>("AboutUs", {
-//         parans: { status, publicContentStatus},
-//     });
+import type { AboutUsWire } from "./aboutUs.api.types";
 
-//     return data,
-// }
+export async function getAboutUs(): Promise<AboutUsWire[]> {
+  const { data } = await apiClient.get<AboutUsWire[]>("/ev-about-us");
+
+  return data;
+}
