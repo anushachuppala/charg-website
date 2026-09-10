@@ -58,7 +58,7 @@ export function FaqSection({
                     className={styles.question}
                     onClick={() => handleFaqClick(index)}
                   >
-                    <span>{item.question}</span>
+                    {item.question}
                     <span className={styles.icon}>{isOpen ? "−" : "+"}</span>
                   </button>
 

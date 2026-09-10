@@ -23,12 +23,13 @@ const OurStrength = () => {
     slides.length > 0 ? [slides[slides.length - 1], ...slides, slides[0]] : [];
 
   // Fetch About Us data
+
   useEffect(() => {
     async function fetchAboutUs() {
       try {
         const data = await getAboutUs();
 
-        setAboutUs(data[0]);
+        setAboutUs(data);
       } catch (error) {
         console.error("Failed to fetch About Us data:", error);
       }
@@ -128,7 +129,9 @@ const OurStrength = () => {
                                 <img src={item.icon} alt={item.description} />
                               </span>
 
-                              <span>{item.description}</span>
+                              <span className={styles.featureDescription}>
+                                {item.description}
+                              </span>
                             </div>
                           ))}
                         </div>

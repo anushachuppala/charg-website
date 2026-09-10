@@ -34,9 +34,9 @@
   height: 100%;
   background: linear-gradient(
     270deg,
-    rgba(255, 255, 255, 0) 13.18%,
-    rgba(56, 87, 143, 0.855529) 63.28%,
-    #163b7c 96.48%
+    #fff0 13.18%,
+    #38578fda 93.28%,
+    #163b7c 100.48%
   );
 }
 
@@ -51,7 +51,7 @@
 .heroContent {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* gap: 16px; */
   /* width: 100%; */
   text-align: left;
   box-sizing: border-box;
@@ -74,6 +74,14 @@
   line-height: 1.25;
 }
 
+span {
+  color: var(--color-secondary);
+}
+
+.heroSubTitle {
+  gap: 0;
+}
+
 .heroTitle span {
   color: #55b56c;
 }
@@ -84,7 +92,7 @@
 
 .heroDescription {
   width: 100%;
-  font-size: 14px;
+  font-size: 24px;
   line-height: 1.5;
   margin: 0;
 }
@@ -92,7 +100,7 @@
 .heroButtons {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* gap: 12px; */
   width: 100%;
   max-width: 320px;
 }
@@ -114,7 +122,7 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
   .heroContent {
-    gap: 14px;
+    /* gap: 14px; */
   }
 
   .heroTitle {
@@ -145,7 +153,7 @@
   }
 
   .heroContent {
-    gap: 20px;
+    /* gap: 20px; */
     padding: 32px 0;
     max-width: 600px;
   }
@@ -168,7 +176,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     max-width: 100%;
-    gap: 16px;
+    /* gap: 16px; */
   }
 
   .heroButtons button {
@@ -186,7 +194,7 @@
   }
 
   .heroContent {
-    gap: 20px;
+    /* gap: 20px; */
   }
 
   .smallHeading {
@@ -212,7 +220,7 @@
     flex-wrap: wrap;
     align-items: center;
     max-width: 100%;
-    gap: 24px;
+    /* gap: 24px; */
   }
 
   .heroButtons button {
@@ -230,7 +238,7 @@
   }
 
   .heroContent {
-    gap: 24px;
+    gap: 15px;
   }
 
   .smallHeading {
@@ -255,8 +263,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    max-width: 100%;
-    gap: 24px;
+    /* max-width: 100%; */
+    gap: 15px;
   }
 
   .heroButtons button {

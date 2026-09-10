@@ -5,7 +5,7 @@ export type AboutUs = {
   slug: string;
 
   heroTitle: string;
-  heroSubtitle: string;
+  // heroSubtitle: string;
   heroDescription: string;
   heroBackgroundImage: string;
 
@@ -13,6 +13,10 @@ export type AboutUs = {
   strengthSectionTitle: string;
   strengthSectionSubtitle: string;
   strengthCards: strengthCard[];
+
+  faqSectionLabel: string;
+  faqSectionTitle: string;
+  faqItems: faqItem[];
 };
 
 export type strengthCard = {
@@ -25,4 +29,14 @@ export type strengthCard = {
 export type strengthItem = {
   icon: string;
   description: string;
+};
+
+export type faqItems = {
+  question: string;
+  answer: string;
+};
+
+export type faqItem = {
+  question: string;
+  answer: string;
 };

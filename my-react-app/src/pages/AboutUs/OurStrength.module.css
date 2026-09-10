@@ -145,6 +145,10 @@
   justify-content: center;
 }
 
+.featureDescription {
+  color: var(--color-primary);
+}
+
 .featureIcon img {
   width: 24px;
   height: 24px;
@@ -678,11 +682,11 @@
   }
 
   .leftArrow {
-    left: -25px;
+    left: -55px;
   }
 
   .rightArrow {
-    right: -25px;
+    right: -55px;
   }
 
   .dots {

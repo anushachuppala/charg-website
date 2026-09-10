@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 // useState stores the API data.
 
-import heroImage from "../../assets/images/About-page/hero-section.png";
 import styles from "./HeroSection.module.css";
 
 import { Section, Container } from "../../shared/layout";
@@ -18,7 +17,7 @@ function HeroSection() {
       try {
         const data = await getAboutUs();
 
-        setAboutUs(data[0]);
+        setAboutUs(data);
       } catch (error) {
         console.error("Failed to fetch About Us data:", error);
       }
@@ -26,12 +25,11 @@ function HeroSection() {
 
     fetchAboutUs();
   }, []);
-
   return (
     <Section className={styles.heroSection}>
       <div className="hero-background">
         <img
-          src={aboutUs?.heroBackgroundImage || heroImage}
+          src={aboutUs?.heroBackgroundImage}
           alt="Best Charg EV charging infrastructure"
           className={styles.heroImage}
         />
@@ -41,33 +39,31 @@ function HeroSection() {
 
       <Container className={styles.heroContainer}>
         <div className={styles.heroContent}>
-          <p className={styles.smallHeading}>
-            {aboutUs?.heroTitle || "ABOUT BEST CHARG"}
+          <p className={`16-secondary ${styles.smallHeading}`}>
+            ABOUT BEST CHARG
           </p>
 
-          <h1 className={`h1-white ${styles.heroTitle}`}>
-            {aboutUs?.heroSubtitle || (
-              <>
-                Engineering the Future
-                <br />
-                of EV Charging Infrastructure
-              </>
-            )}
+          <h1 className={`h1-white ${styles.heroSubTitle}`}>
+            Powering the Transition to
+            <br />
+            <span> Electric Mobility</span>
           </h1>
 
-          <p className={`18-white ${styles.heroDescription}`}>
-            {aboutUs?.heroDescription ||
-              "Best Charg delivers intelligent EV charging infrastructure, enterprise-grade software, and integrated mobility ecosystems — helping businesses, governments, and communities transition confidently toward cleaner transportation."}
+          <p className={`24-white ${styles.heroDescription}`}>
+            "Best Charg delivers intelligent EV charging infrastructure,
+            enterprise-grade software, and integrated mobility ecosystems —
+            helping businesses, governments, and communities transition
+            confidently toward cleaner transportation."
           </p>
 
           <div className={styles.heroButtons}>
             <Button variant="secondary" className="btn-one">
-              Explore Solutions
+              Know More
             </Button>
-
+            {/* 
             <Button variant="Tertiary" className="btn-two">
               Talk to Our Experts
-            </Button>
+            </Button> */}
           </div>
         </div>
       </Container>

@@ -5,7 +5,7 @@ export type AboutUsWire = {
   slug: string;
 
   heroTitle: string;
-  heroSubtitle: string;
+  // heroSubtitle: string;
   heroDescription: string;
   heroBackgroundImage: string;
 
@@ -13,6 +13,11 @@ export type AboutUsWire = {
   strengthSectionTitle: string;
   strengthSectionSubtitle: string;
   strengthCards: strengthCard[];
+
+  // faq's section
+  faqSectionLabel: string;
+  faqSectionTitle: string;
+  faqItems: faqItem[];
 };
 
 export type strengthCard = {
@@ -26,3 +31,19 @@ export type strengthItem = {
   icon: string;
   description: string;
 };
+
+export type faqItems = {
+  question: string;
+  answer: string;
+};
+
+export type faqItem = {
+  question: string;
+  answer: string;
+};
+
+
+export type partnerWire = {
+  image: string;
+  imageAltText: string;
+}
