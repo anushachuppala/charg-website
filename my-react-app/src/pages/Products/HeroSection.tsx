@@ -1,3 +1,6 @@
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+
 import styles from "./HeroSection.module.css";
 
 import ariesCharger from "../../assets/products-page/ariesCharger.png";
@@ -5,17 +8,48 @@ import ariesCharger from "../../assets/products-page/ariesCharger.png";
 import { Section, Container, Panel } from "../../shared/layout";
 import Button from "../../shared/ui/Button";
 
+const STATS = [
+  { value: "7 kW", label: "AC Output" },
+  { value: "IP54", label: "Weatherproof" },
+  { value: "OCPP", label: "1.6J Ready" },
+];
+
+const BADGES = [
+  { text: "7kW AC Charging", icon: "⚡", position: "topLeft" },
+  { text: "Smart Connectivity", icon: "📶", position: "topRight" },
+  { text: "Advanced Safety", icon: "🛡", position: "bottomLeft" },
+  { text: "Weather Resistant", icon: "🌧", position: "bottomRight" },
+];
+
 function HeroSection() {
+  const imageContentRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(`.${styles.badge}`, {
+        y: -8,
+        duration: 1.5,
+        ease: "power1.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+    }, imageContentRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <Section>
       <Container>
         <Panel>
           <div className={styles.mainGrid}>
+            {/* left content */}
             <div className={styles.textContent}>
-              <p className={styles.eyebrow}>Aries 7 KW</p>
+              <p className={styles.eyebrow}>Aries 7KW</p>
+
               <h1 className={styles.title}>
-                Powering India's <br />
-                <span>EV Infrastructure</span>
+                Powering India&rsquo;s <br />
+                <span className={styles.titleAccent}>EV Infrastructure</span>
                 <br />
                 Network
               </h1>
@@ -23,7 +57,7 @@ function HeroSection() {
               <p className={styles.description}>
                 The Aries 7kW AC Charger delivers reliable, intelligent, and
                 future-ready charging for homes, workplaces, commercial
-                properties, and public EV infrastructure
+                properties, and public EV infrastructure.
               </p>
 
               <div className={styles.buttonContainer}>
@@ -31,30 +65,35 @@ function HeroSection() {
                 <Button variant="primary">Download Datasheet</Button>
               </div>
 
-              <div className={styles.imageContent}>
-                <img
-                  src={ariesCharger}
-                  alt="aries charger"
-                  className={styles.ariesCharger}
-                />
-              </div>
+              <ul className={styles.stats}>
+                {STATS.map((stat) => (
+                  <li key={stat.value} className={styles.statCard}>
+                    <h3 className={styles.statValue}>{stat.value}</h3>
+                    <p className={styles.statLabel}>{stat.label}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-              <div className={styles.features}>
-                <div className={styles.card1}>
-                  <h3 className="h3-primary">7KW</h3>
-                  <p className="14-secondary">AC OUTPUT</p>
-                </div>
+            {/* Image */}
+            <div ref={imageContentRef} className={styles.imageContent}>
+              <img
+                src={ariesCharger}
+                alt="Aries 7kW AC charger"
+                className={styles.ariesCharger}
+              />
 
-                <div className={styles.card2}>
-                  <h3 className="h3-primary">IP54</h3>
-                  <p className="14-secondary">WEATHER PROOF</p>
-                </div>
-
-                <div className={styles.card3}>
-                  <h3 className="h3-primary">OCPP</h3>
-                  <p className="14-secondary">1.6J READY</p>
-                </div>
-              </div>
+              {BADGES.map((badge) => (
+                <span
+                  key={badge.text}
+                  className={`${styles.badge} ${styles[badge.position]}`}
+                >
+                  <span className={styles.badgeIcon} aria-hidden="true">
+                    {badge.icon}
+                  </span>
+                  {badge.text}
+                </span>
+              ))}
             </div>
           </div>
         </Panel>

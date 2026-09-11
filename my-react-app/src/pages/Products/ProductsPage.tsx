@@ -1,5 +1,4 @@
-import HeroSection from "./heroSection";
-
+import HeroSection from "./HeroSection";
 const productsPage = () => {
   return (
     <main>
