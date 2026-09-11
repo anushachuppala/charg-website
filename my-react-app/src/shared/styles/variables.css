@@ -149,7 +149,7 @@
     "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue";
 
   /* Scale — fluid type using clamp() */
-  --text-xs: clamp(0.694rem, 0.66rem6c6c6c
+  --text-xs: clamp(0.694rem, 0.66rem65c6c6c
   w, 1rem); /* 14–16px */
   --text-md: clamp(1rem, 0.95rem + 0.22vw, 1.125rem); /* 16–18px */
   --text-lg: clamp(1.125rem, 1.07rem + 0.28vw, 1.25rem); /* 18–20px */

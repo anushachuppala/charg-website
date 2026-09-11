@@ -1,0 +1,16 @@
+.mainGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+}
+
+.textContent {
+  gap: 5px;
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary);
+}

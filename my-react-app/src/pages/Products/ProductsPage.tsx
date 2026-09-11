@@ -1,10 +1,11 @@
-const ProductsPage = () => {
+import HeroSection from "./heroSection";
+
+const productsPage = () => {
   return (
     <main>
-      <h1>Solutions</h1>
-      <p>This is the Solutions page.</p>
+      <HeroSection />
     </main>
   );
 };
 
-export default ProductsPage;
+export default productsPage;
