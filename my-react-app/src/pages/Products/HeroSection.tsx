@@ -4,6 +4,10 @@ import gsap from "gsap";
 import styles from "./HeroSection.module.css";
 
 import ariesCharger from "../../assets/products-page/ariesCharger.png";
+import wifiIcon2 from "../../assets/products-page/wifiIcon2.png";
+import powerIcon from "../../assets/products-page/powerIcon.png";
+import cloudIcon from "../../assets/products-page/cloudIcon.png";
+import securityIcon from "../../assets/products-page/securityIcon.png";
 
 import { Section, Container, Panel } from "../../shared/layout";
 import Button from "../../shared/ui/Button";
@@ -15,10 +19,30 @@ const STATS = [
 ];
 
 const BADGES = [
-  { text: "7kW AC Charging", icon: "⚡", position: "topLeft" },
-  { text: "Smart Connectivity", icon: "📶", position: "topRight" },
-  { text: "Advanced Safety", icon: "🛡", position: "bottomLeft" },
-  { text: "Weather Resistant", icon: "🌧", position: "bottomRight" },
+  {
+    text: "7kW AC Charging",
+    icon: powerIcon,
+    position: "topLeft",
+    isImage: true,
+  },
+  {
+    text: "Smart Connectivity",
+    icon: wifiIcon2,
+    position: "topRight",
+    isImage: true,
+  },
+  {
+    text: "Advanced Safety",
+    icon: securityIcon,
+    position: "bottomLeft",
+    isImage: true,
+  },
+  {
+    text: "Weather Resistant",
+    icon: cloudIcon,
+    position: "bottomRight",
+    isImage: true,
+  },
 ];
 
 function HeroSection() {
@@ -77,6 +101,7 @@ function HeroSection() {
 
             {/* Image */}
             <div ref={imageContentRef} className={styles.imageContent}>
+              <div className={styles.backgroundLayout}></div>
               <img
                 src={ariesCharger}
                 alt="Aries 7kW AC charger"
@@ -89,8 +114,13 @@ function HeroSection() {
                   className={`${styles.badge} ${styles[badge.position]}`}
                 >
                   <span className={styles.badgeIcon} aria-hidden="true">
-                    {badge.icon}
+                    {badge.isImage ? (
+                      <img src={badge.icon} alt="" />
+                    ) : (
+                      badge.icon
+                    )}
                   </span>
+
                   {badge.text}
                 </span>
               ))}

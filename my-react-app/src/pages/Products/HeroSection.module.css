@@ -93,6 +93,23 @@
   display: block;
 }
 
+.badgeIcon img {
+  width: 13px;
+  height: 13px;
+  border-radius: 16px;
+  padding: 5px 5px;
+  background: rgba(219, 234, 254, 0.8);
+  object-fit: contain;
+}
+
+.backgroundLayout {
+  background: radial-gradient(
+    141.42% 141.42% at 100% 0%,
+    rgba(226, 249, 226, 0.5) 0%,
+    rgba(226, 249, 226, 0) 60%
+  );
+}
+
 .badge {
   position: absolute;
   display: inline-flex;

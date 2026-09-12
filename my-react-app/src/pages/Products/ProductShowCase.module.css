@@ -1,0 +1,14 @@
+.ariesCharger {
+  width: auto;
+  height: 70%;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chargerImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

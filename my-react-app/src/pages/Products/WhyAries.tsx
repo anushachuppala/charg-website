@@ -1,4 +1,3 @@
-import styles from "./WhyAries.module.css";
 import { Section, Container, Panel } from "../../shared/layout";
 import { SectionHeader, WhoIsThisFor } from "../../shared/ui";
 
