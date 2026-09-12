@@ -216,6 +216,7 @@ const SolutionsPage = () => {
     <main>
       <HeroSection />
       <WhoIsThisFor
+        eyebrow=""
         title="Who Is This For?"
         subtitle="Built for every stakeholder in the EV ecosystem"
         align="center"

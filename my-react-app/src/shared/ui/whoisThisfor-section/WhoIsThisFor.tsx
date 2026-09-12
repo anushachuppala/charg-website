@@ -11,17 +11,19 @@ export type WhoIsThisForItem = {
 
 type WhoIsThisForProps = {
   items: WhoIsThisForItem[];
+  eyebrow?: string;
   title?: string;
   subtitle?: string;
   showHeader?: boolean;
   align?: "start" | "center";
-  columns?: 2 | 3 | 4;
+  columns?: 2 | 3 | 4 | 6;
   background?: "default" | "none";
   embedded?: boolean;
 };
 
 export function WhoIsThisFor({
   items,
+  eyebrow,
   title,
   subtitle,
   showHeader = true,
@@ -34,6 +36,7 @@ export function WhoIsThisFor({
     <>
       {showHeader && (
         <SectionHeader
+          eyebrow={eyebrow}
           title={title}
           subtitle={subtitle}
           align={align}

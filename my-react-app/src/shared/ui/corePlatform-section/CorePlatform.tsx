@@ -13,6 +13,8 @@ type CorePlatformProps = {
   title: string;
   subtitle: string;
   items: CorePlatformItem[];
+  align?: "start" | "center";
+  columns?: 6;
 };
 
 export function CorePlatform({
@@ -20,6 +22,8 @@ export function CorePlatform({
   title,
   subtitle,
   items,
+  align = "center",
+  columns = 6,
 }: CorePlatformProps) {
   return (
     <Section className={styles.section}>
