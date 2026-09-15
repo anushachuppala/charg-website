@@ -17,7 +17,6 @@ type WhoIsThisForProps = {
   showHeader?: boolean;
   align?: "start" | "center";
   columns?: 2 | 3 | 4 | 6;
-  background?: "default" | "none";
   embedded?: boolean;
 };
 
@@ -29,7 +28,6 @@ export function WhoIsThisFor({
   showHeader = true,
   align = "center",
   columns = 3,
-  background = "default",
   embedded = false,
 }: WhoIsThisForProps) {
   const cardsContent = (
@@ -73,11 +71,7 @@ export function WhoIsThisFor({
   }
 
   return (
-    <Section
-      className={`${styles.WhoIsSection} ${
-        background === "none" ? styles.noBackground : ""
-      }`}
-    >
+    <Section className={styles.WhoIsSection}>
       <Container>
         <Panel>{cardsContent}</Panel>
       </Container>
