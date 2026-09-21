@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./TechnicalSpecifications.module.css";
 
 import { Section, Container, Panel } from "../../shared/layout";
@@ -120,6 +120,38 @@ const specifications = {
 function TechnicalSpecifications() {
   const [activeTab, setActiveTab] = useState<TabId>("general");
 
+  // Controls whether the dialog is visible
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setEmail("");
+  };
+
+  const handleDownload = () => {
+    // TODO: send `email` to the backend / trigger the spec sheet download
+    closeDialog();
+  };
+
+  // Close on Escape and lock background scrolling while the dialog is open
+  useEffect(() => {
+    if (!isDialogOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeDialog();
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isDialogOpen]);
+
   return (
     <Section>
       <Container>
@@ -142,7 +174,11 @@ function TechnicalSpecifications() {
               ))}
             </div>
 
-            <button type="button" className={styles.exportBtn}>
+            <button
+              type="button"
+              className={styles.exportBtn}
+              onClick={() => setIsDialogOpen(true)}
+            >
               <img src={downloadImage} alt="" className={styles.downloadIcon} />
               Export Specifications
             </button>
@@ -157,6 +193,68 @@ function TechnicalSpecifications() {
             ))}
           </div>
         </Panel>
+
+        {/* Dialog */}
+        {isDialogOpen && (
+          <div
+            className={styles.dialogOverlay}
+            onClick={closeDialog}
+            role="presentation"
+          >
+            <div
+              className={styles.dialog}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="specs-dialog-title"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                className={styles.closeBtn}
+                onClick={closeDialog}
+                aria-label="Close dialog"
+              >
+                &times;
+              </button>
+
+              <h2 id="specs-dialog-title" className={styles.dialogTitle}>
+                Download the Technical Specifications
+              </h2>
+
+              <label className={styles.dialogLabel} htmlFor="specs-email">
+                Enter your email address:
+              </label>
+
+              <input
+                id="specs-email"
+                type="email"
+                className={styles.emailInput}
+                placeholder="your@example.com"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                autoFocus
+              />
+
+              <div className={styles.dialogFooter}>
+                <button
+                  type="button"
+                  className={styles.skipBtn}
+                  onClick={handleDownload}
+                >
+                  Skip &amp; Download
+                </button>
+
+                <button
+                  type="button"
+                  className={styles.downloadBtn}
+                  onClick={handleDownload}
+                >
+                  Download
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </Container>
     </Section>
   );
