@@ -5,29 +5,32 @@ import { Section, Container, Panel } from "../../../shared/layout";
 import mainImage from "../../../assets/BestHub-page/mainImage.jpeg";
 
 import Button from "../../../shared/ui/Button/Button";
+import type { ReactNode } from "react";
 
-function BuildTheFuture() {
+type BuildTheFutureProps = {
+  subtitle: ReactNode;
+  title: ReactNode;
+  buttonText?: string;
+  image?: string;
+};
+
+function BuildTheFuture({
+  subtitle,
+  title,
+  buttonText = "Get Started",
+  image = mainImage,
+}: BuildTheFutureProps) {
   return (
     <Section className={styles.section}>
       <Container>
         <Panel>
           <div className={styles.imageContent}>
-            <img
-              src={mainImage}
-              alt="background Image"
-              className={styles.mainBg}
-            />
-            <div className={styles.content}>
-              <h1 className={styles.subtitle}>
-                Transform Charging Stops into Valuable <br />
-                Destinations
-              </h1>
+            <img src={image} alt="background Image" className={styles.mainBg} />
 
-              <h2 className={styles.title}>
-                Create integrated mobility hubs that combine EV charging with
-                retail, dining, convenience,
-                <br /> and essential services to maximize every visit.
-              </h2>
+            <div className={styles.content}>
+              <h1 className={styles.subtitle}>{subtitle}</h1>
+
+              <h2 className={styles.title}>{title}</h2>
 
               <div className={styles.buttons}>
                 <input
@@ -36,7 +39,7 @@ function BuildTheFuture() {
                   className={styles.email}
                 />
 
-                <Button variant="secondary">Get Started</Button>
+                <Button variant="secondary">{buttonText}</Button>
               </div>
             </div>
           </div>

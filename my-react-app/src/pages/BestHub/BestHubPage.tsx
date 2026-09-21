@@ -61,7 +61,23 @@ const BestHubPage = () => {
         showHeader={true}
         items={faqItems}
       />
-      <BuildTheFuture />
+
+      <BuildTheFuture
+        subtitle={
+          <>
+            Transform Charging Stops into Valuable <br />
+            Destinations
+          </>
+        }
+        title={
+          <>
+            Create integrated mobility hubs that combine EV charging with
+            retail, dining, convenience,
+            <br />
+            and essential services to maximize every visit.
+          </>
+        }
+      />
     </main>
   );
 };
