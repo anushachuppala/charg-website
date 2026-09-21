@@ -7,7 +7,6 @@
   letter-spacing: 0.02em;
   margin-bottom: var(--space-8);
 }
-/* ---- tabs row ---- */
 
 .tabsRow {
   display: flex;
@@ -89,7 +88,6 @@
   object-fit: contain;
 }
 
-
 .specTable {
   display: flex;
   flex-direction: column;
@@ -120,7 +118,6 @@
   color: var(--color-primary);
 }
 
-
 @media (max-width: 1024px) {
   .tabsRow {
     flex-direction: column;
@@ -132,7 +129,6 @@
     align-self: flex-start;
   }
 }
-
 
 @media (max-width: 640px) {
   .heading {
@@ -154,7 +150,6 @@
     font-size: var(--text-sm);
   }
 }
-
 
 @media (max-width: 360px) {
   .tab {

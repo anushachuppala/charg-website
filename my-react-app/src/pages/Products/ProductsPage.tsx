@@ -3,6 +3,7 @@ import WhyAries from "./WhyAries";
 import ProductShowCase from "./ProductShowCase";
 import SmartFeatures from "./SmartFeaturesTemp";
 import TechnicalSpecifications from "./TechnicalSpecifications";
+import SafetyAndReliability from "./SafetyandReliability";
 
 const productsPage = () => {
   return (
@@ -12,6 +13,7 @@ const productsPage = () => {
       <ProductShowCase />
       <SmartFeatures />
       <TechnicalSpecifications />
+      <SafetyAndReliability />
     </main>
   );
 };
