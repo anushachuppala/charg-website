@@ -1,0 +1,126 @@
+.heading {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-secondary);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-8);
+}
+
+.tabsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.tab {
+  padding: 12px 16px;
+  font-family: "Manrope", sans-serif;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+  color: #4b5563;
+  background: var(--color-white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.tab:hover {
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+.tabActive,
+.tabActive:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.exportBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 12px 24px;
+  font-family: "Manrope", sans-serif;
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.downloadIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.specTable {
+  display: flex;
+  flex-direction: column;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: minmax(200px, 30%) 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  padding: 14px 24px;
+  border-radius: 6px;
+}
+
+.specRow:nth-child(odd) {
+  background: #f8f9fb;
+}
+
+.specLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: #4b5563;
+}
+
+.specValue {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .tabsRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .exportBtn {
+    width: 100%;
+  }
+
+  .specRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+    padding: 12px 16px;
+  }
+}
