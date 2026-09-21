@@ -17,6 +17,9 @@ type WhoIsThisForProps = {
   showHeader?: boolean;
   align?: "start" | "center";
   columns?: 2 | 3 | 4 | 6;
+  cardColumns?: 2 | 3 | 4 | 6;
+  iconWrapperSize?: number;
+  iconSize?: number;
   embedded?: boolean;
 };
 
@@ -28,8 +31,13 @@ export function WhoIsThisFor({
   showHeader = true,
   align = "center",
   columns = 3,
+  cardColumns,
+  iconWrapperSize,
+  iconSize,
   embedded = false,
 }: WhoIsThisForProps) {
+  const resolvedCardColumns = cardColumns ?? columns;
+
   const cardsContent = (
     <>
       {showHeader && (
@@ -46,14 +54,22 @@ export function WhoIsThisFor({
         className={styles.cards}
         style={
           {
-            "--card-columns": columns,
+            "--card-columns": resolvedCardColumns,
           } as React.CSSProperties
         }
       >
         {items.map((item) => (
           <article className={styles.card} key={item.title}>
-            <span className={styles.iconWrapper}>
-              <img src={item.icon} className={styles.icon} alt={item.title} />
+            <span
+              className={styles.iconWrapper}
+              style={{ width: iconWrapperSize, height: iconWrapperSize }}
+            >
+              <img
+                src={item.icon}
+                className={styles.icon}
+                alt={item.title}
+                style={{ width: iconSize, height: iconSize }}
+              />
             </span>
 
             <div className={styles.content}>

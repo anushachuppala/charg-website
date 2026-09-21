@@ -1,12 +1,13 @@
 import { Section, Container, Panel } from "../../shared/layout";
-import { SectionHeader, CorePlatform } from "../../shared/ui";
+import { SectionHeader, WhoIsThisFor } from "../../shared/ui";
+import styles from "./smartFeatures.module.css";
 
-import ImageOne from "../../assets/Services-page/img1.png";
-import ImageTwo from "../../assets/Services-page/img2.png";
-import ImageThree from "../../assets/Services-page/img3.png";
-import ImageFour from "../../assets/Services-page/img4.png";
-import ImageFive from "../../assets/Services-page/img5.png";
-import ImageSix from "../../assets/Services-page/img6.png";
+import ImageOne from "../../assets/products-page/smartImage1.png";
+import ImageTwo from "../../assets/products-page/smartImage2.png";
+import ImageThree from "../../assets/products-page/smartImage3.png";
+import ImageFour from "../../assets/products-page/smartImage4.png";
+import ImageFive from "../../assets/products-page/smartImage5.png";
+import ImageSix from "../../assets/products-page/smartIimage6.png";
 
 const featuresItems = [
   {
@@ -44,12 +45,22 @@ const featuresItems = [
 
 function smartFeatures() {
   return (
-    <Section>
+    <Section className={styles.Section}>
       <Container>
         <Panel>
           <SectionHeader
             eyebrow="Smart Features"
             title="Intelligence built in."
+          />
+
+          <WhoIsThisFor
+            items={featuresItems}
+            showHeader={false}
+            columns={6}
+            cardColumns={3}
+            iconWrapperSize={48}
+            iconSize={30}
+            embedded={true}
           />
         </Panel>
       </Container>

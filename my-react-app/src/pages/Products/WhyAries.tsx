@@ -1,6 +1,5 @@
 import { Section, Container, Panel } from "../../shared/layout";
 import { SectionHeader, WhoIsThisFor } from "../../shared/ui";
-
 import reliableIcon from "../../assets/products-page/ReliableProtection.svg";
 import smartIcon from "../../assets/products-page/SmartConnectivity.svg";
 import advancedIcon from "../../assets/products-page/AdvancedProtection.svg";
@@ -51,7 +50,6 @@ function WhyAries() {
             items={items}
             showHeader={false}
             columns={4}
-            background="none"
             embedded={true}
           />
         </Panel>
