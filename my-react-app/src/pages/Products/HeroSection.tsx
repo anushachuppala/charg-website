@@ -63,72 +63,73 @@ function HeroSection() {
   }, []);
 
   return (
-    <Section>
-      <Container>
-        <Panel>
-          <div className={styles.mainGrid}>
-            {/* left content */}
-            <div className={styles.textContent}>
-              <p className={styles.eyebrow}>Aries 7KW</p>
+    <div className={styles.heroBackdrop}>
+      <Section>
+        <Container>
+          <Panel>
+            <div className={styles.mainGrid}>
+              {/* left content */}
+              <div className={styles.textContent}>
+                <p className={styles.eyebrow}>Aries 7KW</p>
 
-              <h1 className={styles.title}>
-                Powering India&rsquo;s <br />
-                <span className={styles.titleAccent}>EV Infrastructure</span>
-                <br />
-                Network
-              </h1>
+                <h1 className={styles.title}>
+                  Powering India&rsquo;s <br />
+                  <span className={styles.titleAccent}>EV Infrastructure</span>
+                  <br />
+                  Network
+                </h1>
 
-              <p className={styles.description}>
-                The Aries 7kW AC Charger delivers reliable, intelligent, and
-                future-ready charging for homes, workplaces, commercial
-                properties, and public EV infrastructure.
-              </p>
+                <p className={styles.description}>
+                  The Aries 7kW AC Charger delivers reliable, intelligent, and
+                  future-ready charging for homes, workplaces, commercial
+                  properties, and public EV infrastructure.
+                </p>
 
-              <div className={styles.buttonContainer}>
-                <Button variant="secondary">Get a Quote</Button>
-                <Button variant="primary">Download Datasheet</Button>
+                <div className={styles.buttonContainer}>
+                  <Button variant="secondary">Get a Quote</Button>
+                  <Button variant="primary">Download Datasheet</Button>
+                </div>
+
+                <ul className={styles.stats}>
+                  {STATS.map((stat) => (
+                    <li key={stat.value} className={styles.statCard}>
+                      <h3 className={styles.statValue}>{stat.value}</h3>
+                      <p className={styles.statLabel}>{stat.label}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <ul className={styles.stats}>
-                {STATS.map((stat) => (
-                  <li key={stat.value} className={styles.statCard}>
-                    <h3 className={styles.statValue}>{stat.value}</h3>
-                    <p className={styles.statLabel}>{stat.label}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Image */}
+              <div ref={imageContentRef} className={styles.imageContent}>
+                <img
+                  src={ariesCharger}
+                  alt="Aries 7kW AC charger"
+                  className={styles.ariesCharger}
+                />
 
-            {/* Image */}
-            <div ref={imageContentRef} className={styles.imageContent}>
-              <div className={styles.backgroundLayout}></div>
-              <img
-                src={ariesCharger}
-                alt="Aries 7kW AC charger"
-                className={styles.ariesCharger}
-              />
+                {BADGES.map((badge) => (
+                  <span
+                    key={badge.text}
+                    className={`${styles.badge} ${styles[badge.position]}`}
+                  >
+                    <span className={styles.badgeIcon} aria-hidden="true">
+                      {badge.isImage ? (
+                        <img src={badge.icon} alt="" />
+                      ) : (
+                        badge.icon
+                      )}
+                    </span>
 
-              {BADGES.map((badge) => (
-                <span
-                  key={badge.text}
-                  className={`${styles.badge} ${styles[badge.position]}`}
-                >
-                  <span className={styles.badgeIcon} aria-hidden="true">
-                    {badge.isImage ? (
-                      <img src={badge.icon} alt="" />
-                    ) : (
-                      badge.icon
-                    )}
+                    {badge.text}
                   </span>
-
-                  {badge.text}
-                </span>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </Panel>
-      </Container>
-    </Section>
+          </Panel>
+        </Container>
+      </Section>
+    </div>
   );
 }
 

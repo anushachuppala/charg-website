@@ -1,18 +1,15 @@
 .section {
-  --gutter: 88px;
-  --wm-size: 15.1cqw;
-  --wm-crop: 0.22em;
   position: relative;
   overflow: hidden;
   background: var(--color-primary-dark);
-  padding: 24px 24px 0;
+  padding: var(--space-6) var(--space-6) 0;
   container-type: inline-size;
 }
 
 .panel {
   background: var(--color-primary);
-  border-radius: 24px;
-  padding: 64px var(--gutter) 56px;
+  border-radius: var(--radius-2xl);
+  padding: 64px 88px 56px;
   color: var(--color-primary);
   border: 1px solid #163b7c;
   border-radius: var(--radius-3xl);
@@ -22,7 +19,7 @@
 .top {
   display: grid;
   grid-template-columns: minmax(240px, 1fr) 2.2fr;
-  gap: 48px 64px;
+  gap: var(--space-12) var(--space-16);
 }
 
 .heading {
@@ -40,7 +37,7 @@
 .columns {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 32px 24px;
+  gap: var(--space-8) var(--space-6);
 }
 
 .columnTitle {
@@ -120,7 +117,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px 28px;
+  gap: var(--space-3) var(--space-7);
 }
 
 .legalLink {
@@ -147,16 +144,16 @@
 .watermarkWrap {
   overflow: hidden;
   line-height: 0;
-  background: #0f3371;
+  background: var(--color-primary-dark);
 }
 
 .watermark {
   display: block;
   height: 270px;
-  margin-top: 0 !important;
-  margin-left: 0 !important;
+  margin-block-start: 0;
+  box-sizing: border-box;
   font-size: 310px;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   line-height: 1;
   letter-spacing: -0.01em;
   text-align: center;
@@ -179,7 +176,7 @@
     padding: 16px 16px 0;
   }
   .panel {
-    --gutter: 32px;
+    font-size: 32px;
     padding-top: 48px;
     padding-bottom: 40px;
     border-radius: 20px;
@@ -195,7 +192,7 @@
 
 @media (max-width: 420px) {
   .panel {
-    --gutter: 20px;
+    font-size: 20px;
     padding-top: 40px;
   }
   .columns {
