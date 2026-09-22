@@ -106,7 +106,7 @@ function SafetyAndReliability() {
                 <p className={styles.cardDescription}>{feature.description}</p>
               </div>
 
-              {/* <CheckIcon /> */}
+              <CheckIcon />
             </li>
           ))}
         </ul>

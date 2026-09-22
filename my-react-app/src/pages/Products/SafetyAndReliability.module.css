@@ -14,7 +14,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
 }
 
@@ -28,6 +28,8 @@
 }
 
 .content {
+  /* position: relative;
+  background: var(--color-primary); */
   min-width: 0;
 }
 
