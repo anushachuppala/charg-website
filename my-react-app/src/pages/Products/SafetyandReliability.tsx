@@ -67,7 +67,6 @@ function SafetyAndReliability() {
       <img
         src={safetyImage}
         aria-hidden="true"
-        alt=""
         className={styles.safetyImage}
       />
 
@@ -99,7 +98,7 @@ function SafetyAndReliability() {
           {features.map((feature) => (
             <li key={feature.title} className={styles.card}>
               <span className={styles.iconWrap}>
-                <img src={feature.icon} alt="" className={styles.icon} />
+                <img src={feature.icon} className={styles.icon} />
               </span>
 
               <div className={styles.cardText}>
@@ -107,7 +106,7 @@ function SafetyAndReliability() {
                 <p className={styles.cardDescription}>{feature.description}</p>
               </div>
 
-              <CheckIcon />
+              {/* <CheckIcon /> */}
             </li>
           ))}
         </ul>
