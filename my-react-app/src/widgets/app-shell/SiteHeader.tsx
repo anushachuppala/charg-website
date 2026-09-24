@@ -64,17 +64,24 @@ export function SiteHeader() {
               </Link>
             </li>
 
+            {/* Resources */}
+            <li>
+              <Link to="/Resources" onClick={() => setMenuOpen(false)}>
+                Resources
+              </Link>
+            </li>
+
+            {/* Emission Calculator */}
+            <li>
+              <Link to="/EmissionCalculator" onClick={() => setMenuOpen(false)}>
+                Emission Calculator
+              </Link>
+            </li>
+
             {/* Best Hub */}
             <li>
               <Link to="/besthub" onClick={() => setMenuOpen(false)}>
                 Best Hub
-              </Link>
-            </li>
-
-            {/* Blog */}
-            <li>
-              <Link to="/blog" onClick={() => setMenuOpen(false)}>
-                Blog
               </Link>
             </li>
 

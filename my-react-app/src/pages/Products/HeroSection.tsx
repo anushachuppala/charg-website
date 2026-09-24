@@ -34,13 +34,13 @@ const BADGES = [
   {
     text: "Advanced Safety",
     icon: securityIcon,
-    position: "bottomLeft",
+    position: "bottomRight",
     isImage: true,
   },
   {
     text: "Weather Resistant",
     icon: cloudIcon,
-    position: "bottomRight",
+    position: "bottomLeft",
     isImage: true,
   },
 ];
@@ -73,16 +73,15 @@ function HeroSection() {
                 <p className={styles.eyebrow}>Aries 7KW</p>
 
                 <h1 className={styles.title}>
-                  Powering India&rsquo;s <br />
-                  <span className={styles.titleAccent}>EV Infrastructure</span>
-                  <br />
-                  Network
+                  Smart AC Charging for Everyday EVs
                 </h1>
 
                 <p className={styles.description}>
-                  The Aries 7kW AC Charger delivers reliable, intelligent, and
-                  future-ready charging for homes, workplaces, commercial
-                  properties, and public EV infrastructure.
+                  The AC EV Charger Aries 7kW delivers reliable, intelligent,
+                  and future <br />
+                  ready charging for homes, workplaces, commercial properties,
+                  and <br />
+                  public EV infrastructure.
                 </p>
 
                 <div className={styles.buttonContainer}>

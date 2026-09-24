@@ -17,6 +17,8 @@ import oneSide from "../../assets/products-page/oneSide.png";
 import anotherSide from "../../assets/products-page/anotherSide.png";
 import backSide from "../../assets/products-page/backSide.png";
 
+import finalDocPdf from "../../assets/products-page/final-doc.pdf.pdf";
+
 const products = [
   {
     id: 1,
@@ -178,7 +180,7 @@ function ProductShowCase() {
               className={styles.ariesCharger}
             />
           </div>
-          
+
           <div className={styles.controls}>
             <button
               type="button"

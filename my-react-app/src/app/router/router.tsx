@@ -6,6 +6,8 @@ import ProductsPage from "../../pages/Products/ProductsPage.tsx";
 import SolutionsPage from "../../pages/Solutions/SolutionsPage.tsx";
 import BestHubPage from "../../pages/BestHub/BestHubPage.tsx";
 import BlogPage from "../../pages/Blog/Blog.tsx";
+import Resources from "../../pages/Resources/Resources.tsx";
+import EmissionCalculator from "../../pages/EmissionCalculator/HeroSection.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -15,22 +17,37 @@ export const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
+
       {
         path: "/about",
         element: <About />,
       },
+
       {
         path: "/products",
         element: <ProductsPage />,
       },
+
       {
         path: "/solutions",
         element: <SolutionsPage />,
       },
+
+      {
+        path: "/Resources",
+        element: <Resources />,
+      },
+
+      {
+        path: "/EmissionCalculator",
+        element: <EmissionCalculator />,
+      },
+
       {
         path: "/besthub",
         element: <BestHubPage />,
       },
+
       {
         path: "/blog",
         element: <BlogPage />,
