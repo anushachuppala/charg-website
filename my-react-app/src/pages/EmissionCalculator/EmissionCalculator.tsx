@@ -1,4 +1,3 @@
-import { main } from "framer-motion/client";
 import HeroSection from "../AboutUs/HeroSection";
 
 const EmissionCalculator = () => {
@@ -8,3 +7,5 @@ const EmissionCalculator = () => {
     </main>
   );
 };
+
+export default EmissionCalculator;
