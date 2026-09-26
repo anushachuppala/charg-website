@@ -136,10 +136,10 @@
 }
 
 .featureIcon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  background: none !important;
   border-radius: 50%;
-  background-color: rgba(76, 175, 80, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;

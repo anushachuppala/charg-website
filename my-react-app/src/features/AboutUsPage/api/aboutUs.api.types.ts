@@ -1,49 +1,57 @@
 export type AboutUsWire = {
   id: number;
-  status: "draft" | "published";
   title: string;
-  slug: string;
 
   heroTitle: string;
-  // heroSubtitle: string;
+  heroSubtitle: string;
   heroDescription: string;
   heroBackgroundImage: string;
 
   // strength section
   strengthSectionTitle: string;
   strengthSectionSubtitle: string;
-  strengthCards: strengthCard[];
+  strengthCards: StrengthCard[];
 
   // faq's section
   faqSectionLabel: string;
   faqSectionTitle: string;
-  faqItems: faqItem[];
+  faqItems: FaqItem[];
 };
 
-export type strengthCard = {
+export type StrengthCard = {
   image: string;
   title: string;
   subtitle: string;
-  items: strengthItem[];
+  items: StrengthItem[];
 };
 
-export type strengthItem = {
+export type StrengthItem = {
   icon: string;
   description: string;
 };
 
-export type faqItems = {
+export type FaqItems = {
   question: string;
   answer: string;
 };
 
-export type faqItem = {
+export type FaqItem = {
   question: string;
   answer: string;
 };
 
-
-export type partnerWire = {
+export type PartnerWire = {
   image: string;
   imageAltText: string;
-}
+};
+
+// AboutUs //
+
+export type AboutUs = {
+  id: number;
+  title: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroDescription: string;
+  heroBackgroundImage: string;
+};

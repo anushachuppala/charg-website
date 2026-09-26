@@ -1,15 +1,13 @@
 export type AboutUs = {
   id: number;
-  status: "draft" | "published";
   title: string;
-  slug: string;
 
   heroTitle: string;
-  // heroSubtitle: string;
+  heroSubtitle: string;
   heroDescription: string;
   heroBackgroundImage: string;
 
-  // strength section
+  //  strength section
   strengthSectionTitle: string;
   strengthSectionSubtitle: string;
   strengthCards: strengthCard[];

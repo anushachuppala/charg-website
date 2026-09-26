@@ -1,30 +1,13 @@
-import { useEffect, useState } from "react";
-// useState stores the API data.
-
 import styles from "./HeroSection.module.css";
 
 import { Section, Container } from "../../shared/layout";
 import Button from "../../shared/ui/Button";
 
-import { getAboutUs } from "../../features/AboutUsPage/api/aboutUs.http";
-import type { AboutUsWire } from "../../features/AboutUsPage/api/aboutUs.api.types";
+import { useAboutUsQuery } from "../../features/AboutUsPage/hooks/useAboutUs";
 
 function HeroSection() {
-  const [aboutUs, setAboutUs] = useState<AboutUsWire | null>(null);
+  const { data: aboutUs } = useAboutUsQuery();
 
-  useEffect(() => {
-    async function fetchAboutUs() {
-      try {
-        const data = await getAboutUs();
-
-        setAboutUs(data);
-      } catch (error) {
-        console.error("Failed to fetch About Us data:", error);
-      }
-    }
-
-    fetchAboutUs();
-  }, []);
   return (
     <Section className={styles.heroSection}>
       <div className="hero-background">
@@ -40,7 +23,7 @@ function HeroSection() {
       <Container className={styles.heroContainer}>
         <div className={styles.heroContent}>
           <p className={`16-secondary ${styles.smallHeading}`}>
-            ABOUT BEST CHARG
+            {aboutUs?.title}
           </p>
 
           <h1 className={`h1-white ${styles.heroSubTitle}`}>
@@ -50,20 +33,16 @@ function HeroSection() {
           </h1>
 
           <p className={`24-white ${styles.heroDescription}`}>
-            "Best Charg delivers intelligent EV charging infrastructure,
-            enterprise-grade software, and integrated mobility ecosystems —
-            helping businesses, governments, and communities transition
-            confidently toward cleaner transportation."
+            Every business, fleet, and home moving to electric needs charging
+            infrastructure it can rely on. Best Charg builds that combining
+            hardware, software, and engineering into charging systems that just
+            work, wherever you need them.
           </p>
 
           <div className={styles.heroButtons}>
             <Button variant="secondary" className="btn-one">
               Know More
             </Button>
-            {/* 
-            <Button variant="Tertiary" className="btn-two">
-              Talk to Our Experts
-            </Button> */}
           </div>
         </div>
       </Container>

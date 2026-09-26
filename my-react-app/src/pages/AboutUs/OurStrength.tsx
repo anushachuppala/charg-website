@@ -6,11 +6,10 @@ import { Section, Container, Panel } from "../../shared/layout";
 
 import { SectionHeader } from "../../shared/ui/section-header/SectionHeader";
 
-import { getAboutUs } from "../../features/AboutUsPage/api/aboutUs.http";
-import type { AboutUsWire } from "../../features/AboutUsPage/api/aboutUs.api.types";
+import { useAboutUsQuery } from "../../features/AboutUsPage/hooks/useAboutUs";
 
 const OurStrength = () => {
-  const [aboutUs, setAboutUs] = useState<AboutUsWire | null>(null);
+  const { data: aboutUs } = useAboutUsQuery();
 
   const [activeIndex, setActiveIndex] = useState(1);
   const [enableTransition, setEnableTransition] = useState(true);
@@ -21,22 +20,6 @@ const OurStrength = () => {
   // Create cloned slides for infinite looping
   const loopSlides =
     slides.length > 0 ? [slides[slides.length - 1], ...slides, slides[0]] : [];
-
-  // Fetch About Us data
-
-  useEffect(() => {
-    async function fetchAboutUs() {
-      try {
-        const data = await getAboutUs();
-
-        setAboutUs(data);
-      } catch (error) {
-        console.error("Failed to fetch About Us data:", error);
-      }
-    }
-
-    fetchAboutUs();
-  }, []);
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => prev + 1);
@@ -81,11 +64,8 @@ const OurStrength = () => {
           <Panel>
             <div className={styles.strengthContainer}>
               <SectionHeader
-                eyebrow={aboutUs?.strengthSectionTitle || "OUR STRENGTH"}
-                title={
-                  aboutUs?.strengthSectionSubtitle ||
-                  "Why Leading Organizations Choose Best Infra"
-                }
+                eyebrow={aboutUs?.strengthSectionTitle}
+                title={aboutUs?.strengthSectionSubtitle}
                 titleTone="white"
                 as="div"
               />

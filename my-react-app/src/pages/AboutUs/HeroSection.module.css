@@ -74,16 +74,12 @@
   line-height: 1.25;
 }
 
-span {
-  color: var(--color-secondary);
-}
-
 .heroSubTitle {
   gap: 0;
 }
 
-.heroTitle span {
-  color: #55b56c;
+span {
+  color: var(--color-secondary);
 }
 
 .desktopBreak {
