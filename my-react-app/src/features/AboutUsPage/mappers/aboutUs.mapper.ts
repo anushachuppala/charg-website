@@ -20,6 +20,8 @@ export function mapAboutUS(wire: AboutUsWire): AboutUs {
 
     faqSectionLabel: wire.faqSectionLabel,
     faqSectionTitle: wire.faqSectionTitle,
+    faqFeaturedImage: wire.faqFeaturedImage,
+
     faqItems: wire.faqItems,
   };
 }

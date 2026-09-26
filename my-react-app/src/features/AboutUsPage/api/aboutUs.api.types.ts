@@ -20,6 +20,7 @@ export type AboutUsWire = {
   // faq's section
   faqSectionLabel: string;
   faqSectionTitle: string;
+  faqFeaturedImage: string;
   faqItems: FaqItem[];
 };
 
@@ -35,6 +36,11 @@ export type StrengthItem = {
   description: string;
 };
 
+export type PartnerWire = {
+  image: string;
+  imageAltText: string;
+};
+
 export type FaqItems = {
   question: string;
   answer: string;
@@ -43,9 +49,4 @@ export type FaqItems = {
 export type FaqItem = {
   question: string;
   answer: string;
-};
-
-export type PartnerWire = {
-  image: string;
-  imageAltText: string;
 };

@@ -20,6 +20,7 @@ export type AboutUs = {
   // faq section
   faqSectionLabel: string;
   faqSectionTitle: string;
+  faqFeaturedImage: string;
   faqItems: faqItem[];
 };
 
