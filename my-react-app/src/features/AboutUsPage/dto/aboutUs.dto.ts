@@ -12,6 +12,12 @@ export type AboutUs = {
   strengthSectionSubtitle: string;
   strengthCards: strengthCard[];
 
+  // partners section
+  partnersSectionTitle: string;
+  partnersSectionSubtitle: string;
+  partners: Partner[];
+
+  // faq section
   faqSectionLabel: string;
   faqSectionTitle: string;
   faqItems: faqItem[];
@@ -27,6 +33,11 @@ export type strengthCard = {
 export type strengthItem = {
   icon: string;
   description: string;
+};
+
+export type Partner = {
+  image: string;
+  imageAltText: string;
 };
 
 export type faqItems = {

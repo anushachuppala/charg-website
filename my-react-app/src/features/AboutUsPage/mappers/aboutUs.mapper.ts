@@ -14,6 +14,10 @@ export function mapAboutUS(wire: AboutUsWire): AboutUs {
     strengthSectionSubtitle: wire.strengthSectionSubtitle,
     strengthCards: wire.strengthCards,
 
+    partnersSectionTitle: wire.partnersSectionTitle,
+    partnersSectionSubtitle: wire.partnersSectionSubtitle,
+    partners: wire.partners,
+
     faqSectionLabel: wire.faqSectionLabel,
     faqSectionTitle: wire.faqSectionTitle,
     faqItems: wire.faqItems,

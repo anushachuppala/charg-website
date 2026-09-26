@@ -1,47 +1,27 @@
-import styles from "./PartnerCards.module.css";
-import { Section, Panel } from "../../shared/layout";
 import { useState, useCallback, useEffect } from "react";
+
+import styles from "./PartnerCards.module.css";
+
+import { Section, Panel } from "../../shared/layout";
 
 import previousSlideIcon from "../../assets/images/About-page/PreviousSlide.png";
 import nextSlideIcon from "../../assets/images/About-page/nextSlide.png";
-import imageCard1 from "../../assets/images/About-page/img1.png";
-import imageCard2 from "../../assets/images/About-page/img2.png";
-import imageCard3 from "../../assets/images/About-page/img3.png";
-import imageCard4 from "../../assets/images/About-page/img4.png";
 
 import { SectionHeader } from "../../shared/ui/section-header/SectionHeader";
 
-const CardImages = [
-  {
-    id: 1,
-    image: imageCard1,
-  },
-  {
-    id: 2,
-    image: imageCard2,
-  },
-  {
-    id: 3,
-    image: imageCard3,
-  },
-  {
-    id: 4,
-    image: imageCard4,
-  },
-  {
-    id: 5,
-    image: imageCard4,
-  },
-];
+import { useAboutUsQuery } from "../../features/AboutUsPage/hooks/useAboutUs";
 
 const PartnerCards = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const { data: aboutUs } = useAboutUsQuery();
 
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(4);
 
-  const totalCards = CardImages.length;
+  const partners = aboutUs?.partners ?? [];
 
-  // responsive logic //
+  const totalCards = partners.length;
+
+  // Responsive logic
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
@@ -62,18 +42,25 @@ const PartnerCards = () => {
     };
   }, []);
 
-  const visibleCards = Array.from(
-    { length: cardsPerView },
-    (_, index) => CardImages[(currentIndex + index) % totalCards],
-  );
+  const visibleCards =
+    totalCards > 0
+      ? Array.from(
+          { length: Math.min(cardsPerView, totalCards) },
+          (_, index) => partners[(currentIndex + index) % totalCards],
+        )
+      : [];
 
   const nextSlide = useCallback(() => {
+    if (totalCards === 0) return;
+
     setCurrentIndex((previousIndex) => {
       return (previousIndex + 1) % totalCards;
     });
   }, [totalCards]);
 
   const previousSlide = useCallback(() => {
+    if (totalCards === 0) return;
+
     setCurrentIndex((previousIndex) => {
       return (previousIndex - 1 + totalCards) % totalCards;
     });
@@ -84,8 +71,8 @@ const PartnerCards = () => {
       <Panel>
         <div className={styles.PartnerHeader}>
           <SectionHeader
-            title="Partners"
-            subtitle="Productive Charger Partners"
+            title={aboutUs?.partnersSectionTitle}
+            subtitle={aboutUs?.partnersSectionSubtitle}
             align="center"
             as="header"
             trailingSpacing="none"
@@ -96,13 +83,17 @@ const PartnerCards = () => {
               src={previousSlideIcon}
               className={styles.arrow}
               onClick={previousSlide}
+              alt="Previous partners"
             />
 
             <div className={styles.ImageContainer}>
               <div className={styles.ImageWrapper}>
-                {visibleCards.map((card) => (
-                  <div key={card.id} className={styles.card}>
-                    <img src={card.image} alt="partner card" />
+                {visibleCards.map((partner, index) => (
+                  <div key={index} className={styles.card}>
+                    <img
+                      src={partner.image.trim()}
+                      alt={partner.imageAltText || "Partner"}
+                    />
                   </div>
                 ))}
               </div>
@@ -112,15 +103,17 @@ const PartnerCards = () => {
               src={nextSlideIcon}
               className={styles.arrow}
               onClick={nextSlide}
+              alt="Next partners"
             />
           </div>
 
           <div className={styles.dots}>
-            {CardImages.map((card, index) => (
+            {partners.map((_, index) => (
               <button
-                key={card.id}
+                key={index}
                 className={currentIndex === index ? styles.activeDot : ""}
                 onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to partner ${index + 1}`}
               ></button>
             ))}
           </div>

@@ -12,6 +12,11 @@ export type AboutUsWire = {
   strengthSectionSubtitle: string;
   strengthCards: StrengthCard[];
 
+  // partners section
+  partnersSectionTitle: string;
+  partnersSectionSubtitle: string;
+  partners: PartnerWire[];
+
   // faq's section
   faqSectionLabel: string;
   faqSectionTitle: string;
@@ -43,15 +48,4 @@ export type FaqItem = {
 export type PartnerWire = {
   image: string;
   imageAltText: string;
-};
-
-// AboutUs //
-
-export type AboutUs = {
-  id: number;
-  title: string;
-  heroTitle: string;
-  heroSubtitle: string;
-  heroDescription: string;
-  heroBackgroundImage: string;
 };
