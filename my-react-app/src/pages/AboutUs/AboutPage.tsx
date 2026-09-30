@@ -20,7 +20,7 @@ const AboutPage = () => {
 
       <ChargingSolutions />
 
-      <OurStrength />
+      <OurStrength aboutUs={aboutUs} />
 
       <BeyondCharge />
 

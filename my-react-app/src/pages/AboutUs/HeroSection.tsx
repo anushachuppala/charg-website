@@ -20,9 +20,7 @@ function HeroSection({ aboutUs }: HeroSectionProps) {
           className={styles.heroImage}
         />
       </div>
-
-      <div className={styles.heroOverlay}></div>
-5
+      <div className={styles.heroOverlay}></div>5
       <Container className={styles.heroContainer}>
         <div className={styles.heroContent}>
           {aboutUs?.heroTitle && (

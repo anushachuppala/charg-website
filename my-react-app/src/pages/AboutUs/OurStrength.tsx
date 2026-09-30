@@ -6,11 +6,13 @@ import { Section, Container, Panel } from "../../shared/layout";
 
 import { SectionHeader } from "../../shared/ui/section-header/SectionHeader";
 
-import { useAboutUsQuery } from "../../features/AboutUsPage/hooks/useAboutUs";
+import type { AboutUs } from "../../features/AboutUsPage/dto/aboutUs.dto";
 
-const OurStrength = () => {
-  const { data: aboutUs } = useAboutUsQuery();
+type OurStrengthProps = {
+  aboutUs?: AboutUs;
+};
 
+const OurStrength = ({ aboutUs }: OurStrengthProps) => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [enableTransition, setEnableTransition] = useState(true);
 
