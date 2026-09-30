@@ -11,14 +11,21 @@ import { useAboutUsQuery } from "../../features/AboutUsPage/hooks/useAboutUs";
 
 const AboutPage = () => {
   const { data: aboutUs } = useAboutUsQuery();
+
   return (
     <main>
-      <HeroSection />
+      <HeroSection aboutUs={aboutUs} />
+
       <BestCharge />
+
       <ChargingSolutions />
+
       <OurStrength />
+
       <BeyondCharge />
+
       <PartnerCards />
+
       <FaqSection
         eyebrow={aboutUs?.faqSectionLabel}
         title={aboutUs?.faqSectionTitle}
@@ -26,6 +33,7 @@ const AboutPage = () => {
         showHeader={true}
         items={aboutUs?.faqItems ?? []}
       />
+
       <Infrastructure />
     </main>
   );

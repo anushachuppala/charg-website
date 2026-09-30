@@ -3,11 +3,14 @@ import styles from "./HeroSection.module.css";
 import { Section, Container } from "../../shared/layout";
 import Button from "../../shared/ui/Button";
 
-import { useAboutUsQuery } from "../../features/AboutUsPage/hooks/useAboutUs";
+import type { AboutUs } from "../../features/AboutUsPage/dto/aboutUs.dto";
 
-function HeroSection() {
-  const { data: aboutUs } = useAboutUsQuery();
+type HeroSectionProps = {
+  aboutUs?: AboutUs;
+};
 
+function HeroSection({ aboutUs }: HeroSectionProps) {
+  console.log("Hero image:", aboutUs?.heroBackgroundImage);
   return (
     <Section className={styles.heroSection}>
       <div className="hero-background">
@@ -27,16 +30,11 @@ function HeroSection() {
           </p>
 
           <h1 className={`h1-white ${styles.heroSubTitle}`}>
-            Powering the Transition to
-            <br />
-            <span> Electric Mobility</span>
+            {aboutUs?.heroSubtitle}
           </h1>
 
           <p className={`24-white ${styles.heroDescription}`}>
-            Every business, fleet, and home moving to electric needs charging
-            infrastructure it can rely on. Best Charg builds that combining
-            hardware, software, and engineering into charging systems that just
-            work, wherever you need them.
+            {aboutUs?.heroDescription}
           </p>
 
           <div className={styles.heroButtons}>

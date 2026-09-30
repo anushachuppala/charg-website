@@ -10,7 +10,7 @@ export type AboutUsWire = {
   // strength section
   strengthSectionTitle: string;
   strengthSectionSubtitle: string;
-  strengthCards: StrengthCard[];
+  strengthCards: StrengthCardWire[];
 
   // partners section
   partnersSectionTitle: string;
@@ -18,20 +18,23 @@ export type AboutUsWire = {
   partners: PartnerWire[];
 
   // faq's section
-  faqSectionLabel: string;
-  faqSectionTitle: string;
-  faqFeaturedImage: string;
-  faqItems: FaqItem[];
+  faqSectionLabel?: string;
+  faqSectionTitle?: string;
+  faqFeaturedImage?: string;
+  faqItems?: FaqItemWire[];
 };
 
-export type StrengthCard = {
+
+// represents one card
+export type StrengthCardWire = {
   image: string;
   title: string;
   subtitle: string;
-  items: StrengthItem[];
+  //  represents one item inside that card
+  items: StrengthCardItemWire[];
 };
 
-export type StrengthItem = {
+export type StrengthCardItemWire = {
   icon: string;
   description: string;
 };
@@ -41,12 +44,7 @@ export type PartnerWire = {
   imageAltText: string;
 };
 
-export type FaqItems = {
-  question: string;
-  answer: string;
-};
-
-export type FaqItem = {
+export type FaqItemWire = {
   question: string;
   answer: string;
 };

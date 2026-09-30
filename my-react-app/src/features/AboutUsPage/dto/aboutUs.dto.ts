@@ -50,3 +50,11 @@ export type faqItem = {
   question: string;
   answer: string;
 };
+
+export type ProductsPage = {
+  id: number;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroDescription: string;
+  heroImage: string;
+};
