@@ -55,7 +55,7 @@ export function mapAboutUS(wire: AboutUsWire): AboutUs {
 
     strengthSectionTitle: wire?.strengthSectionTitle || "",
     strengthSectionSubtitle: wire?.strengthSectionSubtitle || "",
-    strengthCards: wire?.strengthCards|| "",
+    strengthCards: wire?.strengthCards || "",
 
     partnersSectionTitle: wire?.partnersSectionTitle || "",
     partnersSectionSubtitle: wire?.partnersSectionSubtitle || "",
