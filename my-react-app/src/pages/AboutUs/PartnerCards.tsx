@@ -9,11 +9,13 @@ import nextSlideIcon from "../../assets/images/About-page/nextSlide.png";
 
 import { SectionHeader } from "../../shared/ui/section-header/SectionHeader";
 
-import { useAboutUsQuery } from "../../features/AboutUsPage/hooks/useAboutUs";
+import type { AboutUs } from "../../features/AboutUsPage/dto/aboutUs.dto";
 
-const PartnerCards = () => {
-  const { data: aboutUs } = useAboutUsQuery();
+type PartnerCardsProps = {
+  aboutUs?: AboutUs;
+};
 
+const PartnerCards = ({ aboutUs }: PartnerCardsProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(4);
 

@@ -24,7 +24,7 @@ const AboutPage = () => {
 
       <BeyondCharge />
 
-      <PartnerCards />
+      <PartnerCards aboutUs={aboutUs} />
 
       <FaqSection
         eyebrow={aboutUs?.faqSectionLabel}
