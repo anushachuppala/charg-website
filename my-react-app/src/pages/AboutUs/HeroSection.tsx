@@ -22,12 +22,14 @@ function HeroSection({ aboutUs }: HeroSectionProps) {
       </div>
 
       <div className={styles.heroOverlay}></div>
-
+5
       <Container className={styles.heroContainer}>
         <div className={styles.heroContent}>
-          <p className={`16-secondary ${styles.smallHeading}`}>
-            {aboutUs?.title}
-          </p>
+          {aboutUs?.heroTitle && (
+            <p className={`16-secondary ${styles.eyebrow} hero-eyebrow`}>
+              {aboutUs.heroTitle}
+            </p>
+          )}
 
           <h1 className={`h1-white ${styles.heroSubTitle}`}>
             {aboutUs?.heroSubtitle}
