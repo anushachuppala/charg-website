@@ -1,16 +1,18 @@
 export type AboutUs = {
   id: number;
+  status: string;
   title: string;
-
+  slug: string;
   heroTitle: string;
   heroSubtitle: string;
   heroDescription: string;
   heroBackgroundImage: string;
+  heroBackgroundVideo: string;
 
-  //  strength section
+  // strength section
   strengthSectionTitle: string;
   strengthSectionSubtitle: string;
-  strengthCards: strengthCard[];
+  strengthCards: StrengthCard[];
 
   // partners section
   partnersSectionTitle: string;
@@ -21,17 +23,17 @@ export type AboutUs = {
   faqSectionLabel: string;
   faqSectionTitle: string;
   faqFeaturedImage: string;
-  faqItems: faqItem[];
+  faqItems: FaqItem[];
 };
 
-export type strengthCard = {
+export type StrengthCard = {
   image: string;
   title: string;
   subtitle: string;
-  items: strengthItem[];
+  items: StrengthCardItem[];
 };
 
-export type strengthItem = {
+export type StrengthCardItem = {
   icon: string;
   description: string;
 };
@@ -41,20 +43,7 @@ export type Partner = {
   imageAltText: string;
 };
 
-export type faqItems = {
+export type FaqItem = {
   question: string;
   answer: string;
-};
-
-export type faqItem = {
-  question: string;
-  answer: string;
-};
-
-export type ProductsPage = {
-  id: number;
-  heroTitle: string;
-  heroSubtitle: string;
-  heroDescription: string;
-  heroImage: string;
 };

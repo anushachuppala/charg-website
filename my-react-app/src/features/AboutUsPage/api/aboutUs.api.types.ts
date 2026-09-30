@@ -1,11 +1,14 @@
 export type AboutUsWire = {
   id: number;
+  status: string;
   title: string;
+  slug: string;
 
   heroTitle: string;
   heroSubtitle: string;
   heroDescription: string;
   heroBackgroundImage: string;
+  heroBackgroundVideo: string;
 
   // strength section
   strengthSectionTitle: string;
@@ -23,7 +26,6 @@ export type AboutUsWire = {
   faqFeaturedImage?: string;
   faqItems?: FaqItemWire[];
 };
-
 
 // represents one card
 export type StrengthCardWire = {
