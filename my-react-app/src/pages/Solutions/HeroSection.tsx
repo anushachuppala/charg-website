@@ -1,5 +1,5 @@
 import styles from "./HeroSection.module.css";
-import HeroImage from "../../assets/Services-page/HeroImage.png";
+
 import { Section, Container, Panel } from "../../shared/layout";
 import { SectionHeader } from "../../shared/ui/section-header";
 import Button from "../../shared/ui/Button";
@@ -37,7 +37,7 @@ function HeroSection({ solutions }: HeroSectionProps) {
             {/* Right image */}
             <div className={`page-col-12 page-col-lg-6 ${styles.imageCol}`}>
               <img
-                src={HeroImage}
+                src={solutions?.heroImage}
                 alt="hero image"
                 className={styles.heroImage}
               />

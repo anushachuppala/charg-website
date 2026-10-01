@@ -24,29 +24,6 @@ import HeroSection from "./HeroSection";
 
 import { WhoIsThisFor } from "../../shared/ui/whoisThisfor-section/WhoIsThisFor";
 
-const WhoIsThisForItems = [
-  {
-    icon: icon1,
-    title: "Charge Point Operators",
-    description:
-      "Manage multiple charging stations, pricing policies, uptime, and user access from a cetralized dashboard.",
-  },
-
-  {
-    icon: icon2,
-    title: "Fleet Operators",
-    description:
-      "Monitor fleet charging schedules, energy consumption, and operational efficiency across locations.",
-  },
-
-  {
-    icon: icon3,
-    title: "Municipalities & Utilities",
-    description:
-      "Deploy and manage public charging infrastructure while enabling smart energy distribution.",
-  },
-];
-
 import ChargeManagement from "./ChargeManagement";
 import Benefits from "./Benefits";
 
@@ -222,13 +199,12 @@ const SolutionsPage = () => {
       <HeroSection solutions={solutions} />
       <WhoIsThisFor
         eyebrow=""
-        title="Who Is This For?"
-        subtitle="Built for every stakeholder in the EV ecosystem"
-        align="center"
-        items={WhoIsThisForItems}
+        title={solutions?.whoIsThisForLabel}
+        subtitle={solutions?.whoIsThisForTitle}
+        items={solutions?.whoIsThisForCards ?? []}
       />
 
-      <ChargeManagement />
+      <ChargeManagement solutions={solutions} />
 
       <CorePlatform
         eyebrow="Core Platform Modules"
