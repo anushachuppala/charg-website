@@ -154,6 +154,10 @@ export function mapSolutions(wire: SolutionsWire): Solutions {
 
 export async function getMappedSolutions(): Promise<Solutions[]> {
   const data = await getSolutions();
-
-  return data.map(mapSolutions);
+  if (!data) return [];
+  const rows = Array.isArray(data) ? data : [data];
+  // Safety net: backend may still return drafts — only show published
+  return rows
+    .map(mapSolutions)
+    .filter((row) => row.status.toLowerCase() === "published");
 }

@@ -4,6 +4,7 @@ import type {
   StrengthCardItemWire,
   StrengthCardWire,
 } from "../api/aboutUs.api.types";
+import { getAboutUs } from "../api/aboutUs.http";
 
 import type {
   AboutUs,
@@ -55,11 +56,13 @@ export function mapAboutUS(wire: AboutUsWire): AboutUs {
 
     strengthSectionTitle: wire?.strengthSectionTitle || "",
     strengthSectionSubtitle: wire?.strengthSectionSubtitle || "",
-    strengthCards: wire?.strengthCards || "",
+    strengthCards: Array.isArray(wire.strengthCards)
+      ? wire.strengthCards.map(mapStrengthCard)
+      : [],
 
     partnersSectionTitle: wire?.partnersSectionTitle || "",
     partnersSectionSubtitle: wire?.partnersSectionSubtitle || "",
-    partners: wire?.partners,
+    partners: Array.isArray(wire.partners) ? wire.partners.map(mapPartner) : [],
 
     faqSectionLabel: wire?.faqSectionLabel || "",
     faqSectionTitle: wire?.faqSectionTitle || "",
@@ -72,4 +75,10 @@ export function mapAboutUS(wire: AboutUsWire): AboutUs {
         }))
       : [],
   };
+}
+
+export async function getMappedAboutUs(): Promise<AboutUs[]> {
+  const data = await getAboutUs();
+
+  return data.map(mapAboutUS);
 }

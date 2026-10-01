@@ -23,7 +23,7 @@ const AboutPage = () => {
       <OurStrength aboutUs={aboutUs} />
 
       <BeyondCharge />
-
+    
       <PartnerCards aboutUs={aboutUs} />
 
       <FaqSection
