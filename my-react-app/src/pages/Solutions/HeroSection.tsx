@@ -4,13 +4,7 @@ import { Section, Container, Panel } from "../../shared/layout";
 import { SectionHeader } from "../../shared/ui/section-header";
 import Button from "../../shared/ui/Button";
 
-import type { Solutions } from "../../features/SolutionsPage/dto/solutions.dto";
-
-type HeroSectionProps = {
-  solutions?: Solutions;
-};
-
-function HeroSection({ solutions }: HeroSectionProps) {
+function HeroSection() {
   return (
     <Section className={styles.section}>
       <Container>
@@ -20,14 +14,13 @@ function HeroSection({ solutions }: HeroSectionProps) {
             <div className={`page-col-12 page-col-lg-6 ${styles.content}`}>
               <SectionHeader
                 eyebrow="Charge Management Software"
-                title={solutions?.heroTitle || ""}
-                subtitle={solutions?.heroDescription || ""}
+                title="Powering Intelligent EV Charging Networks"
+                subtitle="Manage, monitor, and optimize your EV charging infrastructure through a unified cloud-based platform designed for scalability, reliability, and operational efficiency."
                 align="start"
               />
 
               <div className={styles.buttons}>
                 <Button variant="secondary">Become a partner</Button>
-
                 <Button variant="primary" className={styles.btn}>
                   Book a Demo
                 </Button>
@@ -37,8 +30,8 @@ function HeroSection({ solutions }: HeroSectionProps) {
             {/* Right image */}
             <div className={`page-col-12 page-col-lg-6 ${styles.imageCol}`}>
               <img
-                src={solutions?.heroImage || HeroImage}
-                alt={solutions?.heroImageAlt || "hero image"}
+                src={HeroImage}
+                alt="hero image"
                 className={styles.heroImage}
               />
             </div>

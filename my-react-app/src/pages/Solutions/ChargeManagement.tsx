@@ -1,16 +1,31 @@
 import styles from "./ChargeManagement.module.css";
+import chargeImage from "../../assets/Services-page/chargeImage.png";
 import CheckIcon from "../../assets/Services-page/CheckIcon.png";
 
 import { Section, Container, Panel } from "../../shared/layout";
 import { SectionHeader } from "../../shared/ui";
 
-import type { Solutions } from "../../features/SolutionsPage/dto/solutions.dto";
+const items = [
+  {
+    icon: CheckIcon,
+    title: "Centralized Operations",
+    description: "Manage all chargers and networks from a single dashboard.",
+  },
+  {
+    icon: CheckIcon,
+    title: "Secure Transactions",
+    description:
+      "Enable secure payments, access control, and user authentication.",
+  },
+  {
+    icon: CheckIcon,
+    title: "Multi-Location Management",
+    description:
+      "Operate charging infrastructure across cities, campuses, and fleets with ease.",
+  },
+];
 
-type ChargeManagementProps = {
-  solutions?: Solutions;
-};
-
-function ChargeManagement({ solutions }: ChargeManagementProps) {
+function ChargeManagement() {
   return (
     <Section>
       <Container>
@@ -20,7 +35,7 @@ function ChargeManagement({ solutions }: ChargeManagementProps) {
 
             <div className={styles.imageCol}>
               <img
-                src={solutions?.cmsSolutionImage}
+                src={chargeImage}
                 alt="charge-image"
                 className={styles.chargeImage}
               />
@@ -31,22 +46,24 @@ function ChargeManagement({ solutions }: ChargeManagementProps) {
               <SectionHeader
                 as="div"
                 eyebrow="Charge Management Software"
-                title={solutions?.cmsSolutionTitle}
-                subtitle={solutions?.cmsSolutionDescription}
+                title="What Is the CMS Solution?"
+                subtitle="Best Charg CMS is an advanced cloud-based platform that enables real-time monitoring, control, billing, and analytics of EV charging networks. It simplifies operations while ensuring seamless charging experiences for drivers and operators."
                 align="start"
                 trailingSpacing="none"
               />
+              {/* Items */}
+              <div className={styles.items}>
+                {items.map((item) => (
+                  <div className={styles.item} key={item.title}>
+                    <img src={item.icon} className={styles.icon} />
 
-              {solutions?.cmsSolutionPoints?.map((item) => (
-                <div className={styles.item} key={item.label}>
-                  <img src={CheckIcon} className={styles.icon} />
-
-                  <div>
-                    <h3>{item.label}</h3>
-                    <p>{item.description}</p>
+                    <div>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </Panel>
