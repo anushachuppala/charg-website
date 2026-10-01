@@ -1,4 +1,6 @@
-export type Bes = {
+import type { DestinationItemWire } from "../api/bestHub.api.types";
+
+export type BestHub = {
   id: number;
   status: string;
   title: string;
