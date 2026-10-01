@@ -22,6 +22,8 @@ import comp10 from "../../assets/Services-page/comp10.png";
 
 import HeroSection from "./HeroSection";
 
+import { useSolutionsQuery } from "../../features/SolutionsPage/hooks/useSolutions";
+
 import { WhoIsThisFor } from "../../shared/ui/whoisThisfor-section/WhoIsThisFor";
 
 const WhoIsThisForItems = [
@@ -212,15 +214,18 @@ const faqItems = [
 ];
 
 const SolutionsPage = () => {
+  const { data } = useSolutionsQuery();
+
+  const solutions = data?.[0];
   return (
     <main>
       <HeroSection />
       <WhoIsThisFor
-        eyebrow=""
-        title="Who Is This For?"
-        subtitle="Built for every stakeholder in the EV ecosystem"
+        eyebrow={solutions?.whoIsThisForLabel || ""}
+        title={solutions?.whoIsThisForTitle || ""}
+        subtitle=""
         align="center"
-        items={WhoIsThisForItems}
+        items={solutions?.whoIsThisForCards || []}
       />
 
       <ChargeManagement />
