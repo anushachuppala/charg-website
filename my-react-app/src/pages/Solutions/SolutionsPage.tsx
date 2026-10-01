@@ -1,13 +1,4 @@
-import ImageOne from "../../assets/Services-page/img1.png";
-import ImageTwo from "../../assets/Services-page/img2.png";
-import ImageThree from "../../assets/Services-page/img3.png";
-import ImageFour from "../../assets/Services-page/img4.png";
-import ImageFive from "../../assets/Services-page/img5.png";
-import ImageSix from "../../assets/Services-page/img6.png";
-
 import icon1 from "../../assets/Services-page/Briefcase.svg";
-import icon2 from "../../assets/Services-page/OnlineSupport.svg";
-import icon3 from "../../assets/Services-page/Partnership.svg";
 
 import comp1 from "../../assets/Services-page/comp1.png";
 import comp2 from "../../assets/Services-page/comp2.png";
@@ -34,50 +25,6 @@ import PowerCharge from "./PowerCharge";
 import LeadingCompanies from "../../shared/ui/leadingCompanies-section/LeadingCompanies";
 
 import KeyFeatures from "../../shared/ui/keyFeatures-section/KeyFeatures";
-
-const keyFeaturesItems = [
-  {
-    icon: ImageOne,
-    title: "Real-time Monitoring",
-    description:
-      "Track charger status, utilization, and charging sessions across all locations in real time.",
-  },
-
-  {
-    icon: ImageTwo,
-    title: "Remote Configuration",
-    description:
-      "Update firmware, modify settings, and troubleshoot chargers remotely.",
-  },
-
-  {
-    icon: ImageThree,
-    title: "Smart Load Balancing",
-    description:
-      "Optimize power distribution across multiple chargers to prevent overload.",
-  },
-
-  {
-    icon: ImageFour,
-    title: "OCPP 1.6 & 2.0 Support",
-    description:
-      "Ensure interoperability with industry-standard EV charging protocols.",
-  },
-
-  {
-    icon: ImageFive,
-    title: "Multi-tenant Architecture",
-    description:
-      "Manage multiple operators, franchises, or networks from a single platform.",
-  },
-
-  {
-    icon: ImageSix,
-    title: "White-label Ready",
-    description:
-      "Launch the platform under your own brand with customizable interfaces.",
-  },
-];
 
 const whyBestChargeItems = [
   {
@@ -178,14 +125,14 @@ const SolutionsPage = () => {
       <Benefits solutions={solutions} />
 
       <KeyFeatures
-        title="Key Features"
-        subtitle="Intelligent features built for scalable EV networks"
+        title={solutions?.keyFeaturesLabel || ""}
+        subtitle={solutions?.keyFeaturesTitle || ""}
         align="center"
         showHeader={true}
-        items={keyFeaturesItems}
+        items={solutions?.keyFeaturesCards ?? []}
       />
 
-      <PowerCharge />
+      <PowerCharge solutions={solutions} />
       <WhyBestCharge items={whyBestChargeItems} />
 
       <LeadingCompanies
@@ -198,11 +145,10 @@ const SolutionsPage = () => {
       />
 
       <FaqSection
-        eyebrow="faq's"
-        title="Know More About Our EV Charging Solutions"
+        eyebrow={solutions?.faqSectionLabel || ""}
         align="center"
         showHeader={true}
-        items={faqItems}
+        items={solutions?.faqItems ?? []}
       />
 
       <GetInTouch
