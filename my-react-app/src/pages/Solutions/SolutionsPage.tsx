@@ -35,44 +35,6 @@ import LeadingCompanies from "../../shared/ui/leadingCompanies-section/LeadingCo
 
 import KeyFeatures from "../../shared/ui/keyFeatures-section/KeyFeatures";
 
-const corePlatformItems = [
-  {
-    icon: ImageOne,
-    title: "Station Management",
-    description:
-      "Monitor charger status, availability, health, and remote operations.",
-  },
-  {
-    icon: ImageTwo,
-    title: "User & Access Control",
-    description:
-      "Manage drivers, operators, RFID cards, and role-based permissions.",
-  },
-  {
-    icon: ImageThree,
-    title: "Billing & Payments",
-    description:
-      "Configure tariffs, subscriptions, invoicing, and payment gateways.",
-  },
-  {
-    icon: ImageFour,
-    title: "Session Monitoring",
-    description:
-      "Track live charging sessions, energy consumption, and charger utilization.",
-  },
-  {
-    icon: ImageFive,
-    title: "Analytics & Reports",
-    description:
-      "Generate insights on revenue, usage trends, uptime, and energy delivered.",
-  },
-  {
-    icon: ImageSix,
-    title: "API & Integrations",
-    description: "Integrate with ERP, CRM, mobile apps, payment gateways.",
-  },
-];
-
 const keyFeaturesItems = [
   {
     icon: ImageOne,
@@ -207,13 +169,13 @@ const SolutionsPage = () => {
       <ChargeManagement solutions={solutions} />
 
       <CorePlatform
-        eyebrow="Core Platform Modules"
-        title="Comprehensive tools to manage your EV charging ecosystem"
+        eyebrow={solutions?.toolsSectionLabel || ""}
+        title={solutions?.toolsSectionTitle || ""}
         subtitle="Our modular CMS provides complete control over charging infrastructure, users, payments, and network performance."
-        items={corePlatformItems}
+        items={solutions?.toolsCards ?? []}
       />
 
-      <Benefits />
+      <Benefits solutions={solutions} />
 
       <KeyFeatures
         title="Key Features"
