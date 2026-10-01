@@ -211,10 +211,15 @@ const faqItems = [
   },
 ];
 
+import { useSolutionsQuery } from "../../features/SolutionsPage/hooks/useSolutions";
+
 const SolutionsPage = () => {
+  const { data } = useSolutionsQuery();
+
+  const solutions = data?.[0];
   return (
     <main>
-      <HeroSection />
+      <HeroSection solutions={solutions} />
       <WhoIsThisFor
         eyebrow=""
         title="Who Is This For?"

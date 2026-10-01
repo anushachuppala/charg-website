@@ -4,7 +4,14 @@ import { Section, Container, Panel } from "../../shared/layout";
 import { SectionHeader } from "../../shared/ui/section-header";
 import Button from "../../shared/ui/Button";
 
-function HeroSection() {
+import type { Solutions } from "../../features/SolutionsPage/dto/solutions.dto";
+
+type HeroSectionProps = {
+  solutions?: Solutions;
+};
+
+function HeroSection({ solutions }: HeroSectionProps) {
+  console.log("Hero solutions:", solutions);
   return (
     <Section className={styles.section}>
       <Container>
@@ -13,9 +20,9 @@ function HeroSection() {
             {/* Left content */}
             <div className={`page-col-12 page-col-lg-6 ${styles.content}`}>
               <SectionHeader
-                eyebrow="Charge Management Software"
-                title="Powering Intelligent EV Charging Networks"
-                subtitle="Manage, monitor, and optimize your EV charging infrastructure through a unified cloud-based platform designed for scalability, reliability, and operational efficiency."
+                eyebrow={solutions?.heroSubtitle || ""}
+                title={solutions?.heroTitle || ""}
+                subtitle={solutions?.heroDescription || ""}
                 align="start"
               />
 
