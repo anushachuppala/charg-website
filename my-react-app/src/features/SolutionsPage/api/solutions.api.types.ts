@@ -77,9 +77,10 @@ export type efficiencyItemPointsWire = {
 };
 
 export type keyFeaturesItemCardsWire = {
-  icon: string;
-  title: string;
-  description: string;
+  label?: string;
+  icon?: string;
+  title?: string;
+  description?: string;
 };
 
 export type powerNetworkStepsWire = {
