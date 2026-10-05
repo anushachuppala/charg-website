@@ -50,7 +50,13 @@ const items = [
   },
 ];
 
-function BusinessImpact() {
+import type { BestHub } from "../../features/BestHubPage/dto/bestHub.dto";
+
+type BusinessImpactProps = {
+  bestHub?: BestHub;
+};
+
+function BusinessImpact({ bestHub }: BusinessImpactProps) {
   return (
     <Section className={styles.section}>
       <Container>
@@ -59,16 +65,16 @@ function BusinessImpact() {
             <div className={styles.headings}>
               <SectionHeader
                 as="div"
-                eyebrow="The Results"
-                title="More Than Charging. Maximum Business Impact."
-                subtitle="BEST HUB partners consistently report measurable commercial and operational gains."
+                eyebrow={bestHub?.resultTitle}
+                title={bestHub?.resultSubtitle}
+                subtitle={bestHub?.resultDescription}
                 align="center"
                 trailingSpacing="none"
               />
             </div>
 
             <div className={styles.cards}>
-              {items.map((item) => (
+              {bestHub?.resultItems.map((item) => (
                 <article className={styles.card} key={item.title}>
                   <span className={styles.iconWrapper}>
                     <img
@@ -79,10 +85,10 @@ function BusinessImpact() {
                   </span>
 
                   <div className={styles.content}>
-                    <h2 className={styles.eyebrow}>{item.percentage}</h2>
+                    <h2 className={styles.eyebrow}>{item.value}</h2>
                     <h3 className={styles.cardTitle}>{item.title}</h3>
 
-                    <p className={styles.cardDescription}>{item.description}</p>
+                    <p className={styles.cardDescription}>{item.subtitle}</p>
                   </div>
                 </article>
               ))}

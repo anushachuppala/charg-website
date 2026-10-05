@@ -65,8 +65,6 @@ const logos = [
 import { FaqSection } from "../../shared/ui/faq-section/FaqSection";
 import GetInTouch from "../../shared/ui/getInTouch-section/GetInTouch";
 
-
-
 import { useSolutionsQuery } from "../../features/SolutionsPage/hooks/useSolutions";
 
 const SolutionsPage = () => {
@@ -75,6 +73,7 @@ const SolutionsPage = () => {
   const solutions = data?.[0];
   return (
     <main>
+      <HeroSection solutions={solutions} />
       <WhoIsThisFor
         eyebrow=""
         title={solutions?.whoIsThisForLabel}

@@ -55,8 +55,8 @@ const BestHubPage = () => {
       <HeroSection bestHub={bestHub} />
       <BestHubExperience />
       <Arrival bestHub={bestHub} />
-      <SustainableGrowth />
-      <BusinessImpact />
+      <SustainableGrowth bestHub={bestHub} />
+      <BusinessImpact bestHub={bestHub} />
 
       <FaqSection
         eyebrow="faq's"
