@@ -45,12 +45,16 @@ const faqItems = [
   },
 ];
 
+import { useBestHubQuery } from "../../features/BestHubPage/hooks/useBestHub";
 const BestHubPage = () => {
+  const { data } = useBestHubQuery();
+
+  const bestHub = data?.[0];
   return (
     <main>
-      <HeroSection />
+      <HeroSection bestHub={bestHub} />
       <BestHubExperience />
-      <Arrival />
+      <Arrival bestHub={bestHub} />
       <SustainableGrowth />
       <BusinessImpact />
 

@@ -1,16 +1,20 @@
-import heroImage from "../../assets/BestHub-page/hero-image.png";
 import styles from "./HeroSection.module.css";
-
 import { Section, Container } from "../../shared/layout";
-
 import Button from "../../shared/ui/Button";
 
-function HeroSection() {
+import type { BestHub } from "../../features/BestHubPage/dto/bestHub.dto";
+
+type HeroSectionProps = {
+  bestHub?: BestHub;
+};
+
+function HeroSection({ bestHub }: HeroSectionProps) {
+  console.log("Hero solutions:", bestHub);
   return (
     <Section className={styles.section}>
       <div className={styles.heroBackground}>
         <img
-          src={heroImage}
+          src={bestHub?.heroBackgroundImage}
           alt="Best hub EV platform"
           className={styles.heroImage}
         />
@@ -19,9 +23,7 @@ function HeroSection() {
       <div className={styles.heroOverlay}></div>
       <Container className={styles.heroContainer}>
         <div className={styles.heroContent}>
-          <p className={styles.smallHeading}>
-            Best Hub — EV Destination Platform
-          </p>
+          <p className={styles.smallHeading}>{bestHub?.heroTitle}</p>
 
           <h1 className={styles.heroTitle}>
             More Than <span>EV Charging.</span>

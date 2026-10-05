@@ -65,37 +65,7 @@ const logos = [
 import { FaqSection } from "../../shared/ui/faq-section/FaqSection";
 import GetInTouch from "../../shared/ui/getInTouch-section/GetInTouch";
 
-const faqItems = [
-  {
-    question: "Will Best Charg CMS work with any charger?",
-    answer:
-      "Yes. Best Charg CMS is designed to support compatible EV chargers and charging infrastructure, enabling centralized monitoring, management, and control across connected devices.",
-  },
 
-  {
-    question: "How are charging tariffs configured?",
-    answer:
-      "Operators can create time-based, energy-based, session-based, or dynamic pricing models according to their charging business requirements.",
-  },
-
-  {
-    question: "Can I manage multiple charging locations?",
-    answer:
-      "Yes. The platform enables operators to centrally monitor and manage multiple charging stations and locations from a unified CMS interface.",
-  },
-
-  {
-    question: "Does the platform support remote diagnostics?",
-    answer:
-      "Yes. Best Charg CMS supports remote monitoring and diagnostics, helping operators identify charger issues, check device status, and troubleshoot problems remotely.",
-  },
-
-  {
-    question: "Can the platform be white-labeled?",
-    answer:
-      "Yes. The CMS can support white-label customization, allowing businesses to present the platform with their own branding and user experience.",
-  },
-];
 
 import { useSolutionsQuery } from "../../features/SolutionsPage/hooks/useSolutions";
 
@@ -105,7 +75,6 @@ const SolutionsPage = () => {
   const solutions = data?.[0];
   return (
     <main>
-      <HeroSection solutions={solutions} />
       <WhoIsThisFor
         eyebrow=""
         title={solutions?.whoIsThisForLabel}
