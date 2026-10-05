@@ -59,11 +59,11 @@ const BestHubPage = () => {
       <BusinessImpact bestHub={bestHub} />
 
       <FaqSection
-        eyebrow="faq's"
-        title="Best Hub: Simplifying Your EV Journey"
+        eyebrow={bestHub?.faqSectionLabel}
+        title={bestHub?.faqSectionTitle}
         align="center"
         showHeader={true}
-        items={faqItems}
+        items={bestHub?.faqItems ?? []}
       />
 
       <BuildTheFuture
