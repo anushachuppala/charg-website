@@ -10,6 +10,7 @@ import securityIcon from "../../assets/products-page/securityIcon.png";
 
 import { Section, Container, Panel } from "../../shared/layout";
 import Button from "../../shared/ui/Button";
+import type { Products } from "../../features/ProductsPage/dto/products.dto";
 
 const BADGES = [
   {
@@ -38,7 +39,7 @@ const BADGES = [
   },
 ];
 
-import type { Products } from "../../features/ProductsPage/dto/products.dto";
+
 
 type HeroSectionProps = {
   products?: Products;

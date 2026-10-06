@@ -44,7 +44,6 @@ function HeroSection() {
               <p className={styles.description}>
                 Calculate your vehicle's carbon emissions in seconds and
                 discover <br />
-                how switching to electric mobility can reduce your environmental{" "}
                 <br />
                 impact.
               </p>
