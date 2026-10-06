@@ -17,6 +17,7 @@ import type {
   FaqItem,
   Products,
 } from "../dto/products.dto";
+import { mapfaqItems } from "../../BestHubPage/mappers/bestHub.mapper";
 
 export type { Products };
 
@@ -100,7 +101,7 @@ export function mapProducts(wire: ProductsWire): Products {
       ? wire.specificationTabs
       : [],
 
-    technicalSpecifications: wire?.technicalSpecifications || "",
+    technicalSpecifications: wire?.technicalSpecifications,
     safetyTitle: wire?.safetyTitle || "",
     safetyDescription: wire?.safetyDescription || "",
 
@@ -110,5 +111,17 @@ export function mapProducts(wire: ProductsWire): Products {
       ? wire.safetyItems.map(mapSafetyItem)
       : [],
     faqSectionLabel: wire?.faqSectionLabel || "",
+    faqItems: Array.isArray(wire?.faqItems)
+      ? wire.faqItems.map(mapfaqItems)
+      : [],
   };
+}
+
+export async function getMappedProducts(): Promise<Products[]> {
+  const data = await getProducts();
+  if (!data) return [];
+  const rows = Array.isArray(data) ? data : [data];
+  return rows
+    .map(mapProducts)
+    .filter((row) => row.status.toLowerCase() === "published");
 }
