@@ -29,7 +29,7 @@ export type Products = {
 
   // Technical specifications section
   specificationTabs: string[];
-  technicalSpecifications: technicalSpecifications;
+  technicalSpecifications: TechnicalSpecifications;
 
   // Safety and reliability section
   safetyTitle: string;
@@ -75,7 +75,7 @@ export type TechnicalSpecificationItem = {
   value: string;
 };
 
-export type technicalSpecifications = {
+export type TechnicalSpecifications = {
   ui: TechnicalSpecificationItem[];
   general: TechnicalSpecificationItem[];
   mechanical: TechnicalSpecificationItem[];

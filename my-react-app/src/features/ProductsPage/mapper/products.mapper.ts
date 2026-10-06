@@ -5,6 +5,8 @@ import type {
   FeatureCardsWire,
   SmartFeatureCardsWire,
   SafetyItemsWire,
+  TechnicalSpecificationItemWire,
+  TechnicalSpecificationWire,
   FaqItemsWire,
   ProductsWire,
 } from "../api/products.api.types";
@@ -14,6 +16,8 @@ import type {
   FeatureCard,
   SmartFeatureCard,
   SafetyItem,
+  TechnicalSpecificationItem,
+  TechnicalSpecifications,
   FaqItem,
   Products,
 } from "../dto/products.dto";
@@ -46,6 +50,30 @@ export function mapSmartFeatureCard(
 }
 
 export const mapsmartFeatureCards = mapSmartFeatureCard;
+
+export function mapTechnicalSpecificationItem(
+  wire: TechnicalSpecificationItemWire,
+): TechnicalSpecificationItem {
+  return {
+    label: wire?.label || "",
+    value: wire?.value || "",
+  };
+}
+
+export function mapTechnicalSpecifications(
+  wire: TechnicalSpecificationWire,
+): TechnicalSpecifications {
+  return {
+    ui: wire.ui.map(mapTechnicalSpecificationItem),
+    general: wire.general.map(mapTechnicalSpecificationItem),
+    mechanical: wire.mechanical.map(mapTechnicalSpecificationItem),
+    communication: wire.communication.map(mapTechnicalSpecificationItem),
+    environmental: wire.environmental.map(mapTechnicalSpecificationItem),
+    "certifications and standards": wire["certifications and standards"].map(
+      mapTechnicalSpecificationItem,
+    ),
+  };
+}
 
 export function mapSafetyItem(wire: SafetyItemsWire): SafetyItem {
   return {
@@ -108,8 +136,12 @@ export function mapProducts(wire: ProductsWire): Products {
       ? wire.specificationTabs
       : [],
 
-    technicalSpecifications: wire?.technicalSpecifications,
+    technicalSpecifications: mapTechnicalSpecifications(
+      wire.technicalSpecifications,
+    ),
+
     safetyTitle: wire?.safetyTitle || "",
+
     safetyDescription: wire?.safetyDescription || "",
 
     safetyTags: Array.isArray(wire.safetyTags) ? wire.safetyTags : [],

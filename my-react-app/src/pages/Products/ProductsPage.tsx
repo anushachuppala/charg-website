@@ -57,10 +57,10 @@ const ProductsPage = () => {
       <TechnicalSpecifications />
       <SafetyAndReliability products={products} />
       <FaqSection
-        eyebrow="faq's"
+        eyebrow={products?.faqSectionLabel}
         align="center"
         showHeader={true}
-        items={faqItems}
+        items={products?.faqItems ?? []}
       />
 
       <BuildTheFuture

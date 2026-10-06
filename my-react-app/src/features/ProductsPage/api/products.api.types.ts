@@ -41,11 +41,6 @@ export type ProductsWire = {
   faqItems: FaqItemsWire[];
 };
 
-export type TechnicalSpecificationItem = {
-  label: string;
-  value: string;
-};
-
 export type HeroSpecsWire = {
   label: string;
   answer: string;
@@ -80,10 +75,10 @@ export type TechnicalSpecificationItemWire = {
 };
 
 export type TechnicalSpecificationWire = {
-  ui: TechnicalSpecificationItem[];
-  general: TechnicalSpecificationItem[];
-  mechanical: TechnicalSpecificationItem[];
-  communication: TechnicalSpecificationItem[];
-  environmental: TechnicalSpecificationItem[];
-  "certifications and standards": TechnicalSpecificationItem[];
+  ui: TechnicalSpecificationItemWire[];
+  general: TechnicalSpecificationItemWire[];
+  mechanical: TechnicalSpecificationItemWire[];
+  communication: TechnicalSpecificationItemWire[];
+  environmental: TechnicalSpecificationItemWire[];
+  "certifications and standards": TechnicalSpecificationItemWire[];
 };
