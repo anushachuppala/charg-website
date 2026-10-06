@@ -19,28 +19,28 @@ import backSide from "../../assets/products-page/backSide.png";
 
 import finalDocPdf from "../../assets/products-page/final-doc.pdf.pdf";
 
-const products = [
-  {
-    id: 1,
-    image: ariesCharger,
-    alt: "Aries EV charger",
-  },
-  {
-    id: 2,
-    image: oneSide,
-    alt: "Aries EV charger side view",
-  },
-  {
-    id: 3,
-    image: backSide,
-    alt: "Aries EV charger back view",
-  },
-  {
-    id: 4,
-    image: anotherSide,
-    alt: "Aries EV charger another side view",
-  },
-];
+// const products = [
+//   {
+//     id: 1,
+//     image: ariesCharger,
+//     alt: "Aries EV charger",
+//   },
+//   {
+//     id: 2,
+//     image: oneSide,
+//     alt: "Aries EV charger side view",
+//   },
+//   {
+//     id: 3,
+//     image: backSide,
+//     alt: "Aries EV charger back view",
+//   },
+//   {
+//     id: 4,
+//     image: anotherSide,
+//     alt: "Aries EV charger another side view",
+//   },
+// ];
 
 type Feature = {
   icon: string;
@@ -140,20 +140,27 @@ function FeatureCard({ icon, title, description, offset }: Feature) {
   );
 }
 
-function ProductShowCase() {
+import type { Products } from "../../features/ProductsPage/dto/products.dto";
+
+type ProductShowCaseProps = {
+  products?: Products;
+};
+
+function ProductShowCase({ products }: ProductShowCaseProps) {
+  console.log("ProductShowCase:", products);
   const [index, setIndex] = useState(0);
 
-  const product = products[index];
+  const overviewImages = products?.overviewImages ?? [];
 
   const goPrev = () => {
     setIndex(
       (previousIndex) =>
-        (previousIndex - 1 + products.length) % products.length,
+        (previousIndex - 1 + overviewImages.length) % overviewImages.length,
     );
   };
 
   const goNext = () => {
-    setIndex((previousIndex) => (previousIndex + 1) % products.length);
+    setIndex((previousIndex) => (previousIndex + 1) % overviewImages.length);
   };
 
   return (
@@ -174,11 +181,13 @@ function ProductShowCase() {
 
         <div className={styles.stage}>
           <div className={styles.chargerImage}>
-            <img
-              src={product.image}
-              alt={product.alt}
-              className={styles.ariesCharger}
-            />
+            {overviewImages.length > 0 && (
+              <img
+                src={overviewImages[index]}
+                alt={`Aries EV charger view ${index + 1}`}
+                className={styles.ariesCharger}
+              />
+            )}
           </div>
 
           <div className={styles.controls}>

@@ -43,12 +43,16 @@ const ProductsPage = () => {
 
   const products = data?.[0];
 
+  console.log("Products API data:", data);
+  console.log("Selected product:", products);
+  console.log("Selected overviewImages:", products?.overviewImages);
+
   return (
     <main>
       <HeroSection products={products} />
 
       <WhyAries products={products} />
-      <ProductShowCase />
+      <ProductShowCase products={products} />
       <SmartFeatures />
       <TechnicalSpecifications />
       <SafetyAndReliability />

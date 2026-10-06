@@ -63,6 +63,14 @@ export function mapFaqItem(wire: FaqItemsWire): FaqItem {
 }
 
 export function mapProducts(wire: ProductsWire): Products {
+  console.log(
+    "Mapping product:",
+    wire.id,
+    wire.title,
+    "overviewImages:",
+    wire.overviewImages,
+  );
+
   return {
     id: wire.id || 0,
     title: wire?.title || "",
