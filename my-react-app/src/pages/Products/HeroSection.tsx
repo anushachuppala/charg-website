@@ -45,7 +45,8 @@ type HeroSectionProps = {
 };
 
 function HeroSection({ products }: HeroSectionProps) {
-  console.log("Hero Products:", products);
+  console.log("hero products", products);
+
   const imageContentRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {

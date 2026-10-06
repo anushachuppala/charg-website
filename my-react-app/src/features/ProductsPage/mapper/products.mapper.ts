@@ -64,14 +64,28 @@ export function mapTechnicalSpecifications(
   wire: TechnicalSpecificationWire,
 ): TechnicalSpecifications {
   return {
-    ui: wire.ui.map(mapTechnicalSpecificationItem),
-    general: wire.general.map(mapTechnicalSpecificationItem),
-    mechanical: wire.mechanical.map(mapTechnicalSpecificationItem),
-    communication: wire.communication.map(mapTechnicalSpecificationItem),
-    environmental: wire.environmental.map(mapTechnicalSpecificationItem),
-    "certifications and standards": wire["certifications and standards"].map(
-      mapTechnicalSpecificationItem,
-    ),
+    ui: Array.isArray(wire?.ui)
+      ? wire.ui.map(mapTechnicalSpecificationItem)
+      : [],
+
+    general: Array.isArray(wire?.general)
+      ? wire.general.map(mapTechnicalSpecificationItem)
+      : [],
+    mechanical: Array.isArray(wire?.mechanical)
+      ? wire.mechanical.map(mapTechnicalSpecificationItem)
+      : [],
+    communication: Array.isArray(wire?.communication)
+      ? wire.communication.map(mapTechnicalSpecificationItem)
+      : [],
+    environmental: Array.isArray(wire?.environmental)
+      ? wire.environmental.map(mapTechnicalSpecificationItem)
+      : [],
+
+    "certifications and standards": Array.isArray(
+      wire?.["certifications and standards"],
+    )
+      ? wire["certifications and standards"].map(mapTechnicalSpecificationItem)
+      : [],
   };
 }
 

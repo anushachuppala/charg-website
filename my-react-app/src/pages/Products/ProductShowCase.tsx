@@ -12,35 +12,6 @@ import robustIcon from "../../assets/products-page/robustIcon.png";
 import wifiIcon from "../../assets/products-page/wifiIcon.png";
 import certificateIcon from "../../assets/products-page/certificateIcon.png";
 import weatherIcon from "../../assets/products-page/weather.png";
-import ariesCharger from "../../assets/products-page/ariesCharger.png";
-import oneSide from "../../assets/products-page/oneSide.png";
-import anotherSide from "../../assets/products-page/anotherSide.png";
-import backSide from "../../assets/products-page/backSide.png";
-
-import finalDocPdf from "../../assets/products-page/final-doc.pdf.pdf";
-
-// const products = [
-//   {
-//     id: 1,
-//     image: ariesCharger,
-//     alt: "Aries EV charger",
-//   },
-//   {
-//     id: 2,
-//     image: oneSide,
-//     alt: "Aries EV charger side view",
-//   },
-//   {
-//     id: 3,
-//     image: backSide,
-//     alt: "Aries EV charger back view",
-//   },
-//   {
-//     id: 4,
-//     image: anotherSide,
-//     alt: "Aries EV charger another side view",
-//   },
-// ];
 
 type Feature = {
   icon: string;
@@ -147,7 +118,6 @@ type ProductShowCaseProps = {
 };
 
 function ProductShowCase({ products }: ProductShowCaseProps) {
-  console.log("ProductShowCase:", products);
   const [index, setIndex] = useState(0);
 
   const overviewImages = products?.overviewImages ?? [];
