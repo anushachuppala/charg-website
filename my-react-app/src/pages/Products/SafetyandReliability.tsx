@@ -9,8 +9,6 @@ import image4 from "../../assets/products-page/image4.png";
 import image5 from "../../assets/products-page/image5.png";
 import image6 from "../../assets/products-page/image6.png";
 
-const certifications = ["IEC 61851", "CE", "BIS", "RoHS", "IP54"];
-
 const features = [
   {
     icon: image1,
@@ -61,7 +59,13 @@ function CheckIcon() {
   );
 }
 
-function SafetyAndReliability() {
+import type { Products } from "../../features/ProductsPage/dto/products.dto";
+
+type SafetyAndReliabilityProps = {
+  products?: Products;
+};
+
+function SafetyAndReliability({ products }: SafetyAndReliabilityProps) {
   return (
     <Section className={styles.Section}>
       <img
@@ -74,19 +78,12 @@ function SafetyAndReliability() {
         <div className={styles.content}>
           <p className={styles.heading}>Safety &amp; Reliability</p>
 
-          <h2 className={styles.title}>
-            Six layers of protection. <br />
-            Zero compromise.
-          </h2>
+          <h2 className={styles.title}>{products?.safetyTitle}</h2>
 
-          <p className={styles.description}>
-            Every Aries unit ships with enterprise-grade protection circuitry
-            validated to international safety standards — so your assets, your
-            users, and your vehicles stay safe.
-          </p>
+          <p className={styles.description}>{products?.safetyDescription}</p>
 
           <ul className={styles.badges}>
-            {certifications.map((item) => (
+            {products?.safetyTags.map((item) => (
               <li key={item} className={styles.badge}>
                 {item}
               </li>
@@ -95,7 +92,7 @@ function SafetyAndReliability() {
         </div>
 
         <ul className={styles.grid}>
-          {features.map((feature) => (
+          {products?.safetyItems.map((feature) => (
             <li key={feature.title} className={styles.card}>
               <span className={styles.iconWrap}>
                 <img src={feature.icon} className={styles.icon} />

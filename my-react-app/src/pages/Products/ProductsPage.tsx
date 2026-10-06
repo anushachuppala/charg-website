@@ -53,9 +53,9 @@ const ProductsPage = () => {
 
       <WhyAries products={products} />
       <ProductShowCase products={products} />
-      <SmartFeatures />
+      <SmartFeatures products={products} />
       <TechnicalSpecifications />
-      <SafetyAndReliability />
+      <SafetyAndReliability products={products} />
       <FaqSection
         eyebrow="faq's"
         align="center"

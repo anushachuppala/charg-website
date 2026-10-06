@@ -117,7 +117,11 @@ const specifications = {
   ],
 };
 
-function TechnicalSpecifications() {
+import type { Products } from "../../features/ProductsPage/dto/products.dto";
+type TechnicalSpecificationsProps = {
+  products?: Products;
+};
+function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
   const [activeTab, setActiveTab] = useState<TabId>("general");
 
   // Controls whether the dialog is visible

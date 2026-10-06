@@ -43,7 +43,14 @@ const featuresItems = [
   },
 ];
 
-function smartFeatures() {
+import type { Products } from "../../features/ProductsPage/dto/products.dto";
+
+type smartFeaturesProps = {
+  products?: Products;
+};
+
+function smartFeatures({ products }: smartFeaturesProps) {
+  console.log("smartFeatures:", products);
   return (
     <Section className={styles.Section}>
       <Container>
@@ -54,7 +61,7 @@ function smartFeatures() {
           />
 
           <WhoIsThisFor
-            items={featuresItems}
+            items={products?.smartFeatureCards ?? []}
             showHeader={false}
             columns={6}
             cardColumns={3}
