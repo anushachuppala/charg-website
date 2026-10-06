@@ -60,7 +60,7 @@
 .cardTitle {
   margin: 0;
   font-size: var(--text-xl);
-  font-weight: var(--font-weight-extrabold);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
 }
 

@@ -47,7 +47,7 @@ const ProductsPage = () => {
     <main>
       <HeroSection products={products} />
 
-      <WhyAries />
+      <WhyAries products={products} />
       <ProductShowCase />
       <SmartFeatures />
       <TechnicalSpecifications />

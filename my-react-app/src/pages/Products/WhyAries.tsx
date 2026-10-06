@@ -35,19 +35,25 @@ const items = [
   },
 ];
 
-function WhyAries() {
+import type { Products } from "../../features/ProductsPage/dto/products.dto";
+
+type WhyAriesProps = {
+  products?: Products;
+};
+
+function WhyAries({ products }: WhyAriesProps) {
   return (
     <Section>
       <Container>
         <Panel>
           <SectionHeader
             as="div"
-            title="Why ARIES?"
-            subtitle="More than a charger. A complete charging experience."
+            title={products?.featuresSectionTitle || ""}
+            subtitle={products?.featuresSectionDescription || ""}
           />
 
           <WhoIsThisFor
-            items={items}
+            items={products?.featureCards ?? []}
             showHeader={false}
             columns={4}
             embedded={true}
