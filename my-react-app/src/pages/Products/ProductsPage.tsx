@@ -36,10 +36,17 @@ const faqItems = [
   },
 ];
 
-const productsPage = () => {
+import { useProductsQuery } from "../../features/ProductsPage/hooks/useProducts";
+
+const ProductsPage = () => {
+  const { data } = useProductsQuery();
+
+  const products = data?.[0];
+
   return (
     <main>
-      <HeroSection />
+      <HeroSection products={products} />
+
       <WhyAries />
       <ProductShowCase />
       <SmartFeatures />
@@ -73,4 +80,4 @@ const productsPage = () => {
   );
 };
 
-export default productsPage;
+export default ProductsPage;

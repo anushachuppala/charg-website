@@ -3,7 +3,6 @@ import gsap from "gsap";
 
 import styles from "./HeroSection.module.css";
 
-import ariesCharger from "../../assets/products-page/ariesCharger.png";
 import wifiIcon2 from "../../assets/products-page/wifiIcon2.png";
 import powerIcon from "../../assets/products-page/powerIcon.png";
 import cloudIcon from "../../assets/products-page/cloudIcon.png";
@@ -11,12 +10,6 @@ import securityIcon from "../../assets/products-page/securityIcon.png";
 
 import { Section, Container, Panel } from "../../shared/layout";
 import Button from "../../shared/ui/Button";
-
-const STATS = [
-  { value: "7 kW", label: "AC Output" },
-  { value: "IP54", label: "Weatherproof" },
-  { value: "OCPP", label: "1.6J Ready" },
-];
 
 const BADGES = [
   {
@@ -45,7 +38,14 @@ const BADGES = [
   },
 ];
 
-function HeroSection() {
+import type { Products } from "../../features/ProductsPage/dto/products.dto";
+
+type HeroSectionProps = {
+  products?: Products;
+};
+
+function HeroSection({ products }: HeroSectionProps) {
+  console.log("Hero Products:", products);
   const imageContentRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -70,18 +70,12 @@ function HeroSection() {
             <div className={styles.mainGrid}>
               {/* left content */}
               <div className={styles.textContent}>
-                <p className={styles.eyebrow}>Aries 7KW</p>
+                <p className={styles.eyebrow}>{products?.title}</p>
 
-                <h1 className={styles.title}>
-                  Smart AC Charging for Everyday EVs
-                </h1>
+                <h1 className={styles.title}>{products?.heroTitle || ""}</h1>
 
                 <p className={styles.description}>
-                  The AC EV Charger Aries 7kW delivers reliable, intelligent,
-                  and future <br />
-                  ready charging for homes, workplaces, commercial properties,
-                  and <br />
-                  public EV infrastructure.
+                  {products?.heroDescription || ""}
                 </p>
 
                 <div className={styles.buttonContainer}>
@@ -90,10 +84,10 @@ function HeroSection() {
                 </div>
 
                 <ul className={styles.stats}>
-                  {STATS.map((stat) => (
-                    <li key={stat.value} className={styles.statCard}>
-                      <h3 className={styles.statValue}>{stat.value}</h3>
+                  {products?.heroSpecs.map((stat) => (
+                    <li key={stat.answer} className={styles.statCard}>
                       <p className={styles.statLabel}>{stat.label}</p>
+                      <h3 className={styles.statValue}>{stat.answer}</h3>
                     </li>
                   ))}
                 </ul>
@@ -102,7 +96,7 @@ function HeroSection() {
               {/* Image */}
               <div ref={imageContentRef} className={styles.imageContent}>
                 <img
-                  src={ariesCharger}
+                  src={products?.overviewImages?.[0]}
                   alt="Aries 7kW AC charger"
                   className={styles.ariesCharger}
                 />

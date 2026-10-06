@@ -17,7 +17,6 @@ import type {
   FaqItem,
   Products,
 } from "../dto/products.dto";
-import { mapfaqItems } from "../../BestHubPage/mappers/bestHub.mapper";
 
 export type { Products };
 
@@ -112,7 +111,7 @@ export function mapProducts(wire: ProductsWire): Products {
       : [],
     faqSectionLabel: wire?.faqSectionLabel || "",
     faqItems: Array.isArray(wire?.faqItems)
-      ? wire.faqItems.map(mapfaqItems)
+      ? wire.faqItems.map(mapFaqItem)
       : [],
   };
 }
