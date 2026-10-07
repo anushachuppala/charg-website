@@ -77,14 +77,14 @@ export function mapTechnicalSpecifications(
     communication: Array.isArray(wire?.communication)
       ? wire.communication.map(mapTechnicalSpecificationItem)
       : [],
-    environmental: Array.isArray(wire?.environmental)
-      ? wire.environmental.map(mapTechnicalSpecificationItem)
+    environment: Array.isArray(wire?.environment)
+      ? wire.environment.map(mapTechnicalSpecificationItem)
       : [],
 
-    "certifications and standards": Array.isArray(
-      wire?.["certifications and standards"],
+    "Certifications And Standards": Array.isArray(
+      wire?.["Certifications And Standards"],
     )
-      ? wire["certifications and standards"].map(mapTechnicalSpecificationItem)
+      ? wire["Certifications And Standards"].map(mapTechnicalSpecificationItem)
       : [],
   };
 }

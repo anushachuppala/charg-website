@@ -22,7 +22,6 @@ import { WhyBestCharge } from "../../shared/ui/whyBestCharge-section/whyBestChar
 
 import { CorePlatform } from "../../shared/ui/corePlatform-section";
 import PowerCharge from "./PowerCharge";
-import LeadingCompanies from "../../shared/ui/leadingCompanies-section/LeadingCompanies";
 
 import KeyFeatures from "../../shared/ui/keyFeatures-section/KeyFeatures";
 
@@ -102,15 +101,6 @@ const SolutionsPage = () => {
 
       <PowerCharge solutions={solutions} />
       <WhyBestCharge items={whyBestChargeItems} />
-
-      <LeadingCompanies
-        eyebrow="Trusted by leading companies nationwide"
-        title=""
-        subtitle=""
-        align="center"
-        logos={logos}
-        showHeader={true}
-      />
 
       <FaqSection
         eyebrow={solutions?.faqSectionLabel || ""}

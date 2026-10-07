@@ -25,9 +25,9 @@
 
 .mainGrid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
-  gap: var(--space-10, 3rem);
+  gap: var(--space-18, 3rem);
 }
 
 .textContent {
@@ -51,10 +51,9 @@
 .title {
   font-size: var(--text-4xl);
   font-weight: var(--font-weight-extrabold);
-  max-width: 500px;
   color: var(--color-primary);
-  line-height: 1.15;
-  white-space: nowrap;
+  line-height: var(--leading-snug);
+  max-width: 100%;
   margin: 0;
 }
 
@@ -120,8 +119,8 @@
 }
 
 .ariesCharger {
-  width: 70%;
-  height: 60%;
+  width: 80%;
+  height: auto;
   display: block;
   filter: (drop-shadow(0 25px 35px #00000014));
 }

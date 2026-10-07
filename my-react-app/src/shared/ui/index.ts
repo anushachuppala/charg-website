@@ -7,4 +7,3 @@ export * from "./whyBestCharge-section";
 export * from "./faq-section";
 export * from "./getInTouch-section";
 export * from "./keyFeatures-section";
-export * from "./leadingCompanies-section";

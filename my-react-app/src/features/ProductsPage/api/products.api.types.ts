@@ -79,6 +79,6 @@ export type TechnicalSpecificationWire = {
   general: TechnicalSpecificationItemWire[];
   mechanical: TechnicalSpecificationItemWire[];
   communication: TechnicalSpecificationItemWire[];
-  environmental: TechnicalSpecificationItemWire[];
-  "certifications and standards": TechnicalSpecificationItemWire[];
+  environment: TechnicalSpecificationItemWire[];
+  "Certifications And Standards": TechnicalSpecificationItemWire[];
 };

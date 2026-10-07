@@ -80,6 +80,6 @@ export type TechnicalSpecifications = {
   general: TechnicalSpecificationItem[];
   mechanical: TechnicalSpecificationItem[];
   communication: TechnicalSpecificationItem[];
-  environmental: TechnicalSpecificationItem[];
-  "certifications and standards": TechnicalSpecificationItem[];
+  environment: TechnicalSpecificationItem[];
+  "Certifications And Standards": TechnicalSpecificationItem[];
 };
