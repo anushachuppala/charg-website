@@ -39,8 +39,6 @@ const BADGES = [
   },
 ];
 
-
-
 type HeroSectionProps = {
   products?: Products;
 };
@@ -74,7 +72,12 @@ function HeroSection({ products }: HeroSectionProps) {
               <div className={styles.textContent}>
                 <p className={styles.eyebrow}>{products?.title}</p>
 
-                <h1 className={styles.title}>{products?.heroTitle || ""}</h1>
+                <h1 className={styles.title}>
+                  {products?.heroTitle || ""}
+                  {/* Smart AC Charging, Built for
+                  <br />
+                  Everyday EVs */}
+                </h1>
 
                 <p className={styles.description}>
                   {products?.heroDescription || ""}

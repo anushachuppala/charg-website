@@ -8,27 +8,29 @@ import SafetyAndReliability from "./SafetyandReliability";
 import { FaqSection } from "../../shared/ui";
 import BuildTheFuture from "../../shared/ui/buildTheFuture-section/BuildTheFuture";
 
+import { useParams } from "react-router-dom";
 import { useProductsQuery } from "../../features/ProductsPage/hooks/useProducts";
 
 const ProductsPage = () => {
+  const { slug } = useParams();
+
   const { data } = useProductsQuery();
 
-  const products = data?.[0];
+  const product = data?.find((item) => item.slug === slug);
 
   return (
     <main>
-      <HeroSection products={products} />
-
-      <WhyAries products={products} />
-      <ProductShowCase products={products} />
-      <SmartFeatures products={products} />
-      <TechnicalSpecifications products={products} />
-      <SafetyAndReliability products={products} />
+      <HeroSection products={product} />
+      <WhyAries products={product} />
+      <ProductShowCase products={product} />
+      <SmartFeatures products={product} />
+      <TechnicalSpecifications products={product} />
+      <SafetyAndReliability products={product} />
       <FaqSection
-        eyebrow={products?.faqSectionLabel}
+        eyebrow={product?.faqSectionLabel}
         align="center"
         showHeader={true}
-        items={products?.faqItems ?? []}
+        items={product?.faqItems ?? []}
       />
 
       <BuildTheFuture

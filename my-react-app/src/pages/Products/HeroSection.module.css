@@ -51,6 +51,7 @@
 .title {
   font-size: var(--text-4xl);
   font-weight: var(--font-weight-extrabold);
+  max-width: 500px;
   color: var(--color-primary);
   line-height: 1.15;
   white-space: nowrap;
@@ -119,8 +120,8 @@
 }
 
 .ariesCharger {
-  width: 80%;
-  height: auto;
+  width: 70%;
+  height: 60%;
   display: block;
   filter: (drop-shadow(0 25px 35px #00000014));
 }

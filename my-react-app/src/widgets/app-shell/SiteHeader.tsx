@@ -6,8 +6,13 @@ import logo from "../../assets/images/About-page/logo.png";
 import Button from "../../shared/ui/Button";
 import styles from "./SiteHeader.module.css";
 
+import { useProductsQuery } from "../../features/ProductsPage/hooks/useProducts";
+
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+
+  const { data: products = [] } = useProductsQuery();
 
   return (
     <>
@@ -49,12 +54,45 @@ export function SiteHeader() {
             }`}
           >
             {/* Products */}
-            <li className={styles.productsMenu}>
+            {/* <li className={styles.productsMenu}>
               <Link to="/products" onClick={() => setMenuOpen(false)}>
                 Products
               </Link>
 
               <IoChevronDown className={styles.icon} />
+            </li> */}
+
+            <li className={styles.productsMenu}>
+              <div className={styles.productsLink}>
+                <Link to="/products" onClick={() => setMenuOpen(false)}>
+                  Products
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setProductsOpen(!productsOpen)}
+                  aria-label="Toggle products menu"
+                >
+                  <IoChevronDown className={styles.icon} />
+                </button>
+              </div>
+
+              {productsOpen && (
+                <div className={styles.productsDropdown}>
+                  {products.map((product) => (
+                    <Link
+                      key={product.id}
+                      to={`/products/${product.slug}`}
+                      onClick={() => {
+                        setProductsOpen(false);
+                        setMenuOpen(false);
+                      }}
+                    >
+                      {product.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </li>
 
             {/* Solutions */}

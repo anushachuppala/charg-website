@@ -105,13 +105,13 @@ export function mapFaqItem(wire: FaqItemsWire): FaqItem {
 }
 
 export function mapProducts(wire: ProductsWire): Products {
-  console.log(
-    "Mapping product:",
-    wire.id,
-    wire.title,
-    "overviewImages:",
-    wire.overviewImages,
-  );
+  console.log("Mapping product:", wire.id, wire.title);
+
+  console.log("RAW SAFETY TITLE:", wire.safetyTitle);
+  console.log("RAW SAFETY DESCRIPTION:", wire.safetyDescription);
+  console.log("RAW SAFETY TAGS:", wire.safetyTags);
+
+  console.log("RAW SAFETY ITEMS:", JSON.stringify(wire.safetyItems, null, 2));
 
   return {
     id: wire.id || 0,
