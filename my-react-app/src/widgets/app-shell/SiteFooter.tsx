@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Section } from "../../shared/layout";
 
 import linkedInIcon from "../../assets/images/footer/social-link/linkedInIcon.png";
@@ -10,35 +11,74 @@ import styles from "./SiteFooter.module.css";
 const FOOTER_COLUMNS = [
   {
     title: "Platform",
-    links: ["Charging Management Solution", "EV User App", "Operator App"],
+    links: [
+      { label: "Charging Management Solution", href: "#" },
+      { label: "EV User App", href: "#" },
+      { label: "Operator App", href: "#" },
+    ],
   },
   {
     title: "Services",
     links: [
-      "Home Charging",
-      "Fleet Charging",
-      "Public Charging",
-      "Highway Charging",
-      "AMC & Support",
+      { label: "Home Charging", href: "#" },
+      { label: "Fleet Charging", href: "#" },
+      { label: "Public Charging", href: "#" },
+      { label: "Highway Charging", href: "#" },
+      { label: "AMC & Support", href: "#" },
     ],
   },
   {
     title: "Aries Chargers",
-    links: ["Aries 7kW", "Aries 7.4kW", "Aries 11kW", "Aries 22kW"],
+    links: [
+      {
+        label: "Aries 7kW",
+        href: "/products/ac-ev-charger-aries-7",
+      },
+      {
+        label: "Aries 7.4kW",
+        href: "/products/ac-ev-charger-aries-74",
+      },
+      {
+        label: "Aries 11kW",
+        href: "/products/ac-ev-charger-aries-11",
+      },
+      {
+        label: "Aries 22kW",
+        href: "/products/ac-ev-charger-aries-22",
+      },
+    ],
   },
   {
     title: "Polaris Chargers",
     links: [
-      "Polaris 30kW",
-      "Polaris 60kW",
-      "Polaris 90kW",
-      "Polaris 120kW",
-      "Polaris 180kW",
+      {
+        label: "Polaris 30kW",
+        href: "/products/dc-fast-charger-polaris-30",
+      },
+      {
+        label: "Polaris 60kW",
+        href: "/products/dc-ev-charger-polaris-60",
+      },
+      {
+        label: "Polaris 90kW",
+        href: "/products/dc-fast-ev-charger-polaris-90",
+      },
+      {
+        label: "Polaris 120kW",
+        href: "/products/dc-fast-charger-polaris-120",
+      },
+      {
+        label: "Polaris 180kW",
+        href: "/products/dc-fast-charger-polaris-180",
+      },
     ],
   },
   {
     title: "Resources",
-    links: ["Blog", "Emissions Calculator"],
+    links: [
+      { label: "Blog", href: "#" },
+      { label: "Emissions Calculator", href: "#" },
+    ],
   },
 ];
 
@@ -61,10 +101,10 @@ export function SiteFooter() {
 
                 <ul className={styles.linkList}>
                   {column.links.map((link) => (
-                    <li key={link}>
-                      <a className={styles.link} href="#">
-                        {link}
-                      </a>
+                    <li key={link.label}>
+                      <Link className={styles.link} to={link.href}>
+                        {link.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -57,7 +57,6 @@ const CATEGORIES: Category[] = [
         image: aries7kw,
       },
       {
-        // Updated to match API slug
         slug: "ac-ev-charger-aries-74",
         title: "Aries 7.4kW",
         description: "Powerful. Sleek. Public or Private Ready.",
@@ -87,7 +86,6 @@ const CATEGORIES: Category[] = [
         label: "Polaris Series",
         products: [
           {
-            // Updated to match API slug
             slug: "dc-fast-charger-polaris-30",
             title: "Polaris 30kW",
             description: "Entry-level DC charging for urban mobility",
@@ -100,21 +98,18 @@ const CATEGORIES: Category[] = [
             image: polaris60kw,
           },
           {
-            // Updated to match API slug
             slug: "dc-fast-ev-charger-polaris-90",
             title: "Polaris 90kW",
             description: "Optimized for busy public charging locations",
             image: polaris90kw,
           },
           {
-            // Updated to match API slug
             slug: "dc-fast-charger-polaris-120",
             title: "Polaris 120kW",
             description: DEFAULT_DESC,
             image: polaris120kw,
           },
           {
-            // Updated to match API slug
             slug: "dc-fast-charger-polaris-180",
             title: "Polaris 180kW",
             description: DEFAULT_DESC,
@@ -127,28 +122,24 @@ const CATEGORIES: Category[] = [
         label: "Voltis Series",
         products: [
           {
-            // Updated to match API slug
             slug: "voltis-60-90kw-dc-fast-charger",
             title: "Voltis 60-90kW",
             description: DEFAULT_DESC,
             image: voltis60kw,
           },
           {
-            // Updated to match API slug
             slug: "voltis-90-120kw-dc-fast-charger",
             title: "Voltis 90-120kW",
             description: DEFAULT_DESC,
             image: voltis90kw,
           },
           {
-            // Updated to match API slug
             slug: "voltis-120-180kw-dc-fast-charger",
             title: "Voltis 120-180kW",
             description: DEFAULT_DESC,
             image: voltis120kw,
           },
           {
-            // Updated to match API slug
             slug: "voltis-240kw-dc-fast-charger",
             title: "Voltis 240kW",
             description: DEFAULT_DESC,
@@ -243,7 +234,11 @@ export function SiteHeader() {
             }`}
           >
             {/* Products */}
-            <li className={styles.menu}>
+            <li
+              className={styles.menu}
+              onMouseEnter={() => setProductsOpen(true)}
+              onMouseLeave={() => setProductsOpen(false)}
+            >
               <div
                 className={`${styles.trigger} ${
                   isProductsActive ? styles.triggerActive : ""
@@ -256,7 +251,6 @@ export function SiteHeader() {
                 <button
                   type="button"
                   className={styles.chevronBtn}
-                  onClick={() => setProductsOpen((open) => !open)}
                   aria-label="Toggle products menu"
                   aria-expanded={productsOpen}
                 >
