@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { IoChevronDown, IoMenu, IoClose } from "react-icons/io5";
+import { IoChevronDown, IoChevronUp, IoMenu, IoClose } from "react-icons/io5";
 
 import logo from "../../assets/images/About-page/logo.png";
 import Button from "../../shared/ui/Button";
@@ -21,6 +21,7 @@ import voltis120kw from "../../assets/Voltis-120-180kw.png";
 import voltis240kw from "../../assets/Voltis-240kw.png";
 
 type CategoryId = "ac" | "dc";
+type SeriesId = "polaris" | "voltis";
 
 interface MenuProduct {
   slug: string;
@@ -29,11 +30,20 @@ interface MenuProduct {
   image: string;
 }
 
-interface Category {
-  id: CategoryId;
+interface Series {
+  id: SeriesId;
   label: string;
   products: MenuProduct[];
 }
+
+interface Category {
+  id: CategoryId;
+  label: string;
+  products?: MenuProduct[];
+  series?: Series[];
+}
+
+const DEFAULT_DESC = "Explore our smart, reliable EV charging solutions.";
 
 const CATEGORIES: Category[] = [
   {
@@ -47,7 +57,8 @@ const CATEGORIES: Category[] = [
         image: aries7kw,
       },
       {
-        slug: "ac-ev-charger-aries-7-4",
+        // Updated to match API slug
+        slug: "ac-ev-charger-aries-74",
         title: "Aries 7.4kW",
         description: "Powerful. Sleek. Public or Private Ready.",
         image: aries74kw,
@@ -70,60 +81,80 @@ const CATEGORIES: Category[] = [
   {
     id: "dc",
     label: "DC EV Charging Solutions",
-    products: [
+    series: [
       {
-        slug: "dc-ev-charger-polaris-30",
-        title: "Polaris 30kW",
-        description: "Compact DC fast charging for small commercial sites.",
-        image: polaris30kw,
+        id: "polaris",
+        label: "Polaris Series",
+        products: [
+          {
+            // Updated to match API slug
+            slug: "dc-fast-charger-polaris-30",
+            title: "Polaris 30kW",
+            description: "Entry-level DC charging for urban mobility",
+            image: polaris30kw,
+          },
+          {
+            slug: "dc-ev-charger-polaris-60",
+            title: "Polaris 60kW",
+            description: "Reduce charging time and keep vehicles moving",
+            image: polaris60kw,
+          },
+          {
+            // Updated to match API slug
+            slug: "dc-fast-ev-charger-polaris-90",
+            title: "Polaris 90kW",
+            description: "Optimized for busy public charging locations",
+            image: polaris90kw,
+          },
+          {
+            // Updated to match API slug
+            slug: "dc-fast-charger-polaris-120",
+            title: "Polaris 120kW",
+            description: DEFAULT_DESC,
+            image: polaris120kw,
+          },
+          {
+            // Updated to match API slug
+            slug: "dc-fast-charger-polaris-180",
+            title: "Polaris 180kW",
+            description: DEFAULT_DESC,
+            image: polaris180kw,
+          },
+        ],
       },
       {
-        slug: "dc-ev-charger-polaris-60",
-        title: "Polaris 60kW",
-        description: "Fast charging for retail, hotels and workplaces.",
-        image: polaris60kw,
-      },
-      {
-        slug: "dc-ev-charger-polaris-90",
-        title: "Polaris 90kW",
-        description: "High-speed charging for busy public locations.",
-        image: polaris90kw,
-      },
-      {
-        slug: "dc-ev-charger-polaris-120",
-        title: "Polaris 120kW",
-        description: "Rapid charging built for highway and fleet hubs.",
-        image: polaris120kw,
-      },
-      {
-        slug: "dc-ev-charger-polaris-180",
-        title: "Polaris 180kW",
-        description: "Ultra-fast charging for high-traffic destinations.",
-        image: polaris180kw,
-      },
-      {
-        slug: "dc-ev-charger-voltis-60-90",
-        title: "Voltis 60-90kW",
-        description: "Flexible split-power DC charging for growing sites.",
-        image: voltis60kw,
-      },
-      {
-        slug: "dc-ev-charger-voltis-90-120",
-        title: "Voltis 90-120kW",
-        description: "Scalable power sharing across multiple vehicles.",
-        image: voltis90kw,
-      },
-      {
-        slug: "dc-ev-charger-voltis-120-180",
-        title: "Voltis 120-180kW",
-        description: "High-capacity charging for large fleets and depots.",
-        image: voltis120kw,
-      },
-      {
-        slug: "dc-ev-charger-voltis-240",
-        title: "Voltis 240kW",
-        description: "Our highest-output charger for demanding operations.",
-        image: voltis240kw,
+        id: "voltis",
+        label: "Voltis Series",
+        products: [
+          {
+            // Updated to match API slug
+            slug: "voltis-60-90kw-dc-fast-charger",
+            title: "Voltis 60-90kW",
+            description: DEFAULT_DESC,
+            image: voltis60kw,
+          },
+          {
+            // Updated to match API slug
+            slug: "voltis-90-120kw-dc-fast-charger",
+            title: "Voltis 90-120kW",
+            description: DEFAULT_DESC,
+            image: voltis90kw,
+          },
+          {
+            // Updated to match API slug
+            slug: "voltis-120-180kw-dc-fast-charger",
+            title: "Voltis 120-180kW",
+            description: DEFAULT_DESC,
+            image: voltis120kw,
+          },
+          {
+            // Updated to match API slug
+            slug: "voltis-240kw-dc-fast-charger",
+            title: "Voltis 240kW",
+            description: DEFAULT_DESC,
+            image: voltis240kw,
+          },
+        ],
       },
     ],
   },
@@ -133,6 +164,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryId>("ac");
+  const [activeSeries, setActiveSeries] = useState<SeriesId>("polaris");
 
   const { pathname } = useLocation();
 
@@ -141,34 +173,41 @@ export function SiteHeader() {
     setProductsOpen(false);
   };
 
-  // Close everything when the route changes
   useEffect(() => {
     setMenuOpen(false);
     setProductsOpen(false);
   }, [pathname]);
 
-  // Close the mega menu with Escape
   useEffect(() => {
     if (!productsOpen) return;
+
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setProductsOpen(false);
     };
+
     document.addEventListener("keydown", onKeyDown);
+
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [productsOpen]);
 
   const isProductsActive = productsOpen || pathname.startsWith("/products");
+
   const currentCategory =
     CATEGORIES.find((c) => c.id === activeCategory) ?? CATEGORIES[0];
 
+  const visibleProducts: MenuProduct[] = currentCategory.series
+    ? (
+        currentCategory.series.find((s) => s.id === activeSeries) ??
+        currentCategory.series[0]
+      ).products
+    : (currentCategory.products ?? []);
+
   return (
     <>
-      {/* Mobile drawer overlay */}
       {menuOpen && (
         <div className={styles.overlay} onClick={() => setMenuOpen(false)} />
       )}
 
-      {/* Desktop dim backdrop behind the mega menu */}
       {productsOpen && (
         <div
           className={styles.backdrop}
@@ -179,7 +218,6 @@ export function SiteHeader() {
 
       <header>
         <nav className={styles.navbar}>
-          {/* Logo */}
           <div className={styles.logocontainer}>
             <Link to="/" onClick={closeAll}>
               <img
@@ -190,7 +228,6 @@ export function SiteHeader() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             type="button"
             className={styles.menuButton}
@@ -200,20 +237,19 @@ export function SiteHeader() {
             {menuOpen ? <IoClose /> : <IoMenu />}
           </button>
 
-          {/* Navigation */}
           <ul
             className={`${styles.navlinks} ${
               menuOpen ? styles.navlinksOpen : ""
             }`}
           >
-            {/* Products (mega menu) */}
+            {/* Products */}
             <li className={styles.menu}>
               <div
                 className={`${styles.trigger} ${
                   isProductsActive ? styles.triggerActive : ""
                 }`}
               >
-                <Link to="/products" onClick={closeAll}>
+                <Link to="/products/ac-ev-charger-aries-11" onClick={closeAll}>
                   Products
                 </Link>
 
@@ -238,47 +274,96 @@ export function SiteHeader() {
                 }`}
               >
                 <div className={styles.inner}>
-                  {/* Left: category tabs */}
+                  {/* Categories */}
                   <div className={styles.categories}>
                     {CATEGORIES.map((category) => {
                       const isActive = category.id === activeCategory;
+                      const hasSeries = Boolean(category.series);
 
                       return (
-                        <button
-                          key={category.id}
-                          type="button"
-                          className={`${styles.category} ${
-                            isActive ? styles.categoryActive : ""
-                          }`}
-                          onClick={() => setActiveCategory(category.id)}
-                          aria-pressed={isActive}
-                        >
-                          <span
-                            className={
-                              category.id === "ac"
-                                ? styles.acCategoryLabel
-                                : styles.dcCategoryLabel
-                            }
+                        <div key={category.id}>
+                          <button
+                            type="button"
+                            className={`${styles.category} ${
+                              isActive ? styles.categoryActive : ""
+                            }`}
+                            onClick={() => setActiveCategory(category.id)}
+                            aria-pressed={isActive}
+                            aria-expanded={hasSeries ? isActive : undefined}
                           >
-                            {category.label}
-                          </span>
+                            <span
+                              className={
+                                category.id === "ac"
+                                  ? styles.acCategoryLabel
+                                  : styles.dcCategoryLabel
+                              }
+                            >
+                              {category.label}
+                            </span>
 
-                          {!isActive && (
-                            <IoChevronDown className={styles.categoryChevron} />
+                            {hasSeries && (
+                              <span
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setActiveCategory(category.id);
+                                }}
+                              >
+                                {isActive ? (
+                                  <IoChevronUp
+                                    size={14}
+                                    color="#ffffff"
+                                    className={styles.categoryChevron}
+                                  />
+                                ) : (
+                                  <IoChevronDown
+                                    size={14}
+                                    color="#ffffff"
+                                    className={styles.categoryChevron}
+                                  />
+                                )}
+                              </span>
+                            )}
+                          </button>
+
+                          {isActive && category.series && (
+                            <ul className={styles.seriesList}>
+                              {category.series.map((series) => {
+                                const isSeriesActive =
+                                  series.id === activeSeries;
+
+                                return (
+                                  <li key={series.id}>
+                                    <button
+                                      type="button"
+                                      className={`${styles.seriesItem} ${
+                                        isSeriesActive
+                                          ? styles.seriesItemActive
+                                          : ""
+                                      }`}
+                                      onClick={() => setActiveSeries(series.id)}
+                                      aria-pressed={isSeriesActive}
+                                    >
+                                      <span className={styles.seriesDot} />
+                                      {series.label}
+                                    </button>
+                                  </li>
+                                );
+                              })}
+                            </ul>
                           )}
-                        </button>
+                        </div>
                       );
                     })}
                   </div>
 
                   <div className={styles.divider} />
 
-                  {/* Right: product grid */}
+                  {/* Product grid */}
                   <ul className={styles.grid}>
-                    {currentCategory.products.length === 0 ? (
+                    {visibleProducts.length === 0 ? (
                       <li className={styles.empty}>No products available.</li>
                     ) : (
-                      currentCategory.products.map((product) => (
+                      visibleProducts.map((product) => (
                         <li key={product.slug}>
                           <Link
                             to={`/products/${product.slug}`}

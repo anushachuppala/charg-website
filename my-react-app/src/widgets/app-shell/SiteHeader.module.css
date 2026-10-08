@@ -50,13 +50,13 @@
 .navlinks a:focus-visible,
 .ctaButton:focus-visible,
 .chevronBtn:focus-visible,
-.panel .category:focus-visible {
+.panel .category:focus-visible,
+.panel .seriesItem:focus-visible {
   outline: 2px solid #55b56c;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Mobile drawer overlay */
 .overlay {
   position: fixed;
   inset: 0;
@@ -66,7 +66,6 @@
   cursor: pointer;
 }
 
-/* Desktop dim backdrop (shown behind the mega menu) */
 .backdrop {
   display: none;
 }
@@ -183,7 +182,6 @@
    PRODUCTS MEGA MENU
    ===================================================== */
 
-/* ---------- Colours (taken from the design) ---------- */
 .menu {
   --bc-navy: #1b3a8c;
   --bc-green: #3fa95b;
@@ -309,24 +307,112 @@
 }
 
 .acCategoryLabel {
+  color: inherit;
+}
+
+.dcCategoryLabel {
+  color: inherit;
+}
+
+.panel .categoryActive {
+  width: 100%;
+  background: #f0f0f0;
+  color: #000000;
+}
+
+.categoryActive {
+  background: #f0f0f0;
+  color: #000000;
+}
+
+.category {
+  width: 100%;
+  background: #163b7c;
+  color: #ffffff;
+}
+
+/* .acCategoryLabel {
   background: var(--color-primary);
   color: var(--color-white);
 }
 
 .dcCategoryLabel {
   color: #606060;
-  background: #f9f9f9b2;
 }
 
 .panel .categoryActive {
-  background: var(--bc-navy);
+  width: 100%;
+  background: var(--color-primary); // noted //
   color: #fff;
+}
+
+.categoryActive {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+.category {
+  width: 100%;
 }
 
 .categoryChevron {
   font-size: 14px;
+} */
+
+.seriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
+.seriesList li {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.panel .seriesItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 4px 16px;
+  border: 0;
+  background: none;
+  color: #9ca3af;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.panel .seriesItem:hover {
+  color: var(--bc-navy);
+}
+
+.seriesDot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #9ca3af;
+  transition: background 0.2s ease;
+}
+
+.panel .seriesItemActive {
+  color: var(--bc-navy);
+}
+
+.panel .seriesItemActive .seriesDot,
+.panel .seriesItem:hover .seriesDot {
+  background: var(--bc-navy);
+}
+
+/* ---------- Divider ---------- */
 .divider {
   width: 1px;
   margin: 0 48px 0 32px;
@@ -334,6 +420,7 @@
   flex-shrink: 0;
 }
 
+/* ---------- Right: product grid ---------- */
 .panel .grid {
   flex: 1;
   display: grid;
@@ -401,15 +488,21 @@
   transition: color 0.2s ease;
 }
 
-.desc {
-  color: #b5b5b5;
-  font-size: 16px;
+span .desc {
+  color: #575757;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
   white-space: normal;
-  max-width: 340px;
+  max-width: 240px;
 }
 
+.panel .empty {
+  color: var(--bc-muted);
+  font-size: 14px;
+}
+
+/* ---------- Footer ---------- */
 .footer {
   margin: 48px 0 0;
   text-align: center;
@@ -427,6 +520,10 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* =====================================================
+   BREAKPOINTS
+   ===================================================== */
 
 @media (min-width: 481px) {
   :root {

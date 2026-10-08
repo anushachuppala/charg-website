@@ -14,9 +14,19 @@ import { useProductsQuery } from "../../features/ProductsPage/hooks/useProducts"
 const ProductsPage = () => {
   const { slug } = useParams();
 
+  console.log("URL slug:", slug);
+
   const { data } = useProductsQuery();
 
+  console.log("All products:", data);
+  console.log(
+    "API slugs:",
+    data?.map((item) => item.slug),
+  );
+
   const product = data?.find((item) => item.slug === slug);
+
+  console.log("Matched product:", product);
 
   return (
     <main>
