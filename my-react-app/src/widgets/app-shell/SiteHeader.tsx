@@ -151,37 +151,113 @@ const CATEGORIES: Category[] = [
   },
 ];
 
+interface SolutionLink {
+  to: string;
+  title: string;
+  description: string;
+}
+
+const SOFTWARE_SOLUTIONS: SolutionLink[] = [
+  {
+    to: "/ev-charging-management-Solution",
+    title: "Charging Management Solution",
+    description: "Monitor and manage your EV charging network.",
+  },
+  {
+    to: "/solutions/ev-user-app",
+    title: "EV User App",
+    description: "Find, charge, and manage EV charging sessions.",
+  },
+  {
+    to: "/solutions/operator-app",
+    title: "Operator App",
+    description: "Manage stations, users, and charging operations.",
+  },
+];
+
+const CHARGING_SOLUTIONS: SolutionLink[] = [
+  {
+    to: "/solutions/home-charging",
+    title: "Home Charging",
+    description: "Safe and convenient charging at home.",
+  },
+  {
+    to: "/solutions/fleet-charging",
+    title: "Fleet Charging",
+    description: "Smart charging for commercial EV fleets.",
+  },
+  {
+    to: "/solutions/public-charging",
+    title: "Public Charging",
+    description: "Reliable charging for public locations.",
+  },
+  {
+    to: "/solutions/highway-charging",
+    title: "Highway Charging",
+    description: "Fast DC charging for long-distance travel.",
+  },
+  {
+    to: "/solutions/amc-support",
+    title: "AMC & Support",
+    description: "Maintenance and support for reliable operations.",
+  },
+];
+
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryId>("ac");
   const [activeSeries, setActiveSeries] = useState<SeriesId>("polaris");
 
   const { pathname } = useLocation();
 
+  const anyDropdownOpen = productsOpen || solutionsOpen;
+
+  const closeDropdowns = () => {
+    setProductsOpen(false);
+    setSolutionsOpen(false);
+  };
+
   const closeAll = () => {
     setMenuOpen(false);
+    closeDropdowns();
+  };
+
+  // only one dropdown can be open at a time
+  const openProducts = () => {
+    setSolutionsOpen(false);
+    setProductsOpen(true);
+  };
+
+  const openSolutions = () => {
     setProductsOpen(false);
+    setSolutionsOpen(true);
   };
 
   useEffect(() => {
     setMenuOpen(false);
     setProductsOpen(false);
+    setSolutionsOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    if (!productsOpen) return;
+    if (!anyDropdownOpen) return;
 
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setProductsOpen(false);
+      if (e.key === "Escape") closeDropdowns();
     };
 
     document.addEventListener("keydown", onKeyDown);
 
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [productsOpen]);
+  }, [anyDropdownOpen]);
 
   const isProductsActive = productsOpen || pathname.startsWith("/products");
+  const isSolutionsActive =
+    solutionsOpen ||
+    pathname.startsWith("/solutions") ||
+    pathname.startsWith("/ev-charging-management");
 
   const currentCategory =
     CATEGORIES.find((c) => c.id === activeCategory) ?? CATEGORIES[0];
@@ -199,10 +275,10 @@ export function SiteHeader() {
         <div className={styles.overlay} onClick={() => setMenuOpen(false)} />
       )}
 
-      {productsOpen && (
+      {anyDropdownOpen && (
         <div
           className={styles.backdrop}
-          onClick={() => setProductsOpen(false)}
+          onClick={closeDropdowns}
           aria-hidden="true"
         />
       )}
@@ -236,7 +312,7 @@ export function SiteHeader() {
             {/* Products */}
             <li
               className={styles.menu}
-              onMouseEnter={() => setProductsOpen(true)}
+              onMouseEnter={openProducts}
               onMouseLeave={() => setProductsOpen(false)}
             >
               <div
@@ -253,6 +329,9 @@ export function SiteHeader() {
                   className={styles.chevronBtn}
                   aria-label="Toggle products menu"
                   aria-expanded={productsOpen}
+                  onClick={() =>
+                    productsOpen ? setProductsOpen(false) : openProducts()
+                  }
                 >
                   <IoChevronDown
                     className={`${styles.chevron} ${
@@ -394,12 +473,106 @@ export function SiteHeader() {
             </li>
 
             {/* Solutions */}
-            <li>
-              <div className={styles.linkWithChevron}>
+            <li
+              className={styles.menu}
+              // onMouseEnter={openSolutions}
+              // onMouseLeave={() => setSolutionsOpen(false)}
+            >
+              <div
+                className={`${styles.trigger} ${
+                  isSolutionsActive ? styles.triggerActive : ""
+                }`}
+              >
                 <Link to="/solutions" onClick={closeAll}>
                   Solutions
                 </Link>
-                <IoChevronDown className={styles.chevron} />
+
+                <button
+                  type="button"
+                  className={styles.chevronBtn}
+                  aria-label="Toggle solutions menu"
+                  aria-expanded={solutionsOpen}
+                  onClick={() =>
+                    solutionsOpen ? setSolutionsOpen(false) : openSolutions()
+                  }
+                >
+                  <IoChevronDown
+                    className={`${styles.chevron} ${
+                      solutionsOpen ? styles.chevronOpen : ""
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div
+                className={`${styles.solPanel} ${
+                  solutionsOpen ? styles.solPanelOpen : ""
+                }`}
+              >
+                <div className={styles.solInner}>
+                  {/* Software Solutions */}
+                  <div className={styles.solSoftware}>
+                    <h3 className={styles.solHeading}>
+                      <span className={styles.solHeadingDot} />
+                      Software Solutions
+                    </h3>
+
+                    <ul className={styles.solSoftwareList}>
+                      {SOFTWARE_SOLUTIONS.map((item) => (
+                        <li key={item.to}>
+                          <Link
+                            to={item.to}
+                            className={styles.solItem}
+                            onClick={closeAll}
+                          >
+                            <span className={styles.solItemTitle}>
+                              {item.title}
+                            </span>
+                            <span className={styles.solItemDesc}>
+                              {item.description}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className={styles.solDivider} />
+
+                  {/* Charging Solutions */}
+                  <div className={styles.solCharging}>
+                    <h3 className={styles.solHeading}>
+                      <span className={styles.solHeadingDot} />
+                      Charging Solutions
+                    </h3>
+
+                    <ul className={styles.solChargingGrid}>
+                      {CHARGING_SOLUTIONS.map((item) => (
+                        <li key={item.to}>
+                          <Link
+                            to={item.to}
+                            className={styles.solItem}
+                            onClick={closeAll}
+                          >
+                            <span className={styles.solItemTitle}>
+                              {item.title}
+                            </span>
+                            <span className={styles.solItemDesc}>
+                              {item.description}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <p className={styles.solFooter}>
+                  Not Sure ?
+                  <Link to="/charging-compatibility" onClick={closeAll}>
+                    Check Charging Compatibility
+                  </Link>
+                </p>
               </div>
             </li>
 
