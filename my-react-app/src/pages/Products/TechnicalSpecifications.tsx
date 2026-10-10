@@ -4,7 +4,10 @@ import styles from "./TechnicalSpecifications.module.css";
 import { Section, Container, Panel } from "../../shared/layout";
 import downloadImage from "../../assets/products-page/downloadImage.png";
 
-import type { Products } from "../../features/ProductsPage/dto/products.dto";
+import type {
+  Products,
+  TechnicalSpecificationItem,
+} from "../../features/ProductsPage/dto/products.dto";
 
 type TechnicalSpecificationsProps = {
   products?: Products;
@@ -13,24 +16,74 @@ type TechnicalSpecificationsProps = {
 type TabId =
   | "general"
   | "mechanical"
-  | "environmental"
+  | "environment"
   | "communication"
   | "ui"
-  | "certifications and standards";
+  | "Certifications And Standards";
 
 const tabKeyMap: Record<string, TabId> = {
   General: "general",
   Mechanical: "mechanical",
-  Environmental: "environmental",
-  communication: "communication",
+  Environmental: "environment",
+  Environment: "environment",
+  Communication: "communication",
+  communications: "communication",
+  comminications: "communication",
   UI: "ui",
-  "Certifications and Standards": "certifications and standards",
+  "Certifications and Standards": "Certifications And Standards",
+  "Certifications And Standards": "Certifications And Standards",
+  "Certification and Standards": "Certifications And Standards",
+  "Certifications and Standard": "Certifications And Standards",
 };
+
+// Generic placeholders, not verified specifications for a specific charger.
+const fallbackSpecifications: Record<TabId, TechnicalSpecificationItem[]> = {
+  general: [
+    { label: "Product Type", value: "EV Charger" },
+    { label: "Charging Capacity", value: "Refer to product datasheet" },
+  ],
+  mechanical: [
+    { label: "Dimensions", value: "Refer to product datasheet" },
+    { label: "Mounting Type", value: "Refer to product datasheet" },
+  ],
+  environment: [
+    { label: "Operating Temperature", value: "Refer to product datasheet" },
+    { label: "Protection Rating", value: "Refer to product datasheet" },
+  ],
+  communication: [
+    { label: "Connectivity", value: "Refer to product datasheet" },
+    { label: "Communication Protocol", value: "Refer to product datasheet" },
+  ],
+  ui: [
+    { label: "User Interface", value: "Refer to product datasheet" },
+    { label: "User Authentication", value: "Refer to product datasheet" },
+  ],
+  "Certifications And Standards": [
+    { label: "Certifications", value: "Refer to product datasheet" },
+    { label: "Applicable Standards", value: "Refer to product datasheet" },
+  ],
+};
+
+function normalizeTabName(tab: string): string {
+  return tab
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function getTabId(tab: string): TabId | undefined {
+  const normalizedTab = normalizeTabName(tab);
+
+  const matchingEntry = Object.entries(tabKeyMap).find(
+    ([label]) => normalizeTabName(label) === normalizedTab,
+  );
+
+  return matchingEntry?.[1];
+}
 
 function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
   const [activeTab, setActiveTab] = useState<TabId>("general");
 
-  // Controls whether the dialog is visible
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
 
@@ -40,11 +93,11 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
   };
 
   const handleDownload = () => {
-    // TODO: send `email` to the backend / trigger the spec sheet download
+    // TODO: Send email to the backend / trigger the specification sheet download.
     closeDialog();
   };
 
-  // Close on Escape and lock background scrolling while the dialog is open
+  // Close on Escape and lock background scrolling while the dialog is open.
   useEffect(() => {
     if (!isDialogOpen) return;
 
@@ -62,6 +115,43 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
     };
   }, [isDialogOpen]);
 
+  // Use recognized API tabs first.
+  const apiTabs =
+    products?.specificationTabs?.filter((tab) => getTabId(tab) !== undefined) ??
+    [];
+
+  // Use default tabs if the API has no recognized tabs.
+  const specificationTabs =
+    apiTabs.length > 0
+      ? apiTabs
+      : [
+          "General",
+          "Mechanical",
+          "Environmental",
+          "Communication",
+          "UI",
+          "Certifications and Standards",
+        ];
+
+  // Keep the active tab valid for the current product.
+  const normalizedActiveTab: TabId = specificationTabs.some(
+    (tab) => getTabId(tab) === activeTab,
+  )
+    ? activeTab
+    : (getTabId(specificationTabs[0]) ?? "general");
+
+  // Prefer API specifications; use manual fallback if the array is empty.
+  const apiSpecifications =
+    products?.technicalSpecifications?.[normalizedActiveTab];
+
+  const hasApiSpecifications =
+    Array.isArray(apiSpecifications) &&
+    apiSpecifications.some((spec) => spec.label?.trim() || spec.value?.trim());
+
+  const specifications = hasApiSpecifications
+    ? apiSpecifications
+    : fallbackSpecifications[normalizedActiveTab];
+
   return (
     <Section>
       <Container>
@@ -70,8 +160,10 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
 
           <div className={styles.tabsRow}>
             <div className={styles.tabs}>
-              {products?.specificationTabs.map((tab) => {
-                const tabId = tabKeyMap[tab];
+              {specificationTabs.map((tab) => {
+                const tabId = getTabId(tab);
+
+                if (!tabId) return null;
 
                 return (
                   <button
@@ -79,7 +171,7 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
                     type="button"
                     onClick={() => setActiveTab(tabId)}
                     className={`${styles.tab} ${
-                      activeTab === tabId ? styles.tabActive : ""
+                      normalizedActiveTab === tabId ? styles.tabActive : ""
                     }`}
                   >
                     {tab}
@@ -99,7 +191,7 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
           </div>
 
           <div className={styles.specTable}>
-            {products?.technicalSpecifications[activeTab]?.map((spec) => (
+            {specifications.map((spec) => (
               <div key={spec.label} className={styles.specRow}>
                 <span className={styles.specLabel}>{spec.label}</span>
                 <span className={styles.specValue}>{spec.value}</span>
