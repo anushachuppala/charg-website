@@ -39,7 +39,7 @@ function ChargeManagement({ solutions }: ChargeManagemenrProps) {
               />
               {/* Items */}
               <div className={styles.items}>
-                {solutions?.cmsSolutionPoints.map((item) => (
+                {solutions?.cmsSolutionPoints?.map((item) => (
                   <div className={styles.item} key={item.label}>
                     <img src={CheckIcon} className={styles.icon} />
 

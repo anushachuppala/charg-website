@@ -93,3 +93,93 @@ export type FaqItemWire = {
   question: string;
   answer: string;
 };
+
+// home charging //
+
+export type EvSolutionWire= {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  summary: string;
+  status: string;
+  categoryId: number | null;
+
+  tags: string[];
+  heroTitle: string;
+  heroSubtitle: string;
+  heroDescription: string;
+  heroImage: string;
+  heroTypes: HeroTypeWire[];
+
+  viewDistance: string;
+  viewType: string;
+
+  trustTitle: string;
+  trustSubtitle: string;
+  trustDescription: string;
+  trust: TrustWire[];
+
+  overviewTitle: string;
+  overviewSubtitle: string;
+  overviewDescription: string;
+  overviewImage: string;
+  overviewPoints: OverviewPointWire[];
+
+  recommendedTitle: string;
+  recommendedSubtitle: string;
+  recommendedDescription: string;
+  recommended: RecommendedWire[];
+
+  featuredTitle: string;
+  featuredSubtitle: string;
+  featured: FeaturedWire[];
+
+  destinationTitle: string;
+  destinationSubtitle: string;
+  destinationDescription: string;
+  destination: DestinationWire[];
+
+  faqTitle?: string;
+  faqImage?: string;
+  faqs: HomeChargingFaqWire[];
+};
+
+export type HeroTypeWire = {
+  viewDistance: string;
+  viewType: string;
+};
+
+export type TrustWire = {
+  icon: string;
+  title: string;
+  subtitle: string;
+};
+
+export type OverviewPointWire = {
+  description: string;
+};
+
+export type RecommendedWire = {
+  image: string;
+  title: string;
+  subtitle: string;
+  chargerType: string;
+};
+
+export type FeaturedWire = {
+  icon: string;
+  title: string;
+  subtitle: string;
+};
+
+export type DestinationWire = {
+  image: string;
+  title: string;
+  subtitle: string;
+};
+
+export type HomeChargingFaqWire = {
+  answer: string;
+  question: string;
+};

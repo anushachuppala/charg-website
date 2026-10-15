@@ -1,16 +1,5 @@
 import icon1 from "../../assets/Services-page/Briefcase.svg";
 
-import comp1 from "../../assets/Services-page/comp1.png";
-import comp2 from "../../assets/Services-page/comp2.png";
-import comp3 from "../../assets/Services-page/comp3.png";
-import comp4 from "../../assets/Services-page/comp4.png";
-import comp5 from "../../assets/Services-page/comp5.png";
-import comp6 from "../../assets/Services-page/comp6.png";
-import comp7 from "../../assets/Services-page/comp7.png";
-import comp8 from "../../assets/Services-page/comp8.png";
-import comp9 from "../../assets/Services-page/comp9.png";
-import comp10 from "../../assets/Services-page/comp10.png";
-
 import HeroSection from "./HeroSection";
 
 import { WhoIsThisFor } from "../../shared/ui/whoisThisfor-section/WhoIsThisFor";
@@ -48,28 +37,21 @@ const whyBestChargeItems = [
   },
 ];
 
-const logos = [
-  comp1,
-  comp2,
-  comp3,
-  comp4,
-  comp5,
-  comp6,
-  comp7,
-  comp8,
-  comp9,
-  comp10,
-];
-
 import { FaqSection } from "../../shared/ui/faq-section/FaqSection";
 import GetInTouch from "../../shared/ui/getInTouch-section/GetInTouch";
 
+import { useParams } from "react-router-dom";
 import { useSolutionsQuery } from "../../features/SolutionsPage/hooks/useSolutions";
 
 const SolutionsPage = () => {
-  const { data } = useSolutionsQuery();
+  const { slug } = useParams();
 
-  const solutions = data?.[0];
+  console.log("Current slug:", slug);
+  const { data } = useSolutionsQuery();
+  console.log("Solutions API data:", data);
+
+  const solutions = data?.find((item) => item.slug === slug);
+  // Keep the remaining JSX unchanged.
   return (
     <main>
       <HeroSection solutions={solutions} />

@@ -39,7 +39,10 @@ function Benefits({ solutions }: BenefitsProps) {
 
               {/* Items */}
               <div className={styles.items}>
-                {solutions?.efficiencyPoints.map((item) => (
+                {/* console.log("Benefits API response:", solutions);
+                console.log("Efficiency points:", solutions?.efficiencyPoints);
+                console.log("Benefits component line 42:", 42); */}
+                {solutions?.efficiencyPoints?.map((item) => (
                   <div className={styles.item} key={item.label}>
                     <img src={checkIcon} className={styles.icon} />
 

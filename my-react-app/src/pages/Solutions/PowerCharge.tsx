@@ -39,7 +39,7 @@ function PowerCharge({ solutions }: PowerChargeProps) {
 
             {/* right column: numbered steps */}
             <div className={styles.stepsCol}>
-              {solutions?.powerNetworkSteps.map((item, index) => (
+              {solutions?.powerNetworkSteps?.map((item, index) => (
                 <div className={styles.step} key={item.title}>
                   <span className={styles.stepNumber}>
                     {String(index + 1).padStart(2, "0")}

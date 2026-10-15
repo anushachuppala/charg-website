@@ -4,6 +4,8 @@ import styles from "./TechnicalSpecifications.module.css";
 import { Section, Container, Panel } from "../../shared/layout";
 import downloadImage from "../../assets/products-page/downloadImage.png";
 
+import finalDoc from "../../assets/products-page/final-doc.pdf.pdf";
+
 import type {
   Products,
   TechnicalSpecificationItem,
@@ -93,7 +95,15 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
   };
 
   const handleDownload = () => {
-    // TODO: Send email to the backend / trigger the specification sheet download.
+    const link = document.createElement("a");
+
+    link.href = finalDoc;
+    link.download = "Technical-Specifications.pdf";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
     closeDialog();
   };
 
@@ -185,7 +195,11 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
               className={styles.exportBtn}
               onClick={() => setIsDialogOpen(true)}
             >
-              <img src={downloadImage} alt="" className={styles.downloadIcon} />
+              <img
+                src={downloadImage}
+                alt="downloads the pdf"
+                className={styles.downloadIcon}
+              />
               Export Specifications
             </button>
           </div>

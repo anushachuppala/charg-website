@@ -139,25 +139,24 @@
 
 .dialogTitle {
   margin: 0 40px 20px 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #22a75d;
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
 }
 
 .dialogLabel {
   display: block;
   margin-bottom: 12px;
-  font-size: 1rem;
-  color: #1e293b;
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-medium);
+  color: #000;
 }
 
 .emailInput {
   width: 95%;
   padding: 14px 6px;
   font-size: 1rem;
-  color: #1e293b;
-  background: #fff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f0efef;
   border-radius: 10px;
   outline: none;
   transition:
@@ -169,23 +168,19 @@
   color: #cbd5e1;
 }
 
-.emailInput:focus {
-  /* border-color: #22a75d; */
-  box-shadow: 0 0 0 3px rgba(34, 167, 93, 0.15);
-}
-
 .dialogFooter {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--space-4);
   margin-top: 28px;
 }
 
 .skipBtn {
   padding: 4px 0;
-  font-size: 1rem;
-  color: #94a3b8;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: #9ca3af;
   background: none;
   border: none;
   cursor: pointer;
@@ -200,9 +195,9 @@
 .downloadBtn {
   padding: 14px 40px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: #fff;
-  background: #4cb872;
+  background: var(--color-secondary);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -212,7 +207,7 @@
 }
 
 .downloadBtn:hover {
-  background: #3da962;
+  background: var(--color-secondary);
 }
 
 .downloadBtn:active {
@@ -304,7 +299,7 @@
 
   .specRow {
     grid-template-columns: 1fr;
-    gap: 6px;
+    gap: var(--space-1-5);
     padding: 14px 16px;
   }
 

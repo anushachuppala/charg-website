@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/solutions",
+        path: "/solutions/:slug",
         element: <SolutionsPage />,
       },
 

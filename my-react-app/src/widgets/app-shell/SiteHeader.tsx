@@ -159,7 +159,7 @@ interface SolutionLink {
 
 const SOFTWARE_SOLUTIONS: SolutionLink[] = [
   {
-    to: "/ev-charging-management-Solution",
+    to: "/solutions/ev-charging-management-Solution",
     title: "Charging Management Solution",
     description: "Monitor and manage your EV charging network.",
   },
@@ -483,7 +483,10 @@ export function SiteHeader() {
                   isSolutionsActive ? styles.triggerActive : ""
                 }`}
               >
-                <Link to="/solutions" onClick={closeAll}>
+                <Link
+                  to="/solutions/ev-charging-management-Solution"
+                  onClick={closeAll}
+                >
                   Solutions
                 </Link>
 
