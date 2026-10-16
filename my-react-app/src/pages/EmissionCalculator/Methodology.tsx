@@ -16,28 +16,24 @@ const cardsInfo = [
     title: "vechicle",
     description: "Pick your vehicle make and model.",
   },
-
   {
     step: 2,
     icon: distanceIcon,
     title: "Distance",
     description: "Kilometres travelled.",
   },
-
   {
     step: 3,
     icon: fuelIcon,
     title: "Fuel Consumption",
     description: "Actual or estimated.",
   },
-
   {
     step: 4,
     icon: factorIcon,
     title: "Emission Factor",
     description: "kgCO₂e per unit.",
   },
-
   {
     step: 5,
     icon: emissionIcon,
@@ -47,7 +43,7 @@ const cardsInfo = [
 ];
 
 function Methodology() {
-  const [activeStep, setActiveStep] = useState<number>(1);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
 
   return (
     <Section>
@@ -74,11 +70,13 @@ function Methodology() {
                 key={card.step}
                 className={`${styles.card} ${isActive ? styles.active : ""}`}
                 onMouseEnter={() => setActiveStep(card.step)}
+                onMouseLeave={() => setActiveStep(null)}
                 onFocus={() => setActiveStep(card.step)}
+                onBlur={() => setActiveStep(null)}
                 tabIndex={0}
               >
                 <div className={styles.cardTop}>
-                  <span className={styles.iconBox}> 
+                  <span className={styles.iconBox}>
                     <img
                       src={card.icon}
                       alt=""
