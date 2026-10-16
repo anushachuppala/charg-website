@@ -40,18 +40,14 @@ const whyBestChargeItems = [
 import { FaqSection } from "../../shared/ui/faq-section/FaqSection";
 import GetInTouch from "../../shared/ui/getInTouch-section/GetInTouch";
 
-import { useParams } from "react-router-dom";
 import { useSolutionsQuery } from "../../features/SolutionsPage/hooks/useSolutions";
 
 const SolutionsPage = () => {
-  const { slug } = useParams();
-
-  console.log("Current slug:", slug);
   const { data } = useSolutionsQuery();
-  console.log("Solutions API data:", data);
+  console.log("All Solutions", data);
 
-  const solutions = data?.find((item) => item.slug === slug);
-  // Keep the remaining JSX unchanged.
+  const solutions = data?.[0];
+  console.log("Matched Solution", solutions);
   return (
     <main>
       <HeroSection solutions={solutions} />

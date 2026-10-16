@@ -105,7 +105,7 @@
 }
 
 .statLabel {
-  font-size: var(--text-sm);
+  font-size: 14px;
   font-weight: var(--font-weight-bold);
   color: var(--color-secondary);
   text-transform: uppercase;

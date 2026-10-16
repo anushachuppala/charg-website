@@ -93,7 +93,6 @@ export type FaqItem = {
   answer: string;
 };
 
-
 // home charging //
 export type HomeCharging = {
   id: number;

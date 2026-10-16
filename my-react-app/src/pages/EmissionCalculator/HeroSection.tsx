@@ -42,10 +42,10 @@ function HeroSection() {
               <h1 className={styles.title}>Emission Calculator</h1>
 
               <p className={styles.description}>
-                Calculate your vehicle's carbon emissions in seconds and
-                discover <br />
+                Calculate your vehicle's carbon emissions in seconds and <br />
+                discover how switching to electric mobility can reduce your{" "}
                 <br />
-                impact.
+                environmental impact.
               </p>
 
               <div className={styles.buttonContainer}>

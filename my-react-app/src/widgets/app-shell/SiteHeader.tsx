@@ -475,8 +475,8 @@ export function SiteHeader() {
             {/* Solutions */}
             <li
               className={styles.menu}
-              // onMouseEnter={openSolutions}
-              // onMouseLeave={() => setSolutionsOpen(false)}
+              onMouseEnter={openSolutions}
+              onMouseLeave={() => setSolutionsOpen(false)}
             >
               <div
                 className={`${styles.trigger} ${

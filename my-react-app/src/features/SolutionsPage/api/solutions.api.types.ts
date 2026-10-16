@@ -96,7 +96,7 @@ export type FaqItemWire = {
 
 // home charging //
 
-export type EvSolutionWire= {
+export type EvSolutionWire = {
   id: number;
   title: string;
   slug: string;
