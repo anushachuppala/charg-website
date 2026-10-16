@@ -1,6 +1,3 @@
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-
 import styles from "./HeroSection.module.css";
 import heroImage from "../../assets/Emission-calculator/heroImage.png";
 
@@ -14,22 +11,6 @@ const STATS = [
 ];
 
 function HeroSection() {
-  const imageContentRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(`.${styles.badge}`, {
-        y: -8,
-        duration: 1.5,
-        ease: "power1.inOut",
-        yoyo: true,
-        repeat: -1,
-      });
-    }, imageContentRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <div className={styles.heroBackdrop}>
       <Container>
@@ -64,9 +45,7 @@ function HeroSection() {
             </div>
 
             {/* Image */}
-            <div ref={imageContentRef} className={styles.imageContent}>
-              <img src={heroImage} className={styles.heroImage} />
-            </div>
+            <img src={heroImage} className={styles.heroImage} />
           </div>
         </Panel>
       </Container>

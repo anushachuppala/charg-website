@@ -1,11 +1,14 @@
 import HeroSection from "./HeroSection";
-import CalculatorSection from "./CalculatorSection";
+import MeasureCarbon from "./MeasureCarbon";
+import Methodology from "./Methodology";
 
 const EmissionCalculator = () => {
+  console.log("hero section is rendering");
   return (
     <main>
       <HeroSection />
-      <CalculatorSection />
+      <MeasureCarbon />
+      <Methodology />
     </main>
   );
 };

@@ -7,8 +7,7 @@ import SolutionsPage from "../../pages/Solutions/SolutionsPage.tsx";
 import BestHubPage from "../../pages/BestHub/BestHubPage.tsx";
 import BlogPage from "../../pages/Blog/Blog.tsx";
 import Resources from "../../pages/Resources/Resources.tsx";
-import EmissionCalculator from "../../pages/EmissionCalculator/HeroSection.tsx";
-
+import EmissionCalculator from "../../pages/EmissionCalculator/EmissionCalculator.tsx";
 export const router = createBrowserRouter([
   {
     element: <AppShell />,
