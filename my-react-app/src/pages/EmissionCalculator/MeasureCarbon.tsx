@@ -16,9 +16,6 @@ type VehicleType = (typeof VEHICLE_TYPES)[number];
 type FuelUnit = (typeof FUEL_UNITS)[number];
 type Fuel = (typeof FUELS)[number];
 
-// TODO: fill these in (or load from your API) once you have the data.
-// Manufacturer is enabled after a vehicle type is chosen,
-// model is enabled after a manufacturer is chosen.
 const MANUFACTURERS: Record<VehicleType, string[]> = {
   "Two wheeler": [],
   "Three wheeler": [],
@@ -128,7 +125,6 @@ function MeasureCarbon() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: run the emission calculation with `form`
   };
 
   return (

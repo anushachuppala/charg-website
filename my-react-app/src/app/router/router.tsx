@@ -1,55 +1,75 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AppShell } from "../../widgets/app-shell/AppShell.tsx";
-import HomePage from "../../pages/HomePage/HomePage.tsx";
-import About from "../../pages/AboutUs/AboutPage";
-import ProductsPage from "../../pages/Products/ProductsPage.tsx";
-import SolutionsPage from "../../pages/Solutions/SolutionsPage.tsx";
-import BestHubPage from "../../pages/BestHub/BestHubPage.tsx";
-import BlogPage from "../../pages/Blog/Blog.tsx";
-import Resources from "../../pages/Resources/Resources.tsx";
-import EmissionCalculator from "../../pages/EmissionCalculator/EmissionCalculator.tsx";
+
+const loadHomePage = () => import("../../pages/HomePage/HomePage.tsx");
+
+const loadAboutPage = () => import("../../pages/AboutUs/AboutPage.tsx");
+
+const loadProductsPage = () => import("../../pages/Products/ProductsPage");
+
+const loadSolutionsPage = () =>
+  import("../../pages/Solutions/SolutionsPage.tsx");
+
+const loadBestHubPage = () => import("../../pages/BestHub/BestHubPage.tsx");
+
+const loadBlogPage = () => import("../../pages/Blog/Blog.tsx");
+
+const loadResourcesPage = () => import("../../pages/Resources/Resources.tsx");
+
+const loadEmissionCalculator = () =>
+  import("../../pages/EmissionCalculator/EmissionCalculator.tsx");
+
 export const router = createBrowserRouter([
   {
     element: <AppShell />,
     children: [
       {
-        path: "/",
-        element: <HomePage />,
+        index: true,
+        lazy: async () => ({
+          Component: (await loadHomePage()).default,
+        }),
       },
-
       {
         path: "/about",
-        element: <About />,
+        lazy: async () => ({
+          Component: (await loadAboutPage()).default,
+        }),
       },
-
       {
         path: "/products/:slug",
-        element: <ProductsPage />,
+        lazy: async () => ({
+          Component: (await loadProductsPage()).default,
+        }),
       },
-
       {
         path: "/solutions/:slug",
-        element: <SolutionsPage />,
+        lazy: async () => ({
+          Component: (await loadSolutionsPage()).default,
+        }),
       },
-
       {
         path: "/Resources",
-        element: <Resources />,
+        lazy: async () => ({
+          Component: (await loadResourcesPage()).default,
+        }),
       },
-
       {
         path: "/EmissionCalculator",
-        element: <EmissionCalculator />,
+        lazy: async () => ({
+          Component: (await loadEmissionCalculator()).default,
+        }),
       },
-
       {
         path: "/besthub",
-        element: <BestHubPage />,
+        lazy: async () => ({
+          Component: (await loadBestHubPage()).default,
+        }),
       },
-
       {
         path: "/blog",
-        element: <BlogPage />,
+        lazy: async () => ({
+          Component: (await loadBlogPage()).default,
+        }),
       },
     ],
   },

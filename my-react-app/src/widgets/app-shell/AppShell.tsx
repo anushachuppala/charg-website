@@ -1,7 +1,9 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { SiteHeader } from "./SiteHeader.tsx";
 import { SiteFooter } from "./SiteFooter.tsx";
+
+// import { LoadingState } from "../../shared/ui";
 
 import {
   scrollElementIntoView,
@@ -43,7 +45,15 @@ export function AppShell() {
       <SiteHeader />
 
       <main className={styles.main}>
-        <Outlet />
+        <Suspense
+          fallback={
+            <div>
+              <p>Loading Page...</p>
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </main>
 
       <SiteFooter />
