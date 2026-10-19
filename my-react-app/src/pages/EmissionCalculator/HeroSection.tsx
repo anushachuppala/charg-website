@@ -10,7 +10,12 @@ const STATS = [
   { value: "100%", label: "Free & private" },
 ];
 
-function HeroSection() {
+interface HeroSectionProps {
+  onCalculateNow: () => void;
+  onHowItWorks: () => void;
+}
+
+function HeroSection({ onCalculateNow, onHowItWorks }: HeroSectionProps) {
   return (
     <div className={styles.heroBackdrop}>
       <Container>
@@ -30,8 +35,13 @@ function HeroSection() {
               </p>
 
               <div className={styles.buttonContainer}>
-                <Button variant="secondary">Calculate Now</Button>
-                <Button variant="primary">How it works</Button>
+                <div onClick={onCalculateNow}>
+                  <Button variant="secondary">Calculate Now</Button>
+                </div>
+
+                <div onClick={onHowItWorks}>
+                  <Button variant="primary">How it works</Button>
+                </div>
               </div>
 
               <ul className={styles.stats}>
@@ -45,7 +55,11 @@ function HeroSection() {
             </div>
 
             {/* Image */}
-            <img src={heroImage} className={styles.heroImage} />
+            <img
+              src={heroImage}
+              className={styles.heroImage}
+              alt="Electric mobility and emission calculator"
+            />
           </div>
         </Panel>
       </Container>

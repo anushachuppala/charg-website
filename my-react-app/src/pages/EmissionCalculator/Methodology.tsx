@@ -13,7 +13,7 @@ const cardsInfo = [
   {
     step: 1,
     icon: carIcon,
-    title: "vechicle",
+    title: "vehicle",
     description: "Pick your vehicle make and model.",
   },
   {

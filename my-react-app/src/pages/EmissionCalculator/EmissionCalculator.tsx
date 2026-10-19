@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import HeroSection from "./HeroSection";
 import MeasureCarbon from "./MeasureCarbon";
 import Methodology from "./Methodology";
@@ -5,12 +7,38 @@ import Methodology from "./Methodology";
 import BuildTheFuture from "../../shared/ui/buildTheFuture-section/BuildTheFuture";
 
 const EmissionCalculator = () => {
-  console.log("hero section is rendering");
+  const calculatorRef = useRef<HTMLElement | null>(null);
+  const methodologyRef = useRef<HTMLElement | null>(null);
+
+  const scrollToCalculator = () => {
+    calculatorRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const scrollToMethodology = () => {
+    methodologyRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <main>
-      <HeroSection />
-      <MeasureCarbon />
-      <Methodology />
+      <HeroSection
+        onCalculateNow={scrollToCalculator}
+        onHowItWorks={scrollToMethodology}
+      />
+
+      <section ref={calculatorRef}>
+        <MeasureCarbon />
+      </section>
+
+      <section ref={methodologyRef}>
+        <Methodology />
+      </section>
+
       <BuildTheFuture
         subtitle={<>Measure Your EV Emission Impact</>}
         title={
