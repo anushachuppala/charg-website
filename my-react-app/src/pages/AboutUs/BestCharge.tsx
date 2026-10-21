@@ -1,13 +1,52 @@
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import serviceIcon from "../../assets/images/About-page/service 1.png";
 import styles from "./BestCharge.module.css";
 import { Section, Container, Panel } from "../../shared/layout";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const BestCharge = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      const featureItems = section.querySelectorAll(`.${styles.featureItem}`);
+
+      gsap.fromTo(
+        featureItems,
+        {
+          x: -40,
+          autoAlpha: 0,
+        },
+        {
+          x: 0,
+          autoAlpha: 1,
+          duration: 0.7,
+          stagger: 0,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            once: true,
+          },
+        },
+      );
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <Section className={styles.bestChargeSection}>
       <Container>
         <Panel>
-          <div className={styles.bestChargeContainer}>
+          <div className={styles.bestChargeContainer} ref={sectionRef}>
             {/* Engineering Excellence */}
             <div className={styles.featureItem}>
               <img
@@ -62,6 +101,3 @@ const BestCharge = () => {
 };
 
 export default BestCharge;
-
-
-

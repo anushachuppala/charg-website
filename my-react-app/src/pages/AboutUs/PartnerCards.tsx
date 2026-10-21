@@ -74,7 +74,6 @@ const PartnerCards = ({ aboutUs }: PartnerCardsProps) => {
         <div className={styles.PartnerHeader}>
           <SectionHeader
             title={aboutUs?.partnersSectionTitle}
-            subtitle={aboutUs?.partnersSectionSubtitle}
             align="center"
             as="header"
             trailingSpacing="none"

@@ -28,7 +28,7 @@
 
 .heading {
   margin: 0;
-  color: #163b7c;
+  color: var(--color-primary);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -171,7 +171,7 @@
 @media (min-width: 1025px) {
   .content {
     max-width: 450px;
-    gap: var(--space-2);
+    gap: var(--space-6);
   }
 
   .heading {

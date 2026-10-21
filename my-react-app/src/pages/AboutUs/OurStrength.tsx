@@ -1,4 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+} from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styles from "./OurStrength.module.css";
 
@@ -8,6 +16,8 @@ import { SectionHeader } from "../../shared/ui/section-header/SectionHeader";
 
 import type { AboutUs } from "../../features/AboutUsPage/dto/aboutUs.dto";
 
+gsap.registerPlugin(ScrollTrigger);
+
 type OurStrengthProps = {
   aboutUs?: AboutUs;
 };
@@ -15,6 +25,47 @@ type OurStrengthProps = {
 const OurStrength = ({ aboutUs }: OurStrengthProps) => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [enableTransition, setEnableTransition] = useState(true);
+
+  const strengthRef = useRef<HTMLDivElement>(null);
+
+  // Animate eyebrow and title from bottom to top
+  useLayoutEffect(() => {
+    const section = strengthRef.current;
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      const eyebrow = section.querySelector('[data-gsap="eyebrow"]');
+      const title = section.querySelector('[data-gsap="title"]');
+
+      const elements = [eyebrow, title].filter(
+        (element): element is Element => element !== null,
+      );
+
+      if (elements.length === 0) return;
+
+      gsap.fromTo(
+        elements,
+        {
+          y: 30,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            once: true,
+          },
+        },
+      );
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
 
   // Get slides from API
   const slides = aboutUs?.strengthCards ?? [];
@@ -64,12 +115,13 @@ const OurStrength = ({ aboutUs }: OurStrengthProps) => {
       <Section>
         <Container>
           <Panel>
-            <div className={styles.strengthContainer}>
+            <div className={styles.strengthContainer} ref={strengthRef}>
               <SectionHeader
                 eyebrow={aboutUs?.strengthSectionTitle}
                 title={aboutUs?.strengthSectionSubtitle}
                 titleTone="white"
                 as="div"
+                animated={true}
               />
 
               {/* Slider */}
