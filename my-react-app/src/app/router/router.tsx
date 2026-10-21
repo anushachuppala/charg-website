@@ -29,42 +29,49 @@ export const router = createBrowserRouter([
           Component: (await loadHomePage()).default,
         }),
       },
+
       {
         path: "/about",
         lazy: async () => ({
           Component: (await loadAboutPage()).default,
         }),
       },
+
       {
         path: "/products/:slug",
         lazy: async () => ({
           Component: (await loadProductsPage()).default,
         }),
       },
+
       {
         path: "/solutions/:slug",
         lazy: async () => ({
           Component: (await loadSolutionsPage()).default,
         }),
       },
+
       {
         path: "/Resources",
         lazy: async () => ({
           Component: (await loadResourcesPage()).default,
         }),
       },
+
       {
         path: "/EmissionCalculator",
         lazy: async () => ({
           Component: (await loadEmissionCalculator()).default,
         }),
       },
+
       {
         path: "/besthub",
         lazy: async () => ({
           Component: (await loadBestHubPage()).default,
         }),
       },
+
       {
         path: "/blog",
         lazy: async () => ({

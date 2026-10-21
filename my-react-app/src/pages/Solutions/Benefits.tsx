@@ -18,7 +18,6 @@ function Benefits({ solutions }: BenefitsProps) {
         <Panel>
           <div className={styles.row}>
             {/* right image */}
-
             <div className={styles.imageCol}>
               <img
                 src={solutions?.efficiencyImage}
@@ -26,6 +25,7 @@ function Benefits({ solutions }: BenefitsProps) {
                 className={styles.chargeImage}
               />
             </div>
+
             {/* Left Content */}
             <div className={styles.content}>
               <SectionHeader

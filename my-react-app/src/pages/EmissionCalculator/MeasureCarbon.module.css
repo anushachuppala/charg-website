@@ -2,7 +2,18 @@
   background: var(--color-white);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
-  box-shadow: var(--shadow-sm);
+  filter: drop-shadow(
+      0 var(--space-px) var(--space-2) rgba(0, 0, 0, var(--opacity-10))
+    )
+    drop-shadow(
+      0 var(--space-1) var(--space-4) rgba(0, 29, 81, var(--opacity-5))
+    );
+  border: 1px solid #0000;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s,
+    color 0.3s;
+  /* box-shadow: var(--shadow-sm); */
   box-sizing: border-box;
   flex-direction: column;
   width: 100%;
@@ -53,18 +64,17 @@
   color: var(--color-neutral-600);
 }
 
-/* ---------- Grid ---------- */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px 15px;
+  gap: var(--space-4) 15px;
   padding: 0px 24px 24px;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
   min-width: 0;
 }
 
@@ -92,8 +102,8 @@
 
 .optional {
   font-size: 17px;
-  font-weight: 400;
-  color: #6c6c6c;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-600);
 }
 
 .control {
@@ -103,7 +113,7 @@
   font: inherit;
   font-size: 12px;
   color: #333a47;
-  background: #ffffff;
+  background: var(--color-white);
   border: 1px solid #e4e7ec;
   border-radius: 6px;
   outline: none;
@@ -118,7 +128,7 @@
 }
 
 .control:focus-visible {
-  border-color: #3fae64;
+  border-color: var(--color-secondary);
   box-shadow: 0 0 0 3px rgba(63, 174, 100, 0.18);
 }
 
@@ -137,7 +147,6 @@
   cursor: default;
 }
 
-/* ---------- Select ---------- */
 .selectWrap {
   position: relative;
 }
@@ -216,7 +225,7 @@
   font: inherit;
   font-size: 16px;
   color: var(--color-neutral-800);
-  background: #ffffff;
+  background: var(--color-white);
   border: 1px solid var(--color-neutral-200);
   border-radius: var(--radius-lg);
   cursor: pointer;
@@ -227,17 +236,17 @@
 }
 
 .chip:hover {
-  border-color: #c9d3e6;
+  border-color: var(--color-white);
 }
 
 .chip:focus-visible {
-  outline: 2px solid #3fae64;
+  outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
 .chipActive,
 .chipActive:hover {
-  color: #3a9a5e;
+  color: var(--color-secondary);
   background: #e9f6ee;
   border-color: #e1f1e7;
 }
@@ -246,7 +255,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--space-3);
   /* margin: 31px -18px 0; */
   padding: 24px;
   border-top: 1px solid #e9ecf0;
@@ -274,13 +283,13 @@
   padding: 0 32px;
   font-size: 18px;
   font-weight: var(--font-weight-bold);
-  color: #ffffff;
+  color: var(--color-white);
   background: var(--color-secondary);
   border: 0;
   border-radius: var(--radius-lg);
   cursor: pointer;
-  font-family: "Manrope", sans-serif;
   transition: background-color 0.15s ease;
+  font-family: "Manrope", sans-serif;
 }
 
 .calculateBtn:hover {
@@ -293,7 +302,9 @@
   outline-offset: 2px;
 }
 
-/* ---------- Responsive ---------- */
+
+/* Responsiveness */
+
 @media (max-width: 640px) {
   .card {
     padding: 28px 20px 24px;

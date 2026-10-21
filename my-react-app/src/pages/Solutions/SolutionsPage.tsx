@@ -20,16 +20,19 @@ const whyBestChargeItems = [
     title: "500+",
     description: "Charging Networks Managed",
   },
+
   {
     icon: icon1,
     title: "99.9% ",
     description: "Platform Availability",
   },
+
   {
     icon: icon1,
     title: "10M+",
     description: "Charging Sessions Processed",
   },
+
   {
     icon: icon1,
     title: "40+",
