@@ -78,7 +78,7 @@
   max-width: 320px;
   height: 100vh;
   height: 100dvh;
-  background: #ffffff;
+  background: var(--color-white);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -109,8 +109,8 @@
 
 .navlinks li {
   position: relative;
-  font-size: 17px;
-  font-weight: 400;
+  font-size: 26px;
+  font-weight: 500;
   color: #555555;
   cursor: pointer;
   white-space: nowrap;

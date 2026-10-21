@@ -1,10 +1,20 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import {
+  useState,
+  useLayoutEffect,
+  useRef,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styles from "./GetInTouch.module.css";
 import getInTouch from "../../../assets/Services-page/getInTouch.png";
 
 import { Section, Container, Panel } from "../../../shared/layout";
 import { SectionHeader } from "../section-header";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type GetInTouchProps = {
   title: string;
@@ -39,6 +49,49 @@ function GetInTouch({
 }: GetInTouchProps) {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [successMessage, setSuccessMessage] = useState("");
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useLayoutEffect(() => {
+    const content = contentRef.current;
+
+    if (!content || !showHeader) return;
+
+    const ctx = gsap.context(() => {
+      const eyebrow = content.querySelector('[data-gsap="eyebrow"]');
+      const heading = content.querySelector('[data-gsap="title"]');
+      const description = content.querySelector('[data-gsap="subtitle"]');
+
+      const elements = [eyebrow, heading, description].filter(
+        (element): element is Element => element !== null,
+      );
+
+      if (elements.length === 0) return;
+
+      gsap.fromTo(
+        elements,
+        {
+          y: 30,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: content,
+            start: "top 80%",
+            once: true,
+          },
+        },
+      );
+    }, content);
+
+    return () => {
+      ctx.revert();
+    };
+  }, [showHeader]);
 
   // Handle input changes
   const handleChange = (
@@ -74,13 +127,14 @@ function GetInTouch({
         <Panel>
           <div className={styles.grid}>
             {/* Left side */}
-            <div className={styles.content}>
+            <div className={styles.content} ref={contentRef}>
               {showHeader && (
                 <SectionHeader
                   eyebrow="GET IN TOUCH"
                   title={title}
                   subtitle={subtitle}
                   align={align}
+                  animated={true}
                 />
               )}
 

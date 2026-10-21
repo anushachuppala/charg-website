@@ -1,7 +1,13 @@
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import styles from "./WhoIsThisFor.module.css";
 
 import { Section, Container, Panel } from "../../layout";
 import { SectionHeader } from "../section-header";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export type WhoIsThisForItem = {
   icon: string;
@@ -37,6 +43,70 @@ export function WhoIsThisFor({
   embedded = false,
 }: WhoIsThisForProps) {
   const resolvedCardColumns = cardColumns ?? columns;
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useLayoutEffect(() => {
+    const sectionElement = sectionRef.current;
+
+    if (!sectionElement) return;
+
+    const ctx = gsap.context(() => {
+      const header = sectionElement.querySelector("header");
+      const headerEyebrow = header?.querySelector('[class*="eyebrow"]');
+      const headerTitle = header?.querySelector("h1, h2, h3");
+      const cards = sectionElement.querySelectorAll(`.${styles.card}`);
+
+      // Eyebrow and title animate together
+      const headerTimeline = gsap.timeline({
+        defaults: {
+          ease: "power2.out",
+          duration: 0.6,
+        },
+      });
+
+      if (headerEyebrow) {
+        headerTimeline.fromTo(
+          headerEyebrow,
+          { y: 30, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1 },
+        );
+      }
+
+      if (headerTitle) {
+        headerTimeline.fromTo(
+          headerTitle,
+          { y: 30, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1 },
+          "<",
+        );
+      }
+
+      // Cards animate when the user scrolls to this section
+      if (cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          {
+            y: 40,
+            autoAlpha: 0,
+          },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.7,
+            stagger: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionElement,
+              start: "top 75%",
+              once: true,
+            },
+          },
+        );
+      }
+    }, sectionElement);
+
+    return () => ctx.revert();
+  }, [items, showHeader]);
 
   const cardsContent = (
     <>
@@ -83,13 +153,15 @@ export function WhoIsThisFor({
   );
 
   if (embedded) {
-    return cardsContent;
+    return <div ref={sectionRef}>{cardsContent}</div>;
   }
 
   return (
     <Section className={styles.WhoIsSection}>
       <Container>
-        <Panel>{cardsContent}</Panel>
+        <Panel>
+          <div ref={sectionRef}>{cardsContent}</div>
+        </Panel>
       </Container>
     </Section>
   );

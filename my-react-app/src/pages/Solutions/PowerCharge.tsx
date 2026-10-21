@@ -1,23 +1,116 @@
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import styles from "./PowerCharge.module.css";
-import vector1 from "../../assets/Services-page/vector1.png";
 
 import { Section, Container, Panel } from "../../shared/layout";
 import { SectionHeader } from "../../shared/ui";
 
 import type { Solutions } from "../../features/SolutionsPage/dto/solutions.dto";
 
+gsap.registerPlugin(ScrollTrigger);
+
 type PowerChargeProps = {
   solutions?: Solutions;
 };
 
 function PowerCharge({ solutions }: PowerChargeProps) {
-  console.log("power charge section:", solutions);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      const eyebrow = section.querySelector('[data-gsap="eyebrow"]');
+      const title = section.querySelector('[data-gsap="title"]');
+      const subtitle = section.querySelector('[data-gsap="subtitle"]');
+
+      const steps = gsap.utils.toArray<HTMLElement>(`.${styles.step}`, section);
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          once: true,
+        },
+      });
+
+      // 1. Eyebrow: bottom to top
+      if (eyebrow) {
+        timeline.fromTo(
+          eyebrow,
+          { y: 25, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.45,
+            ease: "power3.out",
+          },
+        );
+      }
+
+      // 2. Title: bottom to top
+      if (title) {
+        timeline.fromTo(
+          title,
+          { y: 35, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.55,
+            ease: "power3.out",
+          },
+          "-=0.2",
+        );
+      }
+
+      // 3. Subtitle: bottom to top
+      if (subtitle) {
+        timeline.fromTo(
+          subtitle,
+          { y: 30, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.5,
+            ease: "power3.out",
+          },
+          "-=0.2",
+        );
+      }
+
+      // 4. Steps: right to left, one after another.
+      // Start while the subtitle is animating.
+      if (steps.length > 0) {
+        timeline.fromTo(
+          steps,
+          { x: 45, autoAlpha: 0 },
+          {
+            x: 0,
+            autoAlpha: 1,
+            duration: 0.5,
+            stagger: 0.18,
+            ease: "power3.out",
+          },
+          "-=0.35",
+        );
+      }
+    }, section);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
     <Section>
       <Container>
         <Panel>
-          <div className={styles.row}>
-            {/* left column: header and image */}
+          <div ref={sectionRef} className={styles.row}>
+            {/* Left column: header and image */}
             <div className={styles.leftCol}>
               <SectionHeader
                 as="div"
@@ -26,8 +119,10 @@ function PowerCharge({ solutions }: PowerChargeProps) {
                 subtitle={solutions?.powerNetworkDescription || ""}
                 align="start"
                 trailingSpacing="none"
+                animated={true}
               />
 
+              {/* Image remains unchanged; no GSAP animation */}
               <div className={styles.imageCol}>
                 <img
                   src={solutions?.powerNetworkImage}
@@ -37,7 +132,7 @@ function PowerCharge({ solutions }: PowerChargeProps) {
               </div>
             </div>
 
-            {/* right column: numbered steps */}
+            {/* Right column: numbered steps */}
             <div className={styles.stepsCol}>
               {solutions?.powerNetworkSteps?.map((item, index) => (
                 <div className={styles.step} key={item.title}>
