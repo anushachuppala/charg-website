@@ -32,7 +32,6 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* background: #163b73; */
   pointer-events: none;
 }
 
