@@ -1,3 +1,6 @@
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+
 import styles from "./HeroSection.module.css";
 import heroImage from "../../assets/Emission-calculator/heroImage.png";
 
@@ -16,12 +19,85 @@ interface HeroSectionProps {
 }
 
 function HeroSection({ onCalculateNow, onHowItWorks }: HeroSectionProps) {
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+
+    const ctx = gsap.context(() => {
+      const timeline = gsap.timeline({
+        defaults: {
+          ease: "power2.out",
+        },
+      });
+
+      // Animate the text content first.
+      timeline
+        .from(`.${styles.eyebrow}`, {
+          y: 20,
+          opacity: 0,
+          duration: 0.4,
+        })
+        .from(
+          `.${styles.title}`,
+          {
+            y: 25,
+            opacity: 0,
+            duration: 0.5,
+          },
+          "-=0.15",
+        )
+        .from(
+          `.${styles.description}`,
+          {
+            y: 20,
+            opacity: 0,
+            duration: 0.45,
+          },
+          "-=0.2",
+        )
+        .from(
+          `.${styles.buttonContainer}`,
+          {
+            y: 15,
+            opacity: 0,
+            duration: 0.4,
+          },
+          "-=0.15",
+        )
+        .from(
+          `.${styles.statCard}`,
+          {
+            y: 15,
+            opacity: 0,
+            duration: 0.35,
+            stagger: 0.1,
+          },
+          "-=0.1",
+        )
+        // Image moves from right to left after the content.
+        .from(
+          `.${styles.heroImage}`,
+          {
+            x: 100,
+            opacity: 0,
+            duration: 0.7,
+            clearProps: "transform",
+          },
+          "+=0.1",
+        );
+    }, hero);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div className={styles.heroBackdrop}>
       <Container>
         <Panel>
-          <div className={styles.mainGrid}>
-            {/* left content */}
+          <div className={styles.mainGrid} ref={heroRef}>
+            {/* Left content */}
             <div className={styles.textContent}>
               <p className={styles.eyebrow}>Powering cleaner journeys</p>
 

@@ -1,5 +1,7 @@
-import { useId, useState } from "react";
+import { useId, useState, useLayoutEffect, useRef } from "react";
 import type { FormEvent } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { SectionHeader } from "../../shared/ui";
 import { Section, Container, Panel } from "../../shared/layout";
@@ -9,6 +11,8 @@ import carIcon from "../../assets/Emission-calculator/carIcon.png";
 
 import { useEmissionVehiclesQuery } from "../../features/EmissionCalculatorPage/hooks/useEmissionCalculator";
 import type { Manufacturer } from "../../features/EmissionCalculatorPage/dto/emissionCalculator.dto";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const VEHICLE_TYPES = ["Two wheeler", "Three wheeler", "Four wheeler"] as const;
 
@@ -111,6 +115,53 @@ function SelectField({
 function MeasureCarbon() {
   const uid = useId();
   const [form, setForm] = useState(INITIAL);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  // Animate the header when the user scrolls to this section.
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+
+    if (!header) return;
+
+    const ctx = gsap.context(() => {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: header,
+          start: "top 80%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+        defaults: {
+          ease: "power2.out",
+          duration: 0.6,
+        },
+      });
+
+      timeline
+        .from("[data-gsap='eyebrow']", {
+          y: 25,
+          opacity: 0,
+        })
+        .from(
+          "[data-gsap='title']",
+          {
+            y: 25,
+            opacity: 0,
+          },
+          "-=0.35",
+        )
+        .from(
+          "[data-gsap='subtitle']",
+          {
+            y: 25,
+            opacity: 0,
+          },
+          "-=0.35",
+        );
+    }, header);
+
+    return () => ctx.revert();
+  }, []);
 
   const {
     data: vehicleData = [],
@@ -162,16 +213,19 @@ function MeasureCarbon() {
     <Section>
       <Container>
         <Panel>
-          <div className={styles.textContent}>
+          {/* Header animation is triggered by scrolling */}
+          <div className={styles.textContent} ref={headerRef}>
             <SectionHeader
               as="div"
               eyebrow="Emission Calculator"
               title="Measure Your Trip's Carbon Footprint"
               subtitle="Four short steps. Change any answer at any time."
               align="center"
+              animated={true}
             />
           </div>
 
+          {/* Existing vehicle form */}
           <form className={styles.card} onSubmit={handleSubmit} noValidate>
             <div className={styles.cardHeader}>
               <span className={styles.iconCircle}>
@@ -288,7 +342,7 @@ function MeasureCarbon() {
                 />
               </div>
 
-              {/* Row 4 – full width */}
+              {/* Row 4 */}
               <div className={`${styles.field} ${styles.fullWidth}`}>
                 <label className={styles.label} htmlFor={`${uid}-distance`}>
                   Distance Travelled (auto from route)

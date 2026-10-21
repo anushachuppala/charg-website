@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import styles from "./Methodology.module.css";
 import { SectionHeader } from "../../shared/ui";
 import { Section, Container, Panel } from "../../shared/layout";
@@ -8,6 +11,8 @@ import distanceIcon from "../../assets/Emission-calculator/distanceIcon.png";
 import fuelIcon from "../../assets/Emission-calculator/fuelIcon.png";
 import factorIcon from "../../assets/Emission-calculator/factorIcon.png";
 import emissionIcon from "../../assets/Emission-calculator/emissionIcon.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const cardsInfo = [
   {
@@ -44,17 +49,65 @@ const cardsInfo = [
 
 function Methodology() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  // Animate only the eyebrow, title, and subtitle on scroll.
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+
+    if (!header) return;
+
+    const ctx = gsap.context(() => {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: header,
+          start: "top 80%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+        defaults: {
+          ease: "power2.out",
+          duration: 0.6,
+        },
+      });
+
+      timeline
+        .from("[data-gsap='eyebrow']", {
+          y: 25,
+          opacity: 0,
+        })
+        .from(
+          "[data-gsap='title']",
+          {
+            y: 25,
+            opacity: 0,
+          },
+          "-=0.35",
+        )
+        .from(
+          "[data-gsap='subtitle']",
+          {
+            y: 25,
+            opacity: 0,
+          },
+          "-=0.35",
+        );
+    }, header);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <Section>
       <Container>
         <Panel>
-          <div className={styles.textContent}>
+          <div className={styles.textContent} ref={headerRef}>
             <SectionHeader
               as="div"
               eyebrow="Methodology"
               title="How Is This Calculated?"
               subtitle="A transparent, science-based approach using internationally recognized emission factors from the IPCC and India's national inventory."
+              animated={true}
             />
           </div>
         </Panel>
