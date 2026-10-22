@@ -55,7 +55,6 @@ const SolutionsPage = () => {
     <main>
       <HeroSection solutions={solutions} />
       <WhoIsThisFor
-        eyebrow=""
         title={solutions?.whoIsThisForLabel}
         subtitle={solutions?.whoIsThisForTitle}
         items={solutions?.whoIsThisForCards ?? []}

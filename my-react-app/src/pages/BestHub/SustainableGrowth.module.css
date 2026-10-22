@@ -26,7 +26,6 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  /* gap: var(--space-6); */
 }
 
 /* responsivenes */
@@ -109,7 +108,6 @@
   .content {
     display: flex;
     flex-direction: column;
-    /* gap: var(--space-6); */
     min-width: 0;
   }
 

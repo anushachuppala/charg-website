@@ -28,8 +28,6 @@ export function CorePlatform({
   title,
   subtitle,
   items,
-  align = "center",
-  columns = 6,
 }: CorePlatformProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 

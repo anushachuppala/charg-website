@@ -125,7 +125,7 @@
   .content {
     max-width: 100%;
     justify-content: center;
-    gap: 20px;
+    gap: var(--space-5);
   }
 
   .heading {
@@ -204,7 +204,7 @@
 
   .content p {
     font-size: 17px;
-    line-height: 1.8;
+    line-height: var(--leading-loose);
   }
 
   .btn {

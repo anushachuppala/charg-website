@@ -145,14 +145,12 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
         },
       });
 
-      // 1. Heading moves from bottom to top.
       timeline.to(heading, {
         y: 0,
         autoAlpha: 1,
         duration: 0.7,
       });
 
-      // 2. Export button expands after the heading.
       timeline.to(
         exportButton,
         {
@@ -168,7 +166,6 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
     return () => ctx.revert();
   }, []);
 
-  // Close on Escape and lock background scrolling while the dialog is open.
   useEffect(() => {
     if (!isDialogOpen) return;
 

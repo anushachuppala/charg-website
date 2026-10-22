@@ -83,8 +83,6 @@ function HeroSection({ products }: HeroSectionProps) {
         },
       });
 
-      // 1. Eyebrow, title, description, buttons and stats
-      //    move from bottom to top, one after another.
       timeline.to(textElements, {
         y: 0,
         autoAlpha: 1,
@@ -92,7 +90,6 @@ function HeroSection({ products }: HeroSectionProps) {
         stagger: 0.18,
       });
 
-      // 2. Charger image moves from right to left.
       timeline.to(
         image,
         {
@@ -104,7 +101,6 @@ function HeroSection({ products }: HeroSectionProps) {
         "-=0.2",
       );
 
-      // 3. Keep the existing floating badge animation.
       gsap.to(badges, {
         y: -8,
         duration: 1.5,

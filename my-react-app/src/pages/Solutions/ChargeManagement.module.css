@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: start;
-  gap: 2rem;
+  gap: var(--space-8);
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -11,7 +11,6 @@
 .imageCol {
   grid-column: 1;
   grid-row: 1;
-
   min-width: 0;
   width: 100%;
 }
@@ -19,10 +18,8 @@
 .content {
   grid-column: 1;
   grid-row: 2;
-
   min-width: 0;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -30,20 +27,19 @@
   gap: var(--space-4);
 }
 
-/* Image always responsive */
 .chargeImage {
   display: block;
   width: 100%;
   max-width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
 }
 
 .items {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
 
   width: 100%;
   min-width: 0;
@@ -58,7 +54,6 @@
   display: flex;
   align-items: flex-start;
   gap: 0.9rem;
-
   width: 100%;
   min-width: 0;
 }
@@ -66,7 +61,6 @@
 .icon {
   width: 25px;
   height: 26px;
-
   flex: 0 0 auto;
   margin-top: 2px;
 }
@@ -80,7 +74,6 @@
 
 .item h3 {
   margin: 0 0 0.15rem;
-
   font-size: var(--text-md);
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary, #1e56a0);
@@ -88,8 +81,7 @@
 
 .item p {
   margin: 0;
-
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   font-size: var(--text-base);
   font-weight: var(--font-weight-regular);
   color: var(--color-neutral-600);
@@ -118,11 +110,11 @@
 
 @media (max-width: 600px) {
   .row {
-    gap: 1.25rem;
+    gap: var(--space-5);
   }
 
   .content {
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
 
   .items {
@@ -156,11 +148,11 @@
 
 @media (max-width: 360px) {
   .row {
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .item {
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
 
   .icon {

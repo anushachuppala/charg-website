@@ -46,7 +46,6 @@
   display: none;
 }
 
-/* blue color image */
 .markerWrapper::after {
   content: "";
   position: absolute;
@@ -62,7 +61,6 @@
   animation: pulse 2s ease-out infinite;
 }
 
-/* green core on top */
 .markerWrapper::before {
   content: "";
   position: absolute;

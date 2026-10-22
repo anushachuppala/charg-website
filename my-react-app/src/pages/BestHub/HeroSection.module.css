@@ -10,12 +10,6 @@
   isolation: isolate;
 }
 
-/* .heroInner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-} */
-
 .heroBackground {
   position: absolute;
   inset: 0;
@@ -75,7 +69,7 @@
   font-size: 22px;
   font-weight: var(--font-weight-medium);
   max-width: 50%;
-  line-height: 1.5;
+  line-height: var(--leading-normal);
 }
 
 .heroButtons {

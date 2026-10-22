@@ -586,13 +586,6 @@ export function SiteHeader() {
               </Link>
             </li>
 
-            {/* Best Hub */}
-            <li>
-              <Link to="/besthub" onClick={closeAll}>
-                Best Hub
-              </Link>
-            </li>
-
             {/* About Us */}
             <li>
               <Link to="/about" onClick={closeAll}>

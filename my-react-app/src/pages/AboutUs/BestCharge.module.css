@@ -59,7 +59,7 @@
 .content {
   margin: 0;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   color: var(--color-neutral-600);
 }
 
@@ -71,7 +71,7 @@
   height: 3px;
   width: auto;
   background: #b3b3b3;
-  opacity: 0.4;
+  opacity: var(--opacity-40);
 }
 
 .featureItem:last-child .divider {
@@ -119,7 +119,7 @@
 
   .featureItem {
     justify-content: center;
-    gap: 16px;
+    gap: var(--space-4);
     padding: 16px 20px;
   }
 
@@ -134,7 +134,7 @@
 
   .content {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
   }
 
   .divider {
@@ -154,7 +154,7 @@
   }
 
   .featureItem {
-    gap: 20px;
+    gap: var(--space-5);
     padding: 16px 24px;
   }
 

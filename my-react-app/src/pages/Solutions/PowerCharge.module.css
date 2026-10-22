@@ -8,7 +8,7 @@
 .leftCol {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-6);
   min-width: 0;
 }
 
@@ -27,7 +27,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-4);
   width: 100%;
   min-width: 0;
   margin-top: 16px;
@@ -103,7 +103,7 @@
 .stepContent p {
   margin: 0;
   font-size: var(--text-base);
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   font-weight: var(--font-weight-medium);
   color: var(--color-neutral-600);
   overflow-wrap: break-word;
@@ -111,7 +111,7 @@
 
 @container (min-width: 420px) {
   .step {
-    gap: 14px;
+    gap: var(--space-3-5);
     padding: 20px;
   }
   .stepIcon {
@@ -128,7 +128,7 @@
 
 @container (min-width: 560px) {
   .step {
-    gap: 16px;
+    gap: var(--space-4);
     padding: 24px;
   }
   .stepIcon {
@@ -146,7 +146,7 @@
 @container (max-width: 330px) {
   .step {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: var(--space-2-5);
     padding: 14px 14px 14px 22px;
   }
   .stepIcon {
@@ -164,7 +164,7 @@
 @media (max-width: 991px) {
   .row {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: var(--space-10);
   }
 }
 
@@ -172,7 +172,7 @@
   @media (max-width: 400px) {
     .step {
       flex-wrap: wrap;
-      gap: 10px;
+      gap: var(--space-2-5);
       padding: 14px 14px 14px 22px;
     }
     .stepIcon {

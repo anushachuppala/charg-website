@@ -86,7 +86,7 @@
 @media (max-width: 1200px) {
   .ImageWrapper {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    gap: var(--space-4);
   }
 
   .ImageContainer {
@@ -110,7 +110,7 @@
 @media (max-width: 768px) {
   .carousel {
     grid-template-columns: 40px minmax(0, 260px) 40px;
-    column-gap: var(  --space-3);
+    column-gap: var(--space-3);
   }
 
   .ImageContainer {
@@ -139,7 +139,7 @@
 @media (max-width: 480px) {
   .carousel {
     grid-template-columns: 35px minmax(0, 200px) 35px;
-    column-gap: 8px;
+    column-gap: var(--space-2);
   }
 
   .arrow {

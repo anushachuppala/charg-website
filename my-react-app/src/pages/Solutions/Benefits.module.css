@@ -2,13 +2,12 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: start;
-  gap: 2rem;
+  gap: var(--space-8);
   width: 100%;
   max-width: 100%;
   min-width: 0;
 }
 
-/* Image */
 .imageCol {
   grid-column: 1;
   grid-row: 1;
@@ -24,7 +23,6 @@
   border-radius: var(--radius-lg);
 }
 
-/* Content */
 .content {
   grid-column: 1;
   grid-row: 2;
@@ -81,18 +79,17 @@
 
 .item p {
   margin: 0;
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   font-size: var(--text-base);
   font-weight: var(--font-weight-regular);
   color: var(--color-neutral-600);
 }
 
-/* Desktop: Content Left | Image Right */
 @media (min-width: 1301px) {
   .row {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     align-items: stretch;
-    gap: 2rem;
+    gap: var(--space-8);
   }
 
   .content {

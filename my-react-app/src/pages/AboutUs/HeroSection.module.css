@@ -51,8 +51,6 @@
 .heroContent {
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
-  /* width: 100%; */
   text-align: left;
   box-sizing: border-box;
 }
@@ -96,7 +94,6 @@ span {
 .heroButtons {
   display: flex;
   flex-direction: column;
-  /* gap: 12px; */
   width: 100%;
   max-width: 320px;
 }
@@ -112,7 +109,7 @@ span {
   margin: 0;
   box-sizing: border-box;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-family: "Manrope", sans-serif;
 }
 
@@ -145,7 +142,6 @@ span {
   }
 
   .heroContent {
-    /* gap: 20px; */
     padding: 32px 0;
     max-width: 600px;
   }
@@ -168,12 +164,10 @@ span {
     flex-direction: row;
     flex-wrap: wrap;
     max-width: 100%;
-    /* gap: 16px; */
   }
 
   .heroButtons button {
     width: auto;
-    /* min-width: 180px; */
     flex: 1 1 180px;
     height: 50px;
     font-size: 16px;
@@ -208,7 +202,6 @@ span {
     flex-wrap: wrap;
     align-items: center;
     max-width: 100%;
-    /* gap: 24px; */
   }
 
   .heroButtons button {
@@ -235,7 +228,7 @@ span {
 
   .heroTitle {
     font-size: 48px;
-    line-height: 1.2;
+    line-height: var(--leading-tight);
   }
 
   .desktopBreak {
@@ -251,7 +244,7 @@ span {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: 15px;
+    gap: var(--space-4);
   }
 
   .heroButtons button {

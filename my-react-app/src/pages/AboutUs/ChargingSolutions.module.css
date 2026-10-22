@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--space-8, 20px);
+  gap: var(--space-8, var(--space-5));
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -16,7 +16,7 @@
   aspect-ratio: 580 / 578;
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   box-sizing: border-box;
 }
 
@@ -36,7 +36,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: var(--space-4, 12px);
+  gap: var(--space-4, var (--space-3));
   box-sizing: border-box;
 }
 
@@ -76,7 +76,7 @@ h2.title {
   }
 
   .imageWrapper {
-    border-radius: 16px;
+    border-radius: var(--radius-xl);
   }
 
   .content p {
@@ -129,7 +129,7 @@ h2.title {
     flex-direction: row;
     align-items: center;
     text-align: left;
-    gap: var(--space-14, 48px);
+    gap: var(--space-14, var(--space-12));
   }
 
   .imageWrapper {
