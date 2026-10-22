@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactNode } from "react";
-import styles from "./PageLayout.module.css";
+import styles from "./pageLayout.module.css";
 
 export type PageLayoutProps = PropsWithChildren<{
   title: ReactNode;

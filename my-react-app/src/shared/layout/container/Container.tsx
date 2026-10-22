@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
-import styles from "./container.module.css";
+import styles from "./Container.module.css";
 
 export type ContainerProps = ComponentPropsWithoutRef<"div">;
 

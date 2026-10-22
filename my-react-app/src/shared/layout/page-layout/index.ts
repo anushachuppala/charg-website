@@ -1,2 +1,2 @@
-export { PageLayout } from "./pageLayout";
-export type { PageLayoutProps } from "./pageLayout";
+export { PageLayout } from "./PageLayout";
+export type { PageLayoutProps } from "./PageLayout";
