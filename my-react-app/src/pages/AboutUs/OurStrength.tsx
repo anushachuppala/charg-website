@@ -28,7 +28,6 @@ const OurStrength = ({ aboutUs }: OurStrengthProps) => {
 
   const strengthRef = useRef<HTMLDivElement>(null);
 
-  // Animate eyebrow and title from bottom to top
   useLayoutEffect(() => {
     const section = strengthRef.current;
     if (!section) return;

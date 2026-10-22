@@ -130,7 +130,6 @@ function GetInTouch({
             <div className={styles.content} ref={contentRef}>
               {showHeader && (
                 <SectionHeader
-                  eyebrow="GET IN TOUCH"
                   title={title}
                   subtitle={subtitle}
                   align={align}

@@ -1,8 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AppShell } from "../../widgets/app-shell/AppShell.tsx";
 
-const loadHomePage = () => import("../../pages/HomePage/HomePage.tsx");
-
 const loadAboutPage = () => import("../../pages/AboutUs/AboutPage.tsx");
 
 const loadProductsPage = () => import("../../pages/Products/ProductsPage");
@@ -22,7 +20,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         lazy: async () => ({
-          Component: (await loadHomePage()).default,
+          Component: (await loadBestHubPage()).default,
         }),
       },
 
@@ -51,13 +49,6 @@ export const router = createBrowserRouter([
         path: "/EmissionCalculator",
         lazy: async () => ({
           Component: (await loadEmissionCalculator()).default,
-        }),
-      },
-
-      {
-        path: "/besthub",
-        lazy: async () => ({
-          Component: (await loadBestHubPage()).default,
         }),
       },
     ],
