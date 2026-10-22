@@ -579,16 +579,6 @@ export function SiteHeader() {
               </div>
             </li>
 
-            {/* Resources */}
-            <li>
-              <div className={styles.linkWithChevron}>
-                <Link to="/Resources" onClick={closeAll}>
-                  Resources
-                </Link>
-                <IoChevronDown className={styles.chevron} />
-              </div>
-            </li>
-
             {/* Emission Calculator */}
             <li>
               <Link to="/EmissionCalculator" onClick={closeAll}>

@@ -48,8 +48,11 @@ function WhyAries({ products }: WhyAriesProps) {
         <Panel>
           <SectionHeader
             as="div"
-            title={products?.featuresSectionTitle || ""}
-            subtitle={products?.featuresSectionDescription || ""}
+            title={products?.featuresSectionTitle || "Why ARIES?"}
+            subtitle={
+              products?.featuresSectionDescription ||
+              "More than a charger. A complete charging"
+            }
           />
 
           <WhoIsThisFor

@@ -44,31 +44,86 @@ type HeroSectionProps = {
 };
 
 function HeroSection({ products }: HeroSectionProps) {
-  console.log("hero products", products);
-
+  const heroRef = useRef<HTMLDivElement>(null);
   const imageContentRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    const hero = heroRef.current;
+    const imageContent = imageContentRef.current;
+
+    if (!hero || !imageContent) return;
+
     const ctx = gsap.context(() => {
-      gsap.to(`.${styles.badge}`, {
+      const eyebrow = hero.querySelector(`.${styles.eyebrow}`);
+      const title = hero.querySelector(`.${styles.title}`);
+      const description = hero.querySelector(`.${styles.description}`);
+      const buttons = hero.querySelector(`.${styles.buttonContainer}`);
+      const stats = hero.querySelector(`.${styles.stats}`);
+      const image = imageContent.querySelector(`.${styles.ariesCharger}`);
+      const badges = imageContent.querySelectorAll(`.${styles.badge}`);
+
+      const textElements = [eyebrow, title, description, buttons, stats].filter(
+        (element): element is Element => element !== null,
+      );
+
+      // Initial states
+      gsap.set(textElements, {
+        y: 35,
+        autoAlpha: 0,
+      });
+
+      gsap.set(image, {
+        x: 70,
+        autoAlpha: 0,
+      });
+
+      const timeline = gsap.timeline({
+        defaults: {
+          ease: "power2.out",
+        },
+      });
+
+      // 1. Eyebrow, title, description, buttons and stats
+      //    move from bottom to top, one after another.
+      timeline.to(textElements, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.6,
+        stagger: 0.18,
+      });
+
+      // 2. Charger image moves from right to left.
+      timeline.to(
+        image,
+        {
+          x: 0,
+          autoAlpha: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      );
+
+      // 3. Keep the existing floating badge animation.
+      gsap.to(badges, {
         y: -8,
         duration: 1.5,
         ease: "power1.inOut",
         yoyo: true,
         repeat: -1,
       });
-    }, imageContentRef);
+    }, hero);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className={styles.heroBackdrop}>
+    <div ref={heroRef} className={styles.heroBackdrop}>
       <Section>
         <Container>
           <Panel>
             <div className={styles.mainGrid}>
-              {/* left content */}
+              {/* Left content */}
               <div className={styles.textContent}>
                 <p className={styles.eyebrow}>{products?.title}</p>
 
@@ -80,6 +135,7 @@ function HeroSection({ products }: HeroSectionProps) {
 
                 <div className={styles.buttonContainer}>
                   <Button variant="secondary">Get a Quote</Button>
+
                   <Button variant="primary">Download Datasheet</Button>
                 </div>
 
@@ -87,13 +143,14 @@ function HeroSection({ products }: HeroSectionProps) {
                   {products?.heroSpecs.map((stat) => (
                     <li key={stat.answer} className={styles.statCard}>
                       <p className={styles.statLabel}>{stat.label}</p>
+
                       <h3 className={styles.statValue}>{stat.answer}</h3>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Image */}
+              {/* Right image and floating badges */}
               <div ref={imageContentRef} className={styles.imageContent}>
                 <img
                   src={products?.overviewImages?.[0]}

@@ -12,7 +12,7 @@
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   justify-content: center;
-  column-gap: 16px;
+  column-gap: var(--space-4);
   width: 100%;
   margin-top: 24px;
 }
@@ -41,15 +41,15 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
-  gap: 20px;
+  gap: var(--space-5);
   width: 100%;
 }
 
 .card {
   min-width: 0;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   box-shadow: 0px 4px 10px #9c9c9c40;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -66,7 +66,7 @@
 .dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: var(--space-2-5);
   margin-top: 20px;
 }
 
@@ -110,7 +110,7 @@
 @media (max-width: 768px) {
   .carousel {
     grid-template-columns: 40px minmax(0, 260px) 40px;
-    column-gap: 12px;
+    column-gap: var(  --space-3);
   }
 
   .ImageContainer {

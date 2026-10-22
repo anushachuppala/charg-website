@@ -12,10 +12,6 @@ const loadSolutionsPage = () =>
 
 const loadBestHubPage = () => import("../../pages/BestHub/BestHubPage.tsx");
 
-const loadBlogPage = () => import("../../pages/Blog/Blog.tsx");
-
-const loadResourcesPage = () => import("../../pages/Resources/Resources.tsx");
-
 const loadEmissionCalculator = () =>
   import("../../pages/EmissionCalculator/EmissionCalculator.tsx");
 
@@ -52,13 +48,6 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/Resources",
-        lazy: async () => ({
-          Component: (await loadResourcesPage()).default,
-        }),
-      },
-
-      {
         path: "/EmissionCalculator",
         lazy: async () => ({
           Component: (await loadEmissionCalculator()).default,
@@ -69,13 +58,6 @@ export const router = createBrowserRouter([
         path: "/besthub",
         lazy: async () => ({
           Component: (await loadBestHubPage()).default,
-        }),
-      },
-
-      {
-        path: "/blog",
-        lazy: async () => ({
-          Component: (await loadBlogPage()).default,
         }),
       },
     ],

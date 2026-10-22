@@ -1,7 +1,7 @@
 .InfrastructureSection {
   width: 100%;
   min-height: 530px;
-  background-color: rgba(0, 49, 139, 0.88);
+  background-color: var(--color-primary);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -35,14 +35,14 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 49, 139, 0.88);
+  background: var(--color-primary);
   z-index: 2;
 }
 
 .contentWrapper {
   position: relative;
   z-index: 3;
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   width: auto;
   height: 448px;
   display: flex;
@@ -61,11 +61,11 @@
 .heading {
   margin: 0;
   font-size: 36px;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .heading span {
-  color: #55b56c;
+  color: var(--color-secondary);
 }
 
 .rightContent {
@@ -87,7 +87,7 @@
   overflow: hidden;
   align-items: stretch;
   width: 100%;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .heroButtons button {
@@ -97,7 +97,7 @@
   height: 48px;
   padding: 0 24px;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   line-height: 1;
   border-radius: 8px;
   white-space: nowrap;
@@ -245,7 +245,7 @@
     width: 100%;
     max-width: 260px;
     margin-inline: auto;
-    gap: 12px;
+    gap: var(--space-3);
   }
 
   .heroButtons button {

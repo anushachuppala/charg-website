@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import styles from "./TechnicalSpecifications.module.css";
 
 import { Section, Container, Panel } from "../../shared/layout";
 import downloadImage from "../../assets/products-page/downloadImage.png";
-
 import finalDoc from "../../assets/products-page/final-doc.pdf.pdf";
 
 import type {
   Products,
   TechnicalSpecificationItem,
 } from "../../features/ProductsPage/dto/products.dto";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type TechnicalSpecificationsProps = {
   products?: Products;
@@ -38,7 +42,6 @@ const tabKeyMap: Record<string, TabId> = {
   "Certifications and Standard": "Certifications And Standards",
 };
 
-// Generic placeholders, not verified specifications for a specific charger.
 const fallbackSpecifications: Record<TabId, TechnicalSpecificationItem[]> = {
   general: [
     { label: "Product Type", value: "EV Charger" },
@@ -85,9 +88,10 @@ function getTabId(tab: string): TabId | undefined {
 
 function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
   const [activeTab, setActiveTab] = useState<TabId>("general");
-
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
+
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   const closeDialog = () => {
     setIsDialogOpen(false);
@@ -106,6 +110,63 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
 
     closeDialog();
   };
+
+  // GSAP animation
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      const heading = section.querySelector(`.${styles.heading}`);
+      const exportButton = section.querySelector(`.${styles.exportBtn}`);
+
+      // Heading starts below its original position.
+      gsap.set(heading, {
+        y: 35,
+        autoAlpha: 0,
+      });
+
+      // Export button starts smaller than its original size.
+      gsap.set(exportButton, {
+        scale: 0.8,
+        autoAlpha: 0,
+        transformOrigin: "center center",
+      });
+
+      const timeline = gsap.timeline({
+        defaults: {
+          ease: "power2.out",
+        },
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          once: true,
+        },
+      });
+
+      // 1. Heading moves from bottom to top.
+      timeline.to(heading, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.7,
+      });
+
+      // 2. Export button expands after the heading.
+      timeline.to(
+        exportButton,
+        {
+          scale: 1,
+          autoAlpha: 1,
+          duration: 0.55,
+          ease: "back.out(1.5)",
+        },
+        "-=0.1",
+      );
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
 
   // Close on Escape and lock background scrolling while the dialog is open.
   useEffect(() => {
@@ -150,7 +211,7 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
     ? activeTab
     : (getTabId(specificationTabs[0]) ?? "general");
 
-  // Prefer API specifications; use manual fallback if the array is empty.
+  // Prefer API specifications; use manual fallback if empty.
   const apiSpecifications =
     products?.technicalSpecifications?.[normalizedActiveTab];
 
@@ -164,118 +225,120 @@ function TechnicalSpecifications({ products }: TechnicalSpecificationsProps) {
 
   return (
     <Section>
-      <Container>
-        <Panel>
-          <p className={styles.heading}>Technical Specifications</p>
+      <div ref={sectionRef}>
+        <Container>
+          <Panel>
+            <p className={styles.heading}>Technical Specifications</p>
 
-          <div className={styles.tabsRow}>
-            <div className={styles.tabs}>
-              {specificationTabs.map((tab) => {
-                const tabId = getTabId(tab);
+            <div className={styles.tabsRow}>
+              <div className={styles.tabs}>
+                {specificationTabs.map((tab) => {
+                  const tabId = getTabId(tab);
 
-                if (!tabId) return null;
+                  if (!tabId) return null;
 
-                return (
-                  <button
-                    key={tab}
-                    type="button"
-                    onClick={() => setActiveTab(tabId)}
-                    className={`${styles.tab} ${
-                      normalizedActiveTab === tabId ? styles.tabActive : ""
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                );
-              })}
-            </div>
-
-            <button
-              type="button"
-              className={styles.exportBtn}
-              onClick={() => setIsDialogOpen(true)}
-            >
-              <img
-                src={downloadImage}
-                alt="downloads the pdf"
-                className={styles.downloadIcon}
-              />
-              Export Specifications
-            </button>
-          </div>
-
-          <div className={styles.specTable}>
-            {specifications.map((spec) => (
-              <div key={spec.label} className={styles.specRow}>
-                <span className={styles.specLabel}>{spec.label}</span>
-                <span className={styles.specValue}>{spec.value}</span>
+                  return (
+                    <button
+                      key={tab}
+                      type="button"
+                      onClick={() => setActiveTab(tabId)}
+                      className={`${styles.tab} ${
+                        normalizedActiveTab === tabId ? styles.tabActive : ""
+                      }`}
+                    >
+                      {tab}
+                    </button>
+                  );
+                })}
               </div>
-            ))}
-          </div>
-        </Panel>
 
-        {/* Dialog */}
-        {isDialogOpen && (
-          <div
-            className={styles.dialogOverlay}
-            onClick={closeDialog}
-            role="presentation"
-          >
-            <div
-              className={styles.dialog}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="specs-dialog-title"
-              onClick={(event) => event.stopPropagation()}
-            >
               <button
                 type="button"
-                className={styles.closeBtn}
-                onClick={closeDialog}
-                aria-label="Close dialog"
+                className={styles.exportBtn}
+                onClick={() => setIsDialogOpen(true)}
               >
-                &times;
+                <img
+                  src={downloadImage}
+                  alt=""
+                  className={styles.downloadIcon}
+                />
+                Export Specifications
               </button>
+            </div>
 
-              <h2 id="specs-dialog-title" className={styles.dialogTitle}>
-                Download the Technical Specifications
-              </h2>
+            <div className={styles.specTable}>
+              {specifications.map((spec) => (
+                <div key={spec.label} className={styles.specRow}>
+                  <span className={styles.specLabel}>{spec.label}</span>
+                  <span className={styles.specValue}>{spec.value}</span>
+                </div>
+              ))}
+            </div>
+          </Panel>
 
-              <label className={styles.dialogLabel} htmlFor="specs-email">
-                Enter your email address:
-              </label>
-
-              <input
-                id="specs-email"
-                type="email"
-                className={styles.emailInput}
-                placeholder="your@example.com"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                autoFocus
-              />
-
-              <div className={styles.dialogFooter}>
+          {/* Dialog */}
+          {isDialogOpen && (
+            <div
+              className={styles.dialogOverlay}
+              onClick={closeDialog}
+              role="presentation"
+            >
+              <div
+                className={styles.dialog}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="specs-dialog-title"
+                onClick={(event) => event.stopPropagation()}
+              >
                 <button
                   type="button"
-                  className={styles.skipBtn}
-                  onClick={handleDownload}
+                  className={styles.closeBtn}
+                  onClick={closeDialog}
+                  aria-label="Close dialog"
                 >
-                  Skip &amp; Download
+                  &times;
                 </button>
 
-                <button
-                  type="button"
-                  className={styles.downloadBtn}
-                  onClick={handleDownload}
-                >
-                  Download
-                </button>
+                <h2 id="specs-dialog-title" className={styles.dialogTitle}>
+                  Download the Technical Specifications
+                </h2>
+
+                <label className={styles.dialogLabel} htmlFor="specs-email">
+                  Enter your email address:
+                </label>
+
+                <input
+                  id="specs-email"
+                  type="email"
+                  className={styles.emailInput}
+                  placeholder="your@example.com"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  autoFocus
+                />
+
+                <div className={styles.dialogFooter}>
+                  <button
+                    type="button"
+                    className={styles.skipBtn}
+                    onClick={handleDownload}
+                  >
+                    Skip &amp; Download
+                  </button>
+
+                  <button
+                    type="button"
+                    className={styles.downloadBtn}
+                    onClick={handleDownload}
+                  >
+                    Download
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </Container>
+          )}
+        </Container>
+      </div>
     </Section>
   );
 }

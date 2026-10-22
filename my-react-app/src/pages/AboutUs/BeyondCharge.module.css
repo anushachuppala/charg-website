@@ -3,8 +3,6 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  /* column-gap: 20px; */
-  /* padding: 0 35px; */
 }
 
 .featureItem:not(:last-child)::after {
@@ -29,7 +27,7 @@
 .heading {
   margin: 0;
   color: var(--color-primary);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   white-space: nowrap;
 }
 
@@ -38,40 +36,24 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-4);
-  line-height: 1.5;
-}
-
-.beyondImage {
-  width: 100%;
-  height: 90%;
-  display: flex;
-  align-items: flex-end;
-  border-radius: 14px;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
   margin-top: 60px;
   width: 100%;
   max-width: 100%;
-  line-height: 1.6;
+  line-height: var(--leading-normal);
 }
 
 .eyebrow {
   margin: 0;
   color: var(--color-secondary);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   letter-spacing: 1px;
 }
 
 .heading {
   margin: 0;
-  color: #163b7c;
-  font-weight: 700;
-  line-height: 1.2;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
   font-size: clamp(28px, 6vw, 44px);
   white-space: normal;
   word-break: break-word;
@@ -85,18 +67,13 @@
 }
 
 .beyondImage {
+  max-width: 100%;
   width: 100%;
-  height: 80%;
+  height: auto;
   display: block;
   border-radius: 14px;
   object-fit: cover;
   margin-top: 24px;
-}
-
-/* Prevent overflow */
-.content,
-.beyondImage {
-  min-width: 0;
 }
 
 /* 320px - 480px */
@@ -104,7 +81,7 @@
 @media (max-width: 480px) {
   .content {
     text-align: left;
-    gap: 14px;
+    gap: var(--space-3-5);
   }
 
   .heading {
@@ -126,7 +103,7 @@
 
 @media (min-width: 481px) and (max-width: 768px) {
   .content {
-    gap: 18px;
+    gap: var(--space-4-5);
   }
 
   .heading {
@@ -197,7 +174,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: var(--space-10);
   }
 
   .imageWrapper {
@@ -271,7 +248,7 @@
 
   .content p {
     font-size: 18px;
-    line-height: 1.8;
+    line-height: var(--leading-loose);
   }
 
   .btn {

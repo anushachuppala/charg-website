@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styles from "./BeyondCharge.module.css";
 
-import BeyondImage from "../../assets/images/About-page/beyond charge (2).png";
+import BeyondImage from "../../assets/images/About-page/beyondImage.png";
 import { Section, Container, Panel } from "../../shared/layout";
 import Button from "../../shared/ui/Button";
 
